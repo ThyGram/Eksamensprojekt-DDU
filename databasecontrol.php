@@ -49,6 +49,7 @@
             print_response([],"invalid_nonce");
             return false;
         }
+        return true;
     }
 
     # Set connection properties for the database
