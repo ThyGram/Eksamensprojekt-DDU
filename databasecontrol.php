@@ -1,4 +1,23 @@
 <?php
+    # Precode check
+    if (isset($_SERVER['HTTP_ORIGIN'])){
+        header("Access-Control-Allow-Origin: *"); # Allow external connections
+        header("Access-Control-Max-Age: 60"); # Keep connections open for 60 seconds or 1 minute
+
+        # Check if a site is requesting acces to the site
+        if ($_SERVER["REQUEST_METHOD"] === "OPTIONS"){
+            header("Access-Control-Allow-Methods: POST, OPTIONS");
+            header("Access-Control-Allow-Headers: Authorization, Conten-Type, Accept, Origin cache-control");
+            http_response_code(200); #Report that request can be made
+            die;
+        }
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] !== "POST"){
+        http_response_code(405); # Report "DENIED ACCESS"
+        die;
+    }
+
     function print_response($dictionary = [], $error = "none"){
         $string = "";
 
@@ -7,12 +26,13 @@
                     \"command\" : \"$_REQUEST[command]\",
                     \"response\" : ". json_encode($dictionary) ."}";
 
-        echo $string
+        echo $string;
     }
 
     # Make sure command/message from godot is done correctly.
     if (!isset($_REQUEST['command']) or $_REQUEST['command'] === null){ 
-        print_response([], "missing_command");
+        #print_response([], "missing_command");
+        echo "{\"error\" : \"missing_command\", \"response\" : {}}";
         die;
     }
 
@@ -22,6 +42,15 @@
         die;
     }
 
+    # Verify that the user has permission and hasnt made an invalid command
+    function verify_nonce($pdo, $secret = "1234567890"){
+        #Make sure the Godot user sent over a CNONCE
+        if (Iisset($_SERVRE['HTTP_CNONCE'])){
+            print_response([],"invalid_nonce");
+            return false;
+        }
+    }
+
     # Set connection properties for the database
     $sql_host = "localhost";	# Where the database is located
 	$sql_db = "database_db";			# Name of the database
@@ -29,7 +58,25 @@
 	$sql_password = "";			# Login password for the database
 
     # Set up data in PDO format.
-    $dsn = "mysql:dbname=$sql_db;host=$sql_host;charset=utf8mb4;port=3306"
+    $dsn = "mysql:dbname=$sql_db;host=$sql_host;charset=utf8mb4;port=3306";
+
+    # Check that there was a nonce for this user on the server
+    if (!isset($data) or sizeof($data) <= 0){
+        print_response([],"server_missing_nonce");
+        return false;
+    }
+
+    $sth = $pdo -> prepare("DELETE FROM 'nonces' WHERE ip_adress = :ip");
+    $sth -> execute(["ip" => $_SERVER["REMOTE_ADDR"]]);
+
+    $server_nonce = $data[0]['nonce'];
+
+    if (hash('sha256', $server_nonce . $_SERVER['HTTP_CNONCE'] . file_get_contents("php://input") . $secret) != $_SERVER["HTTP_HASH"]){
+        print_response([], "invalid_nonce_or_hash")
+        return false;
+    }
+
+    return true;
 
     # Attempt to connect
     try{
@@ -42,7 +89,8 @@
         die;
     }
 
-    # Convert godot JSON string into a dictionary
+    $json = json_decode($_REQUEST["data"], true);
+    # Check that the json was valid
     if ($json === null){
         print_response([], "invalid_json");
         die;
@@ -51,8 +99,28 @@
     # Execute godot commands
     switch ($_REQUEST['command']){
         
+        # Generate single-use nonce for godot
+        case "get_nonce"
+            $bytes = random_bytes(32);
+            $nonce = hash("sha256", $bytes);
+
+            $template = "INSERT INTO 'nonces' (ip_adress, nonce) VALUES (:ip, :nonce) ON DUPLICATE KEY UPDATE nonce = :nonce_update";
+
+            $sth = $pdo -> perpare($template)
+            $sth -> execute(["ip" => $_SERVER["REMOTE_ADDR"], "nonce" => $nonce, "nonce_update" => $nonce])
+
+            print_response(["nonce" => $nonce])
+
+            die;
+        break;
+
         # Get scores from the database to set up the leaderboard in Godot
-        case "get_score":
+        case "get_scores":
+
+            #Check for valid nonce
+            if (!verify_nonce($pdo)){
+                die;
+            }
 
             # Determine how many scores to be retrived
             $score_offset = 0;
@@ -68,7 +136,10 @@
             $template = "SELECT * FROM 'highscores' ORDER BY score DESC LIMIT :numer OFSET :offset";
 
             $sth = $pdo -> prepare($template);
-			$sth -> execute(["numer" => $score_number, "offset" => $score_offset]);
+			#$sth -> execute(["numer" => $score_number, "offset" => $score_offset]);
+            $sth -> bindValue("number", $score_number, PDO::PARAM_INT);
+            $sth -> bindValue("offset", $score_offset, PDO::PARAM_INT);
+            $sth -> execute();
 
             # Grab the data from the request
             $data = $sth -> fetchAll();
@@ -79,6 +150,7 @@
             print_response($data);
 
 			die;
+        break;
 
 
         # Add score to highscore table
@@ -96,7 +168,7 @@
             }
 
             # Make sure username is under 25 charachters. Limit clarified in the database.
-            $username = $json['username']
+            $username = $json['username'];
             if (strlen($username) > 24){
                 $username = substr($username, 25);
             }
