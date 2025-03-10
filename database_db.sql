@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Vært: 127.0.0.1
--- Genereringstid: 05. 03 2025 kl. 07:45:11
+-- Genereringstid: 10. 03 2025 kl. 13:10:23
 -- Serverversion: 5.7.14
 -- PHP-version: 5.6.25
 
@@ -28,9 +28,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `highscores` (
   `id` int(11) NOT NULL,
-  `username` varchar(25) CHARACTER SET utf8mb4 NOT NULL,
+  `username` varchar(25) NOT NULL,
   `score` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -39,9 +39,9 @@ CREATE TABLE `highscores` (
 --
 
 CREATE TABLE `nonces` (
-  `ip_address` varchar(255) NOT NULL,
-  `nonce` char(64) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `ip_adress` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `nonce` char(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -51,10 +51,10 @@ CREATE TABLE `nonces` (
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
-  `name` text CHARACTER SET utf8mb4 NOT NULL,
-  `password` text CHARACTER SET utf8mb4 NOT NULL,
-  `displayname` varchar(25) CHARACTER SET utf8mb4 NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `name` text NOT NULL,
+  `password` text NOT NULL,
+  `displayname` varchar(25) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
 -- Begrænsninger for dumpede tabeller
