@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-
 const SPEED : int = 300
 var in_computerRange : bool = false
 

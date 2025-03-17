@@ -6,6 +6,11 @@ var Highscore : int
 var GameStarted : bool = false
 var TimerStarted : bool = false
 var rng = RandomNumberGenerator.new()
+var GameTimerStarted : bool = false
+var DayStarted : bool = false
+var GameWatch : int
+
+var GameTimer = Timer.new()
 
 # First variable is money invested, and second is news boost or not
 var Stocks : Dictionary = {
@@ -17,34 +22,37 @@ var Stocks : Dictionary = {
 	"InvestedInHCØ" : [0, null]
 	}
 
-var NewsBoost : String
-var NewsKill : String
-
 func _ready():
 	DisplayUsername = storage.DisplayUsername
 	Money = storage.Money
 	Highscore = storage.Highscore
 	GameStarted = storage.GameStarted
 	TimerStarted = storage.TimerStarted
+	DayStarted = storage.DayStarted
+	GameTimerStarted = storage.GameTimerStarted
+	GameWatch = storage.GameWatch
+	GameTimer = storage.GameTimer
 	
 	# Stocks
 	Stocks = storage.Stocks
 	
-	
+	print("GameSTART")
+	add_child(GameTimer)
+	GameTimer.autostart = true
+	GameTimer.start(1)
+
 func _process(delta):
 	if (GameStarted and !TimerStarted):
 		print("START")
 		var timer = Timer.new()
 		add_child(timer)
-		timer.wait_time = 60
 		timer.autostart = true
 		timer.timeout.connect(_on_timer_timeout)
+		timer.start(60)
 		TimerStarted = true
 
-
-
 func _on_timer_timeout():
-	var Increment
+	var Increment : float = 0
 	for key in Stocks:
 		var randomNumber = rng.randi_range(1,200)
 		if randomNumber == 100 and Stocks[key][1] == null:
