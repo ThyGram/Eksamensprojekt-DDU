@@ -12,12 +12,10 @@ func _process(delta):
 
 
 func _on_calender_pressed():
-	pass # Replace with function body.
-
+	get_tree().change_scene_to_file("res://calender.tscn")
 
 func _on_stocks_pressed():
-	pass # Replace with function body.
-
+	get_tree().change_scene_to_file("res://stocks.tscn")
 
 func _on_bank_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://bank.tscn")

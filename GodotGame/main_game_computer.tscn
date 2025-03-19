@@ -7,30 +7,35 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 4.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.995906, 0.991586)
 script = ExtResource("1_d3cnl")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 218.0
-offset_top = 177.0
-offset_right = 385.0
-offset_bottom = 312.0
+offset_left = 516.113
+offset_top = 383.224
+offset_right = 787.113
+offset_bottom = 602.224
 text = "Calender"
 
 [node name="Button2" type="Button" parent="."]
 layout_mode = 0
-offset_left = 478.0
-offset_top = 181.0
-offset_right = 645.0
-offset_bottom = 316.0
+offset_left = 861.528
+offset_top = 375.156
+offset_right = 1136.53
+offset_bottom = 598.156
 text = "Stocks"
 
 [node name="Button3" type="Button" parent="."]
 layout_mode = 0
-offset_left = 755.0
-offset_top = 185.0
-offset_right = 922.0
-offset_bottom = 320.0
+offset_left = 1244.09
+offset_top = 383.224
+offset_right = 1498.09
+offset_bottom = 589.224
 text = "Bank"
