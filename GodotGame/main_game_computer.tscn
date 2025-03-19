@@ -20,6 +20,7 @@ offset_bottom = 312.0
 text = "Calender"
 
 [node name="Button2" type="Button" parent="."]
+layout_mode = 0
 offset_left = 478.0
 offset_top = 181.0
 offset_right = 645.0
@@ -27,6 +28,7 @@ offset_bottom = 316.0
 text = "Stocks"
 
 [node name="Button3" type="Button" parent="."]
+layout_mode = 0
 offset_left = 755.0
 offset_top = 185.0
 offset_right = 922.0
