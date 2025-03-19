@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 const SPEED : int = 300
 var in_computerRange : bool = false
+var in_bedRange : bool = false
+var in_tvRange : bool = false
 
 func _process(delta):
 	velocity = Vector2.ZERO
@@ -15,13 +17,40 @@ func _process(delta):
 	
 
 func _input(event):
-	if (event.is_action_pressed("ui_accept") and in_computerRange == true):
+	if (event.is_action_pressed("ui_accept") and in_computerRange and !in_bedRange):
 		get_tree().change_scene_to_file("res://main_game_computer.tscn")
+	elif (event.is_action_pressed("ui_accept") and in_bedRange and !in_computerRange):
+		get_parent().NewDay()
 
 
-func _on_area_2d_body_entered(body):
-	in_computerRange = true
+func _on_computer_body_entered(body):
+	if body.name == "Player":
+		in_computerRange = true
+		print("infcomputer")
+
+func _on_computer_body_exited(body):
+	if body.name == "Player":
+		in_computerRange = false
+		print("out comput")
 
 
-func _on_area_2d_body_exited(body):
-	in_computerRange = false
+func _on_bed_body_entered(body):
+	if body.name == "Player":
+		in_bedRange = true
+		print("in bed")
+
+
+func _on_bed_body_exited(body):
+	if body.name == "Player":
+		in_bedRange = false
+		print("out bed")
+
+
+func _on_tv_body_entered(body):
+	if body.name == "Player":
+		in_tvRange = true
+
+
+func _on_tv_body_exited(body):
+	if body.name == "Player":
+		in_tvRange = false

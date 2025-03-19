@@ -10,3 +10,25 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_d3cnl")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 218.0
+offset_top = 177.0
+offset_right = 385.0
+offset_bottom = 312.0
+text = "Calender"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 478.0
+offset_top = 181.0
+offset_right = 645.0
+offset_bottom = 316.0
+text = "Stocks"
+
+[node name="Button3" type="Button" parent="."]
+offset_left = 755.0
+offset_top = 185.0
+offset_right = 922.0
+offset_bottom = 320.0
+text = "Bank"

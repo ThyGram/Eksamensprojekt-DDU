@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://q7yovrbru4j5"]
+
+[ext_resource type="Script" path="res://SwitchScreen.gd" id="1_y6g2r"]
+[ext_resource type="Texture2D" uid="uid://che6o5rp41r1b" path="res://SleepingScreen.png" id="2_ws8tv"]
+
+[node name="SwitchScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y6g2r")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(582.392, 329)
+scale = Vector2(0.76393, 0.806373)
+texture = ExtResource("2_ws8tv")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

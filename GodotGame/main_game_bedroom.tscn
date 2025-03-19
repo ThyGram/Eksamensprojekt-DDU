@@ -1,14 +1,29 @@
-[gd_scene load_steps=6 format=3 uid="uid://bl0kwce2fdxm3"]
+[gd_scene load_steps=11 format=3 uid="uid://bl0kwce2fdxm3"]
 
 [ext_resource type="Script" path="res://main_game_bedroom.gd" id="1_cps6x"]
 [ext_resource type="Script" path="res://Player.gd" id="1_un6wh"]
 [ext_resource type="Texture2D" uid="uid://c3sw1px41oine" path="res://icon.svg" id="2_v3xi1"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a1p05"]
+size = Vector2(137.487, 132.82)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o8xtv"]
-size = Vector2(229, 149)
+size = Vector2(179, 135)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_72d7h"]
 size = Vector2(133, 73)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6k7oi"]
+size = Vector2(114.5, 273)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_67fpx"]
+size = Vector2(173, 368)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8310b"]
+size = Vector2(174, 35)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hdfuv"]
+size = Vector2(236, 52)
 
 [node name="MainGame_Bedroom" type="Node2D"]
 script = ExtResource("1_cps6x")
@@ -16,35 +31,33 @@ script = ExtResource("1_cps6x")
 [node name="Player" type="CharacterBody2D" parent="."]
 script = ExtResource("1_un6wh")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player"]
-position = Vector2(1.83716, 10.1544)
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(540.509, 287.094)
 scale = Vector2(0.996323, 0.962293)
-polygon = PackedVector2Array(348, 117, 345, 233, 464, 231, 462, 112)
+shape = SubResource("RectangleShape2D_a1p05")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
-position = Vector2(405, 178)
+position = Vector2(542, 286)
 texture = ExtResource("2_v3xi1")
 
-[node name="CollisionShape2D" type="Node2D" parent="."]
+[node name="Computer" type="Node2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+[node name="Area2D" type="Area2D" parent="Computer"]
+position = Vector2(126, 27)
 
-[node name="Node2D" type="StaticBody2D" parent="CollisionShape2D"]
-
-[node name="Area2D" type="Area2D" parent="CollisionShape2D/Node2D"]
-position = Vector2(129, 37)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/Node2D/Area2D"]
-position = Vector2(280.5, 23.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Computer/Area2D"]
+position = Vector2(489.5, 29)
 shape = SubResource("RectangleShape2D_o8xtv")
 
-[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D/Node2D"]
-position = Vector2(407, 53)
+[node name="StaticBody2D" type="StaticBody2D" parent="Computer"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Computer/StaticBody2D"]
+position = Vector2(616, 52.5)
 scale = Vector2(1.07812, 0.617188)
 texture = ExtResource("2_v3xi1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/Node2D"]
-position = Vector2(409.5, 52.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Computer/StaticBody2D"]
+position = Vector2(618.5, 52)
 shape = SubResource("RectangleShape2D_72d7h")
 
 [node name="GameTimer" type="Label" parent="."]
@@ -53,5 +66,47 @@ offset_top = 74.0
 offset_right = 910.0
 offset_bottom = 126.0
 
-[connection signal="body_entered" from="CollisionShape2D/Node2D/Area2D" to="Player" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="CollisionShape2D/Node2D/Area2D" to="Player" method="_on_area_2d_body_exited"]
+[node name="Bed" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Bed"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bed/StaticBody2D"]
+position = Vector2(58.75, 287.5)
+shape = SubResource("RectangleShape2D_6k7oi")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bed/StaticBody2D"]
+position = Vector2(57, 285)
+scale = Vector2(0.921875, 2.14063)
+texture = ExtResource("2_v3xi1")
+
+[node name="Area2D" type="Area2D" parent="Bed/StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bed/StaticBody2D/Area2D"]
+position = Vector2(87, 291)
+shape = SubResource("RectangleShape2D_67fpx")
+
+[node name="TV" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TV"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TV/StaticBody2D"]
+position = Vector2(541, 626.5)
+shape = SubResource("RectangleShape2D_8310b")
+
+[node name="Sprite2D" type="Sprite2D" parent="TV/StaticBody2D"]
+position = Vector2(538, 625)
+scale = Vector2(1.375, 0.257813)
+texture = ExtResource("2_v3xi1")
+
+[node name="Area2D" type="Area2D" parent="TV"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TV/Area2D"]
+position = Vector2(544, 618)
+shape = SubResource("RectangleShape2D_hdfuv")
+
+[connection signal="body_entered" from="Computer/Area2D" to="Player" method="_on_computer_body_entered"]
+[connection signal="body_exited" from="Computer/Area2D" to="Player" method="_on_computer_body_exited"]
+[connection signal="body_entered" from="Bed/StaticBody2D/Area2D" to="Player" method="_on_bed_body_entered"]
+[connection signal="body_exited" from="Bed/StaticBody2D/Area2D" to="Player" method="_on_bed_body_exited"]
+[connection signal="body_entered" from="TV/Area2D" to="Player" method="_on_tv_body_entered"]
+[connection signal="body_exited" from="TV/Area2D" to="Player" method="_on_tv_body_exited"]
