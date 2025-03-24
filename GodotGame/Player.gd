@@ -18,10 +18,12 @@ func _process(delta):
 	
 
 func _input(event):
-	if (event.is_action_pressed("ui_accept") and in_computerRange and !in_bedRange):
+	if (event.is_action_pressed("ui_accept") and in_computerRange):
 		get_tree().change_scene_to_file("res://main_game_computer.tscn")
-	elif (event.is_action_pressed("ui_accept") and in_bedRange and !in_computerRange):
+	elif (event.is_action_pressed("ui_accept") and in_bedRange):
 		get_parent().NewDay()
+	elif (event.is_action_pressed("ui_accept") and in_doorRange):
+		get_tree().quit()
 
 
 func _on_computer_body_entered(body):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bl0kwce2fdxm3"]
+[gd_scene load_steps=23 format=3 uid="uid://bl0kwce2fdxm3"]
 
 [ext_resource type="Script" path="res://main_game_bedroom.gd" id="1_cps6x"]
 [ext_resource type="Script" path="res://Player.gd" id="1_un6wh"]
@@ -53,6 +53,9 @@ size = Vector2(846.5, 88)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kaaly"]
 size = Vector2(240.5, 116)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fyy5i"]
+size = Vector2(244, 90)
 
 [node name="MainGame_Bedroom" type="Node2D"]
 script = ExtResource("1_cps6x")
@@ -191,6 +194,10 @@ shape = SubResource("RectangleShape2D_354ju")
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Wall/StaticBody2D"]
 position = Vector2(427.25, 1018)
 shape = SubResource("RectangleShape2D_kaaly")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Wall/StaticBody2D"]
+position = Vector2(652, 1084)
+shape = SubResource("RectangleShape2D_fyy5i")
 
 [connection signal="body_entered" from="Computer/Area2D" to="Player" method="_on_computer_body_entered"]
 [connection signal="body_exited" from="Computer/Area2D" to="Player" method="_on_computer_body_exited"]
