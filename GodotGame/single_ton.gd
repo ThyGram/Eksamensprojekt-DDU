@@ -48,10 +48,11 @@ func _process(delta):
 		add_child(timer)
 		timer.autostart = true
 		timer.timeout.connect(_on_timer_timeout)
-		timer.start(60)
+		timer.start(1)
 		TimerStarted = true
 
 func _on_timer_timeout():
+	print("STOCKs")
 	var Increment : float = 0
 	for key in Stocks:
 		var randomNumber = rng.randi_range(1,200)

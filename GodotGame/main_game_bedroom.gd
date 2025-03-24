@@ -8,23 +8,19 @@ func _ready():
 	$GameTimer.text = "08:00"
 
 func _on_gametimer_timeout():
-	GameWatch += 5
-
-	if GameWatch % 60 > 9:
-		if int(GameWatch/60) > 9:
-			$GameTimer.text = str(int(GameWatch/60)) + ":" + str(GameWatch % 60)
+	if GameWatch <= 960:
+		GameWatch += 5
+		if GameWatch % 60 > 9:
+			if int(GameWatch/60) > 9:
+				$GameTimer.text = str(int(GameWatch/60)) + ":" + str(GameWatch % 60)
+			else:
+				$GameTimer.text = "0" + str(int(GameWatch/60)) + ":" + str(GameWatch % 60)
 		else:
-			$GameTimer.text = "0" + str(int(GameWatch/60)) + ":" + str(GameWatch % 60)
-	else:
-		if int(GameWatch/60) > 9:
-			$GameTimer.text = str(int(GameWatch/60)) + ":0" + str(GameWatch % 60)
-		else:
-			$GameTimer.text = "0" + str(int(GameWatch/60)) + ":0" + str(GameWatch % 60)
+			if int(GameWatch/60) > 9:
+				$GameTimer.text = str(int(GameWatch/60)) + ":0" + str(GameWatch % 60)
+			else:
+				$GameTimer.text = "0" + str(int(GameWatch/60)) + ":0" + str(GameWatch % 60)
 
-		
-
-	if GameWatch == 1000:
-		print("DAY DONE")
 
 func NewDay():
 	print("DAY DONEbed")
