@@ -4,6 +4,7 @@ const SPEED : int = 300
 var in_computerRange : bool = false
 var in_bedRange : bool = false
 var in_tvRange : bool = false
+var in_doorRange : bool = false
 
 func _process(delta):
 	velocity = Vector2.ZERO
@@ -54,3 +55,13 @@ func _on_tv_body_entered(body):
 func _on_tv_body_exited(body):
 	if body.name == "Player":
 		in_tvRange = false
+
+
+func _on_door_body_entered(body):
+	if body.name == "Player":
+		in_doorRange = true
+
+
+func _on_area_2d_body_exited(body):
+	if body.name == "Player":
+		in_doorRange = false
