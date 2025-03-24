@@ -108,6 +108,7 @@ offset_left = 953.0
 offset_top = 39.0
 offset_right = 1079.0
 offset_bottom = 91.0
+text = "08:00"
 
 [node name="Bed" type="Node2D" parent="."]
 position = Vector2(28, -48)

@@ -8,19 +8,19 @@ var TimerStarted : bool = false
 var rng = RandomNumberGenerator.new()
 var GameTimerStarted : bool = false
 var DayStarted : bool = false
-var GameWatch : int
+var GameWatch : int = 480
 var PlayerPosition
 
 var GameTimer = Timer.new()
 
 # First variable is money invested, and second is news boost or not
 var Stocks : Dictionary = {
-	"InvestedInRotschKid": [0, null],
-	"InvestedInWhiteRock" : [0, null],
-	"InvestedInZombieChampions" : [0, null],
-	"InvestedInNewScandinavian" : [0, null],
-	"InvestedInKarlsBjerg" : [0, null],
-	"InvestedInHCØ" : [0, null]
+	0 : [0, null, "Rothskid"],
+	1 : [0, null, "WhiteRock"],
+	2 : [0, null, "ZombieChampions"],
+	3 : [0, null, "NewScandinavian"],
+	4 : [0, null, "KarlsBjerg"],
+	5 : [0, null, "HCØ"]
 	}
 
 func _ready():
@@ -41,7 +41,8 @@ func _ready():
 	print("GameSTART")
 	add_child(GameTimer)
 	GameTimer.autostart = true
-	GameTimer.start(1)
+	GameTimer.start(2)
+	GameTimer.timeout.connect(_on_gametimer_timeout)
 
 func _process(delta):
 	if (GameStarted and !TimerStarted):
@@ -50,7 +51,7 @@ func _process(delta):
 		add_child(timer)
 		timer.autostart = true
 		timer.timeout.connect(_on_timer_timeout)
-		timer.start(1)
+		timer.start(48)
 		TimerStarted = true
 
 func _on_timer_timeout():
@@ -72,3 +73,6 @@ func _on_timer_timeout():
 			else:
 				Stocks[key][0] *= Increment
 
+func _on_gametimer_timeout():
+	if GameWatch <= 1440 and GameStarted:
+		GameWatch += 5

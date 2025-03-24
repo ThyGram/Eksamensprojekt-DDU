@@ -1,9 +1,49 @@
-[gd_scene format=3 uid="uid://bilo3wsfxrfhw"]
+[gd_scene load_steps=2 format=3 uid="uid://bilo3wsfxrfhw"]
+
+[ext_resource type="Script" path="res://stocks.gd" id="1_lr46d"]
 
 [node name="Stocks" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 22.0
+offset_right = 20.0
+offset_bottom = 22.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_lr46d")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 338.0
+offset_top = 88.0
+offset_right = 339.0
+offset_bottom = 111.0
+text = "Current Investments"
+
+[node name="ItemList" type="ItemList" parent="Label"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 25.0
+offset_right = 307.0
+offset_bottom = 302.0
+
+[node name="Invest" type="Button" parent="Label"]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 331.0
+offset_right = 263.0
+offset_bottom = 362.0
+text = "Invest"
+
+[node name="TextEdit" type="TextEdit" parent="Label"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 324.0
+offset_right = 189.0
+offset_bottom = 364.0
+placeholder_text = "Amount to invest . . ."
+
+[connection signal="pressed" from="Label/Invest" to="." method="_on_invest_pressed"]
