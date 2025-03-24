@@ -29,6 +29,7 @@ func _input(event):
 		get_tree().change_scene_to_file("res://main_game_computer.tscn")
 	elif (event.is_action_pressed("ui_accept") and in_tvRange):
 		storage.PlayerPosition = self.global_position
+		get_tree().change_scene_to_file("res://television.tscn")
 	elif (event.is_action_pressed("ui_accept") and in_bedRange):
 		storage.PlayerPosition = self.global_position
 		get_parent().NewDay()
