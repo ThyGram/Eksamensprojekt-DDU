@@ -16,11 +16,21 @@ func _process(delta):
 	velocity = movement
 	move_and_slide()
 	
-
+func _ready():
+	if (storage.PlayerPosition):
+		print("POSITIONS")
+		print(storage.PlayerPosition)
+		print(self.global_position)
+		self.global_position = storage.PlayerPosition
+	
 func _input(event):
 	if (event.is_action_pressed("ui_accept") and in_computerRange):
+		storage.PlayerPosition = self.global_position
 		get_tree().change_scene_to_file("res://main_game_computer.tscn")
+	elif (event.is_action_pressed("ui_accept") and in_tvRange):
+		storage.PlayerPosition = self.global_position
 	elif (event.is_action_pressed("ui_accept") and in_bedRange):
+		storage.PlayerPosition = self.global_position
 		get_parent().NewDay()
 	elif (event.is_action_pressed("ui_accept") and in_doorRange):
 		get_tree().quit()

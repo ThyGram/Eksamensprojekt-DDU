@@ -9,6 +9,7 @@ var rng = RandomNumberGenerator.new()
 var GameTimerStarted : bool = false
 var DayStarted : bool = false
 var GameWatch : int
+var PlayerPosition
 
 var GameTimer = Timer.new()
 
@@ -32,6 +33,7 @@ func _ready():
 	GameTimerStarted = storage.GameTimerStarted
 	GameWatch = storage.GameWatch
 	GameTimer = storage.GameTimer
+	PlayerPosition = storage.PlayerPosition
 	
 	# Stocks
 	Stocks = storage.Stocks

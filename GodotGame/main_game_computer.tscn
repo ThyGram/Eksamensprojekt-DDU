@@ -39,3 +39,13 @@ offset_top = 383.224
 offset_right = 1498.09
 offset_bottom = 589.224
 text = "Bank"
+
+[node name="ReturnButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 40.1644
+offset_top = 30.2546
+offset_right = 219.164
+offset_bottom = 103.255
+text = "Return "
+
+[connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]

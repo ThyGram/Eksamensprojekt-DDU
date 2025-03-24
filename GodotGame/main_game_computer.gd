@@ -10,7 +10,6 @@ func _ready():
 func _process(delta):
 	pass
 
-
 func _on_calender_pressed():
 	get_tree().change_scene_to_file("res://calender.tscn")
 
@@ -19,3 +18,7 @@ func _on_stocks_pressed():
 
 func _on_bank_pressed():
 	get_tree().change_scene_to_file("res://bank.tscn")
+
+
+func _on_return_button_pressed():
+	get_tree().change_scene_to_file("res://main_game_bedroom.tscn")
