@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bl0kwce2fdxm3"]
+[gd_scene load_steps=23 format=3 uid="uid://bl0kwce2fdxm3"]
 
 [ext_resource type="Script" path="res://main_game_bedroom.gd" id="1_cps6x"]
 [ext_resource type="Script" path="res://Player.gd" id="1_un6wh"]
@@ -16,13 +16,13 @@ size = Vector2(183.5, 264.5)
 size = Vector2(164.5, 243)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6k7oi"]
-size = Vector2(286.25, 310)
+size = Vector2(264.25, 310)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_67fpx"]
 size = Vector2(173, 349)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8310b"]
-size = Vector2(476, 148)
+size = Vector2(466, 148)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hdfuv"]
 size = Vector2(287, 91.5)
@@ -41,6 +41,21 @@ size = Vector2(86.25, 104)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2l5ga"]
 size = Vector2(1234.5, 178)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2faee"]
+size = Vector2(132, 742)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h5ctb"]
+size = Vector2(224.5, 752)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_354ju"]
+size = Vector2(846.5, 88)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kaaly"]
+size = Vector2(240.5, 116)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fyy5i"]
+size = Vector2(244, 90)
 
 [node name="MainGame_Bedroom" type="Node2D"]
 script = ExtResource("1_cps6x")
@@ -100,7 +115,7 @@ position = Vector2(28, -48)
 [node name="StaticBody2D" type="StaticBody2D" parent="Bed"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bed/StaticBody2D"]
-position = Vector2(1406.13, 816)
+position = Vector2(1417.13, 816)
 shape = SubResource("RectangleShape2D_6k7oi")
 
 [node name="Area2D" type="Area2D" parent="Bed/StaticBody2D"]
@@ -115,7 +130,7 @@ position = Vector2(28, -48)
 [node name="StaticBody2D" type="StaticBody2D" parent="TV"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TV/StaticBody2D"]
-position = Vector2(1311, 388)
+position = Vector2(1316, 388)
 shape = SubResource("RectangleShape2D_8310b")
 
 [node name="Area2D" type="Area2D" parent="TV"]
@@ -124,11 +139,11 @@ shape = SubResource("RectangleShape2D_8310b")
 position = Vector2(1215.5, 541.25)
 shape = SubResource("RectangleShape2D_hdfuv")
 
-[node name="Exit" type="Node2D" parent="."]
+[node name="Door" type="Node2D" parent="."]
 
-[node name="Area2D" type="Area2D" parent="Exit"]
+[node name="Area2D" type="Area2D" parent="Door"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/Area2D"]
 position = Vector2(653.938, 987)
 shape = SubResource("RectangleShape2D_u437p")
 
@@ -164,9 +179,31 @@ shape = SubResource("RectangleShape2D_4goep")
 position = Vector2(993.75, 219)
 shape = SubResource("RectangleShape2D_2l5ga")
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Wall/StaticBody2D"]
+position = Vector2(287, 589)
+shape = SubResource("RectangleShape2D_2faee")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Wall/StaticBody2D"]
+position = Vector2(1737.25, 596)
+shape = SubResource("RectangleShape2D_h5ctb")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Wall/StaticBody2D"]
+position = Vector2(1184.25, 1010)
+shape = SubResource("RectangleShape2D_354ju")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Wall/StaticBody2D"]
+position = Vector2(427.25, 1018)
+shape = SubResource("RectangleShape2D_kaaly")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Wall/StaticBody2D"]
+position = Vector2(652, 1084)
+shape = SubResource("RectangleShape2D_fyy5i")
+
 [connection signal="body_entered" from="Computer/Area2D" to="Player" method="_on_computer_body_entered"]
 [connection signal="body_exited" from="Computer/Area2D" to="Player" method="_on_computer_body_exited"]
 [connection signal="body_entered" from="Bed/StaticBody2D/Area2D" to="Player" method="_on_bed_body_entered"]
 [connection signal="body_exited" from="Bed/StaticBody2D/Area2D" to="Player" method="_on_bed_body_exited"]
 [connection signal="body_entered" from="TV/Area2D" to="Player" method="_on_tv_body_entered"]
 [connection signal="body_exited" from="TV/Area2D" to="Player" method="_on_tv_body_exited"]
+[connection signal="body_entered" from="Door/Area2D" to="Player" method="_on_door_body_entered"]
+[connection signal="body_exited" from="Door/Area2D" to="Player" method="_on_area_2d_body_exited"]
