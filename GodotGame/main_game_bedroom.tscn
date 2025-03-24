@@ -1,108 +1,168 @@
-[gd_scene load_steps=11 format=3 uid="uid://bl0kwce2fdxm3"]
+[gd_scene load_steps=18 format=3 uid="uid://bl0kwce2fdxm3"]
 
 [ext_resource type="Script" path="res://main_game_bedroom.gd" id="1_cps6x"]
 [ext_resource type="Script" path="res://Player.gd" id="1_un6wh"]
+[ext_resource type="Texture2D" uid="uid://cp8tjr4dot22c" path="res://mainRoom.png" id="2_g06ss"]
+[ext_resource type="Texture2D" uid="uid://6u7oo0g0h3d" path="res://blackImage.png" id="2_mvc6y"]
 [ext_resource type="Texture2D" uid="uid://c3sw1px41oine" path="res://icon.svg" id="2_v3xi1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a1p05"]
 size = Vector2(137.487, 132.82)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o8xtv"]
-size = Vector2(179, 135)
+size = Vector2(183.5, 264.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_72d7h"]
-size = Vector2(133, 73)
+size = Vector2(164.5, 243)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6k7oi"]
-size = Vector2(114.5, 273)
+size = Vector2(286.25, 310)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_67fpx"]
-size = Vector2(173, 368)
+size = Vector2(173, 349)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8310b"]
-size = Vector2(174, 35)
+size = Vector2(476, 148)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hdfuv"]
-size = Vector2(236, 52)
+size = Vector2(287, 91.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u437p"]
+size = Vector2(206.125, 94)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u2qww"]
+size = Vector2(84, 89.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hk1wj"]
+size = Vector2(140.25, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4goep"]
+size = Vector2(86.25, 104)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2l5ga"]
+size = Vector2(1234.5, 178)
 
 [node name="MainGame_Bedroom" type="Node2D"]
 script = ExtResource("1_cps6x")
 
+[node name="Black" type="TextureRect" parent="."]
+offset_left = -38.0
+offset_top = -14.0
+offset_right = 1930.0
+offset_bottom = 1094.0
+texture = ExtResource("2_mvc6y")
+
+[node name="RoomImage" type="TextureRect" parent="."]
+offset_left = 268.0
+offset_top = -46.0
+offset_right = 1708.0
+offset_bottom = 1034.0
+texture = ExtResource("2_g06ss")
+
 [node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(28, -48)
 script = ExtResource("1_un6wh")
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(540.509, 287.094)
+position = Vector2(620.509, 925.094)
 scale = Vector2(0.996323, 0.962293)
 shape = SubResource("RectangleShape2D_a1p05")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
-position = Vector2(542, 286)
+position = Vector2(622, 924)
 texture = ExtResource("2_v3xi1")
 
 [node name="Computer" type="Node2D" parent="."]
+position = Vector2(28, -48)
 
 [node name="Area2D" type="Area2D" parent="Computer"]
 position = Vector2(126, 27)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Computer/Area2D"]
-position = Vector2(489.5, 29)
+position = Vector2(561.75, 648.75)
 shape = SubResource("RectangleShape2D_o8xtv")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Computer"]
 
-[node name="Sprite2D" type="Sprite2D" parent="Computer/StaticBody2D"]
-position = Vector2(616, 52.5)
-scale = Vector2(1.07812, 0.617188)
-texture = ExtResource("2_v3xi1")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Computer/StaticBody2D"]
-position = Vector2(618.5, 52)
+position = Vector2(808.75, 689.5)
 shape = SubResource("RectangleShape2D_72d7h")
 
 [node name="GameTimer" type="Label" parent="."]
-offset_left = 784.0
-offset_top = 74.0
-offset_right = 910.0
-offset_bottom = 126.0
+offset_left = 953.0
+offset_top = 39.0
+offset_right = 1079.0
+offset_bottom = 91.0
 
 [node name="Bed" type="Node2D" parent="."]
+position = Vector2(28, -48)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Bed"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bed/StaticBody2D"]
-position = Vector2(58.75, 287.5)
+position = Vector2(1406.13, 816)
 shape = SubResource("RectangleShape2D_6k7oi")
-
-[node name="Sprite2D" type="Sprite2D" parent="Bed/StaticBody2D"]
-position = Vector2(57, 285)
-scale = Vector2(0.921875, 2.14063)
-texture = ExtResource("2_v3xi1")
 
 [node name="Area2D" type="Area2D" parent="Bed/StaticBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bed/StaticBody2D/Area2D"]
-position = Vector2(87, 291)
+position = Vector2(1284, 814.5)
 shape = SubResource("RectangleShape2D_67fpx")
 
 [node name="TV" type="Node2D" parent="."]
+position = Vector2(28, -48)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="TV"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TV/StaticBody2D"]
-position = Vector2(541, 626.5)
+position = Vector2(1311, 388)
 shape = SubResource("RectangleShape2D_8310b")
-
-[node name="Sprite2D" type="Sprite2D" parent="TV/StaticBody2D"]
-position = Vector2(538, 625)
-scale = Vector2(1.375, 0.257813)
-texture = ExtResource("2_v3xi1")
 
 [node name="Area2D" type="Area2D" parent="TV"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TV/Area2D"]
-position = Vector2(544, 618)
+position = Vector2(1215.5, 541.25)
 shape = SubResource("RectangleShape2D_hdfuv")
+
+[node name="Exit" type="Node2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="Exit"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit/Area2D"]
+position = Vector2(653.938, 987)
+shape = SubResource("RectangleShape2D_u437p")
+
+[node name="TrashCan" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TrashCan"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrashCan/StaticBody2D"]
+position = Vector2(437, 888.75)
+shape = SubResource("RectangleShape2D_u2qww")
+
+[node name="Boxes" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Boxes"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boxes/StaticBody2D"]
+position = Vector2(466.875, 400)
+shape = SubResource("RectangleShape2D_hk1wj")
+
+[node name="Chair" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Chair"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chair/StaticBody2D"]
+position = Vector2(678.125, 636)
+shape = SubResource("RectangleShape2D_4goep")
+
+[node name="Wall" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Wall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/StaticBody2D"]
+position = Vector2(993.75, 219)
+shape = SubResource("RectangleShape2D_2l5ga")
 
 [connection signal="body_entered" from="Computer/Area2D" to="Player" method="_on_computer_body_entered"]
 [connection signal="body_exited" from="Computer/Area2D" to="Player" method="_on_computer_body_exited"]
