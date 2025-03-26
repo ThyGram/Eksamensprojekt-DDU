@@ -16,7 +16,7 @@ grow_vertical = 2
 scale = Vector2(0.995906, 0.991586)
 script = ExtResource("1_d3cnl")
 
-[node name="Button" type="Button" parent="."]
+[node name="Calender" type="Button" parent="."]
 layout_mode = 0
 offset_left = 516.113
 offset_top = 383.224
@@ -24,7 +24,7 @@ offset_right = 787.113
 offset_bottom = 602.224
 text = "Calender"
 
-[node name="Button2" type="Button" parent="."]
+[node name="Stocks" type="Button" parent="."]
 layout_mode = 0
 offset_left = 861.528
 offset_top = 375.156
@@ -32,7 +32,7 @@ offset_right = 1136.53
 offset_bottom = 598.156
 text = "Stocks"
 
-[node name="Button3" type="Button" parent="."]
+[node name="Bank" type="Button" parent="."]
 layout_mode = 0
 offset_left = 1244.09
 offset_top = 383.224
@@ -48,4 +48,7 @@ offset_right = 219.164
 offset_bottom = 103.255
 text = "Return "
 
+[connection signal="pressed" from="Calender" to="." method="_on_calender_pressed"]
+[connection signal="pressed" from="Stocks" to="." method="_on_stocks_pressed"]
+[connection signal="pressed" from="Bank" to="." method="_on_bank_pressed"]
 [connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]

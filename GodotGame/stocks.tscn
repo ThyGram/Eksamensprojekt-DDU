@@ -23,7 +23,7 @@ offset_right = 339.0
 offset_bottom = 111.0
 text = "Current Investments"
 
-[node name="ItemList" type="ItemList" parent="Label"]
+[node name="CurrentInvestments" type="ItemList" parent="Label"]
 layout_mode = 0
 offset_left = -3.0
 offset_top = 25.0
@@ -38,12 +38,19 @@ offset_right = 263.0
 offset_bottom = 362.0
 text = "Invest"
 
-[node name="TextEdit" type="TextEdit" parent="Label"]
+[node name="InvestingAmount" type="TextEdit" parent="Label"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 324.0
 offset_right = 189.0
 offset_bottom = 364.0
 placeholder_text = "Amount to invest . . ."
+
+[node name="MoneyAmount" type="Label" parent="."]
+layout_mode = 0
+offset_left = 850.0
+offset_top = 28.0
+offset_right = 1007.0
+offset_bottom = 110.0
 
 [connection signal="pressed" from="Label/Invest" to="." method="_on_invest_pressed"]

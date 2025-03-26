@@ -1,19 +1,17 @@
 extends Node2D
 
 var DisplayUsername : String
-var Money : int
+var Money : int = 500
 var Highscore : int
 var GameStarted : bool = false
-var TimerStarted : bool = false
 var rng = RandomNumberGenerator.new()
-var GameTimerStarted : bool = false
 var DayStarted : bool = false
 var GameWatch : int = 480
 var PlayerPosition
 
 var GameTimer = Timer.new()
 
-# First variable is money invested, and second is news boost or not
+# First variable is money invested, second is news boost or not and third is the name of the stock.
 var Stocks : Dictionary = {
 	0 : [0, null, "Rothskid"],
 	1 : [0, null, "WhiteRock"],
@@ -28,51 +26,39 @@ func _ready():
 	Money = storage.Money
 	Highscore = storage.Highscore
 	GameStarted = storage.GameStarted
-	TimerStarted = storage.TimerStarted
 	DayStarted = storage.DayStarted
-	GameTimerStarted = storage.GameTimerStarted
 	GameWatch = storage.GameWatch
 	GameTimer = storage.GameTimer
 	PlayerPosition = storage.PlayerPosition
-	
+
 	# Stocks
 	Stocks = storage.Stocks
 	
 	print("GameSTART")
 	add_child(GameTimer)
 	GameTimer.autostart = true
-	GameTimer.start(2)
+	GameTimer.start(0.5)
 	GameTimer.timeout.connect(_on_gametimer_timeout)
 
-func _process(delta):
-	if (GameStarted and !TimerStarted):
-		print("START")
-		var timer = Timer.new()
-		add_child(timer)
-		timer.autostart = true
-		timer.timeout.connect(_on_timer_timeout)
-		timer.start(48)
-		TimerStarted = true
-
-func _on_timer_timeout():
-	print("STOCKs")
-	var Increment : float = 0
-	for key in Stocks:
-		var randomNumber = rng.randi_range(1,200)
-		if randomNumber == 100 and Stocks[key][1] == null:
-			Increment = rng.randf_range(0, 2)
-			Stocks[key][0] *= Increment
-		else:
-			Increment = rng.randf_range(-0.935, 1.065)
-			if Stocks[key][1] == true:
-				Increment += 0.5
-				Stocks[key][0] *= Increment
-			elif Stocks[key][1] == false:
-				Increment -= 0.5
-				Stocks[key][0] *= Increment
-			else:
-				Stocks[key][0] *= Increment
 
 func _on_gametimer_timeout():
 	if GameWatch <= 1440 and GameStarted:
 		GameWatch += 5
+		var hour : float = float(GameWatch) / 60.0
+		print(hour)
+		if floor(hour) == hour:
+			for key in Stocks:
+				var Increment : float = 0;
+				var randomNumber = rng.randi_range(1,200)
+				if randomNumber == 100 and Stocks[key][1] == null:
+					Increment = rng.randf_range(0, 2)
+				else:
+					Increment = rng.randf_range(0.935, 1.065)
+					if Stocks[key][1] == true:
+						Increment += 0.5
+					elif Stocks[key][1] == false:
+						Increment -= 0.5
+					
+				Stocks[key][0] *= Increment
+				Stocks[key][0] = round(Stocks[key][0])
+			get_tree().change_scene_to_file("res://stocks.tscn")
