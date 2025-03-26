@@ -1,5 +1,8 @@
 extends Node2D
 
+signal stocks_changed
+
+
 var DisplayUsername : String
 var Money : int = 500
 var Highscore : int
@@ -42,10 +45,9 @@ func _ready():
 
 
 func _on_gametimer_timeout():
-	if GameWatch <= 1440 and GameStarted:
+	if GameWatch < 1440 and GameStarted:
 		GameWatch += 5
 		var hour : float = float(GameWatch) / 60.0
-		print(hour)
 		if floor(hour) == hour:
 			for key in Stocks:
 				var Increment : float = 0;
@@ -61,4 +63,6 @@ func _on_gametimer_timeout():
 					
 				Stocks[key][0] *= Increment
 				Stocks[key][0] = round(Stocks[key][0])
-			get_tree().change_scene_to_file("res://stocks.tscn")
+			print(get_tree().current_scene.name)
+			if get_tree().current_scene.name == "Stocks":
+				stocks_changed.emit()

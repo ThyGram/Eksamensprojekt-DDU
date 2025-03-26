@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-storage="*res://single_ton.gd"
+storage="*res://SingleTon.gd"
 
 [display]
 

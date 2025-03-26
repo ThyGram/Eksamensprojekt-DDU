@@ -48,9 +48,9 @@ placeholder_text = "Amount to invest . . ."
 
 [node name="MoneyAmount" type="Label" parent="."]
 layout_mode = 0
-offset_left = 850.0
-offset_top = 28.0
-offset_right = 1007.0
-offset_bottom = 110.0
+offset_left = 1719.0
+offset_top = -19.0
+offset_right = 1876.0
+offset_bottom = 63.0
 
 [connection signal="pressed" from="Label/Invest" to="." method="_on_invest_pressed"]

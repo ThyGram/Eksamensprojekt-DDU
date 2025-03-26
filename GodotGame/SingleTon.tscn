@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cb8gbtmp4flss"]
+
+[ext_resource type="Script" path="res://SingleTon.gd" id="1_j780a"]
+
+[node name="SingleTon" type="Node"]
+script = ExtResource("1_j780a")
