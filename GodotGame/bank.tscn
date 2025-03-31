@@ -10,3 +10,52 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7qo0x")
+
+[node name="Money" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1734.0
+offset_top = 14.0
+offset_right = 1863.0
+offset_bottom = 115.0
+
+[node name="BankMoney" type="Label" parent="."]
+layout_mode = 0
+offset_left = 752.0
+offset_top = 240.0
+offset_right = 1021.0
+offset_bottom = 345.0
+
+[node name="MoneyToTransfer" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 697.0
+offset_top = 631.0
+offset_right = 927.0
+offset_bottom = 672.0
+placeholder_text = "Amount of money"
+
+[node name="Transfer In" type="Button" parent="."]
+layout_mode = 0
+offset_left = 998.0
+offset_top = 591.0
+offset_right = 1170.0
+offset_bottom = 681.0
+text = "Transfer money"
+
+[node name="Transfer Out" type="Button" parent="."]
+layout_mode = 0
+offset_left = 962.0
+offset_top = 699.0
+offset_right = 1222.0
+offset_bottom = 761.0
+text = "Transfer money out"
+
+[node name="Interest" type="Label" parent="."]
+layout_mode = 0
+offset_left = 811.0
+offset_top = 813.0
+offset_right = 1037.0
+offset_bottom = 888.0
+
+[connection signal="pressed" from="Transfer In" to="." method="_on_transfer_in_pressed"]
+[connection signal="pressed" from="Transfer In" to="." method="_on_transfer_pressed"]
+[connection signal="pressed" from="Transfer Out" to="." method="_on_transfer_out_pressed"]

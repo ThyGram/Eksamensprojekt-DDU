@@ -11,9 +11,10 @@ var rng = RandomNumberGenerator.new()
 var DayStarted : bool = false
 var GameWatch : int = 480
 var PlayerPosition
-
 var GameTimer = Timer.new()
 
+var BankMoney: int
+var BankInterest: float = rng.randf_range(0.800, 1.200)
 # First variable is money invested, second is news boost or not and third is the name of the stock.
 var Stocks : Dictionary = {
 	0 : [0, null, "Rothskid"],
@@ -33,11 +34,11 @@ func _ready():
 	GameWatch = storage.GameWatch
 	GameTimer = storage.GameTimer
 	PlayerPosition = storage.PlayerPosition
+	BankMoney = storage.BankMoney
 
 	# Stocks
 	Stocks = storage.Stocks
 	
-	print("GameSTART")
 	add_child(GameTimer)
 	GameTimer.autostart = true
 	GameTimer.start(0.5)

@@ -8,6 +8,7 @@ func _ready():
 func NewDay():
 	print("DAY DONEbed")
 	get_tree().change_scene_to_file("res://switch_screen.tscn")
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

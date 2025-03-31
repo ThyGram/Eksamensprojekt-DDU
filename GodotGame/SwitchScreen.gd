@@ -13,4 +13,6 @@ func _process(delta):
 
 func _on_timer_timeout():
 	storage.GameWatch = 480
+	storage.BankMoney *= storage.BankInterest
+	storage.BankInterest = RandomNumberGenerator.new().randf_range(0.800,1.200)
 	get_tree().change_scene_to_file("res://main_game_bedroom.tscn")
