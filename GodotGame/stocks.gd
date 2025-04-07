@@ -49,3 +49,24 @@ func _on_invest_pressed():
 		var label = NoMoney.get_node("Panel/Label")
 		print(label)
 		label.text = "Select a company"
+
+
+func _on_sell_pressed():
+	var index = $Label/CurrentInvestments.get_selected_items()
+	var amount : int = int($Label/InvestingAmount.text)
+	if !index.is_empty() and storage.Stocks[index[0]][0] >= amount:
+		storage.Stocks[index[0]][0] -= amount
+		$Label/CurrentInvestments.set_item_text(index[0], stocks[index[0]][2] + ": " + str(stocks[index[0]][0]) + "$")
+		storage.Money += amount
+	elif storage.Stocks[index[0]][0] < amount:
+		var NoMoney = NoMoneyNode.instantiate()
+		add_child(NoMoney)
+		var label = NoMoney.get_node("Panel/Label")
+		print(label)
+		label.text = "You dont have that much in that stock"
+	elif index.is_empty():
+		var NoMoney = NoMoneyNode.instantiate()
+		add_child(NoMoney)
+		var label = NoMoney.get_node("Panel/Label")
+		print(label)
+		label.text = "Select a company"

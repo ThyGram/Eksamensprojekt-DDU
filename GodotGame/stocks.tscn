@@ -46,6 +46,13 @@ offset_right = 189.0
 offset_bottom = 364.0
 placeholder_text = "Amount to invest . . ."
 
+[node name="Sell" type="Button" parent="Label"]
+offset_left = 210.0
+offset_top = 374.0
+offset_right = 265.0
+offset_bottom = 405.0
+text = "Sell"
+
 [node name="MoneyAmount" type="Label" parent="."]
 layout_mode = 0
 offset_left = 1719.0
@@ -54,3 +61,4 @@ offset_right = 1876.0
 offset_bottom = 63.0
 
 [connection signal="pressed" from="Label/Invest" to="." method="_on_invest_pressed"]
+[connection signal="pressed" from="Label/Sell" to="." method="_on_sell_pressed"]

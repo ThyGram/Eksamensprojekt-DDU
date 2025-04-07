@@ -1,13 +1,15 @@
 extends Node2D
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	storage.GameStarted = true
 
 func NewDay():
-	print("DAY DONEbed")
-	get_tree().change_scene_to_file("res://switch_screen.tscn")
+	if (storage.Day >= 10):
+		print("DAY DONEbed")
+		storage.Day += 1
+		get_tree().change_scene_to_file("res://switch_screen.tscn")
+	
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -1,10 +1,11 @@
 extends Node2D
 
 signal stocks_changed
-
+signal news_changed
 
 var DisplayUsername : String
 var Money : int = 500
+var Day : int
 var Highscore : int
 var GameStarted : bool = false
 var rng = RandomNumberGenerator.new()
@@ -12,6 +13,9 @@ var DayStarted : bool = false
 var GameWatch : int = 480
 var PlayerPosition
 var GameTimer = Timer.new()
+
+var Goodnews : String = "No News"
+var Badnews : String = "No News"
 
 var BankMoney: int
 var BankInterest: float = rng.randf_range(0.800, 1.200)
@@ -35,6 +39,9 @@ func _ready():
 	GameTimer = storage.GameTimer
 	PlayerPosition = storage.PlayerPosition
 	BankMoney = storage.BankMoney
+	Day = storage.Day
+	Goodnews = storage.Goodnews
+	Badnews = storage.Badnews
 
 	# Stocks
 	Stocks = storage.Stocks
@@ -49,7 +56,7 @@ func _on_gametimer_timeout():
 	if GameWatch < 1440 and GameStarted:
 		GameWatch += 5
 		var hour : float = float(GameWatch) / 60.0
-		if floor(hour) == hour:
+		if floor(hour) == hour and int(floor(hour)) % 2 == int(hour) % 2:
 			for key in Stocks:
 				var Increment : float = 0;
 				var randomNumber = rng.randi_range(1,200)
@@ -59,11 +66,29 @@ func _on_gametimer_timeout():
 					Increment = rng.randf_range(0.935, 1.065)
 					if Stocks[key][1] == true:
 						Increment += 0.5
+						Stocks[key][1] = null
 					elif Stocks[key][1] == false:
 						Increment -= 0.5
+						Stocks[key][1] = null
 					
 				Stocks[key][0] *= Increment
 				Stocks[key][0] = round(Stocks[key][0])
+			
 			print(get_tree().current_scene.name)
 			if get_tree().current_scene.name == "Stocks":
 				stocks_changed.emit()
+		if ((floor(hour) == 12.0 or floor(hour) == 16.0 or floor(hour) == 20.0) and (floor(hour) == hour)):
+			for key in Stocks:
+				Stocks[key][1] = null
+			for n in 2:
+				var randomstock : int = rng.randi_range(0, storage.Stocks.size() - 1)
+				if n == 0:
+					Stocks[randomstock][1] = true
+					Goodnews = storage.Stocks[randomstock][2] + " has just been VERFIED on twitter !!!! CONGRATS"
+				elif n == 1:
+					Stocks[randomstock][1] = false
+					Badnews = storage.Stocks[randomstock][2] + " has just been CANCELLED on twitter !!!! SHAME ON THEM"
+			
+			if get_tree().current_scene.name == "main_game_tv":
+				news_changed.emit()
+			
