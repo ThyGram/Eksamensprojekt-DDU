@@ -3,7 +3,6 @@ extends Control
 var stocks : Dictionary = storage.Stocks
 @onready var single_ton = storage
 @onready var NoMoneyNode = preload("res://NoMoney.tscn")
-# Called when the node enters the scene tree for the first time.
 
 func _ready():
 	storage.connect("stocks_changed", UpdateList)
@@ -58,18 +57,19 @@ func _on_sell_pressed():
 		storage.Stocks[index[0]][0] -= amount
 		$Label/CurrentInvestments.set_item_text(index[0], stocks[index[0]][2] + ": " + str(stocks[index[0]][0]) + "$")
 		storage.Money += amount
-	elif storage.Stocks[index[0]][0] < amount:
-		var NoMoney = NoMoneyNode.instantiate()
-		add_child(NoMoney)
-		var label = NoMoney.get_node("Panel/Label")
-		print(label)
-		label.text = "You dont have that much in that stock"
 	elif index.is_empty():
 		var NoMoney = NoMoneyNode.instantiate()
 		add_child(NoMoney)
 		var label = NoMoney.get_node("Panel/Label")
 		print(label)
 		label.text = "Select a company"
+	elif storage.Stocks[index[0]][0] < amount:
+		var NoMoney = NoMoneyNode.instantiate()
+		add_child(NoMoney)
+		var label = NoMoney.get_node("Panel/Label")
+		print(label)
+		label.text = "You dont have that much in that stock"
+
 
 
 func _on_return_button_pressed():

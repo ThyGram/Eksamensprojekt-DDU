@@ -12,6 +12,8 @@ func _process(delta):
 
 
 func _on_timer_timeout():
+	var hoursremaining : int = 16 - (int(storage.GameWatch/60) - 8)
+	storage.StockChange(hoursremaining)
 	storage.GameWatch = 480
 	storage.BankMoney *= storage.BankInterest
 	storage.BankInterest = RandomNumberGenerator.new().randf_range(0.800,1.200)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://h5l0aden855"]
 
-[ext_resource type="Script" path="res://computer_calender.gd" id="1_3ftox"]
+[ext_resource type="Script" path="res://MainGame/Computer/computer_calender.gd" id="1_3ftox"]
 
 [node name="Computer_Calender" type="Control"]
 layout_mode = 3

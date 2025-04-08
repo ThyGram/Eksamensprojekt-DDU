@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bilo3wsfxrfhw"]
 
-[ext_resource type="Script" path="res://computer_stocks.gd" id="1_avcdi"]
+[ext_resource type="Script" path="res://MainGame/Computer/computer_stocks.gd" id="1_avcdi"]
 
 [node name="Computer_Stocks" type="Control"]
 layout_mode = 3

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://4dq14lb7ahjo"]
 
-[ext_resource type="Script" path="res://NoMoney.gd" id="1_w354d"]
+[ext_resource type="Script" path="res://PopUps/NoMoney.gd" id="1_w354d"]
 
 [node name="NoMoney" type="Control"]
 layout_mode = 3

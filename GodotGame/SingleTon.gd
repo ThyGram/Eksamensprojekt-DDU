@@ -54,6 +54,39 @@ func _ready():
 	GameTimer.start(1.167)
 	GameTimer.timeout.connect(_on_gametimer_timeout)
 
+func StockChange(hoursremaining : int):
+		for n in hoursremaining:
+			for key in Stocks:
+				var Increment : float = 0;
+				var randomNumber = rng.randi_range(1,200)
+				if randomNumber == 100 and Stocks[key][1] == null:
+					Increment = rng.randf_range(0, 2)
+				else:
+					Increment = rng.randf_range(0.935, 1.065)
+					if Stocks[key][1] == true:
+						Increment += 0.25
+					elif Stocks[key][1] == false:
+						Increment -= 0.25
+					
+				Stocks[key][0] *= Increment
+				Stocks[key][0] = round(Stocks[key][0])
+			for key in Stocks:
+				Stocks[key][1] = null
+			var storagestock : int
+			for j in 2:
+				var randomstock : int = rng.randi_range(0, storage.Stocks.size() - 1)
+				if (randomstock == storagestock):
+					for i in 6:
+						randomstock = rng.randi_range(0, storage.Stocks.size() - 1)
+						if (randomstock != storagestock):
+							break
+				else:
+					storagestock = randomstock
+				
+				if j == 0:
+					Stocks[randomstock][1] = true
+				elif j == 1:
+					Stocks[randomstock][1] = false
 
 func _on_gametimer_timeout():
 	if GameWatch < 1440 and GameStarted:

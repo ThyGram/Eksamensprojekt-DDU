@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://bl0kwce2fdxm3"]
 
-[ext_resource type="Script" path="res://main_game_bedroom.gd" id="1_cps6x"]
-[ext_resource type="Script" path="res://Player.gd" id="1_un6wh"]
+[ext_resource type="Script" path="res://MainGame/main_game_bedroom.gd" id="1_cps6x"]
+[ext_resource type="Script" path="res://MainGame/Player.gd" id="1_un6wh"]
 [ext_resource type="Texture2D" uid="uid://6u7oo0g0h3d" path="res://textures/blackImage.png" id="2_mvc6y"]
 [ext_resource type="Texture2D" uid="uid://c3sw1px41oine" path="res://textures/icon.svg" id="2_v3xi1"]
 [ext_resource type="Texture2D" uid="uid://blgqh0ceud3v6" path="res://textures/mainRoom_v2.png" id="3_64fsg"]
