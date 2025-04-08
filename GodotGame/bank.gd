@@ -42,3 +42,7 @@ func _on_transfer_out_pressed():
 	elif transfermoney > storage.Money:
 		var NoMoney = NoMoneyNode.instantiate()
 		add_child(NoMoney)
+
+
+func _on_return_button_pressed():
+	get_tree().change_scene_to_file("res://main_game_computer.tscn")

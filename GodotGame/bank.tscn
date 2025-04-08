@@ -56,6 +56,14 @@ offset_top = 813.0
 offset_right = 1037.0
 offset_bottom = 888.0
 
-[connection signal="pressed" from="Transfer In" to="." method="_on_transfer_in_pressed"]
+[node name="ReturnButton" type="Button" parent="."]
+offset_left = 40.1644
+offset_top = 30.2546
+offset_right = 219.164
+offset_bottom = 103.255
+text = "Return "
+
 [connection signal="pressed" from="Transfer In" to="." method="_on_transfer_pressed"]
+[connection signal="pressed" from="Transfer In" to="." method="_on_transfer_in_pressed"]
 [connection signal="pressed" from="Transfer Out" to="." method="_on_transfer_out_pressed"]
+[connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]

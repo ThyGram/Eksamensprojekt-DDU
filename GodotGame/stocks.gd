@@ -70,3 +70,7 @@ func _on_sell_pressed():
 		var label = NoMoney.get_node("Panel/Label")
 		print(label)
 		label.text = "Select a company"
+
+
+func _on_return_button_pressed():
+	get_tree().change_scene_to_file("res://main_game_computer.tscn")

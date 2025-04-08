@@ -5,11 +5,12 @@ func _ready():
 	storage.GameStarted = true
 
 func NewDay():
-	if (storage.Day >= 10):
+	if (storage.Day < 10):
 		print("DAY DONEbed")
 		storage.Day += 1
 		get_tree().change_scene_to_file("res://switch_screen.tscn")
-	
+	elif (storage.Day == 10):
+		pass
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

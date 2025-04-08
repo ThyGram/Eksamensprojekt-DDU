@@ -48,7 +48,7 @@ func _ready():
 	
 	add_child(GameTimer)
 	GameTimer.autostart = true
-	GameTimer.start(0.5)
+	GameTimer.start(1)
 	GameTimer.timeout.connect(_on_gametimer_timeout)
 
 
@@ -80,8 +80,17 @@ func _on_gametimer_timeout():
 		if ((floor(hour) == 12.0 or floor(hour) == 16.0 or floor(hour) == 20.0) and (floor(hour) == hour)):
 			for key in Stocks:
 				Stocks[key][1] = null
+			var storagestock : int
 			for n in 2:
 				var randomstock : int = rng.randi_range(0, storage.Stocks.size() - 1)
+				if (randomstock == storagestock):
+					for i in 6:
+						randomstock = rng.randi_range(0, storage.Stocks.size() - 1)
+						if (randomstock != storagestock):
+							break
+				else:
+					storagestock = randomstock
+				
 				if n == 0:
 					Stocks[randomstock][1] = true
 					Goodnews = storage.Stocks[randomstock][2] + " has just been VERFIED on twitter !!!! CONGRATS"

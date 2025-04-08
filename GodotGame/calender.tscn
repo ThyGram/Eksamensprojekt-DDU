@@ -10,3 +10,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ybaj3")
+
+[node name="ReturnButton" type="Button" parent="."]
+offset_left = 40.1644
+offset_top = 30.2546
+offset_right = 219.164
+offset_bottom = 103.255
+text = "Return "
+
+[connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]

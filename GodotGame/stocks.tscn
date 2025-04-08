@@ -47,6 +47,7 @@ offset_bottom = 364.0
 placeholder_text = "Amount to invest . . ."
 
 [node name="Sell" type="Button" parent="Label"]
+layout_mode = 0
 offset_left = 210.0
 offset_top = 374.0
 offset_right = 265.0
@@ -60,5 +61,13 @@ offset_top = -19.0
 offset_right = 1876.0
 offset_bottom = 63.0
 
+[node name="ReturnButton" type="Button" parent="."]
+offset_left = 40.1644
+offset_top = 30.2546
+offset_right = 219.164
+offset_bottom = 103.255
+text = "Return "
+
 [connection signal="pressed" from="Label/Invest" to="." method="_on_invest_pressed"]
 [connection signal="pressed" from="Label/Sell" to="." method="_on_sell_pressed"]
+[connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]

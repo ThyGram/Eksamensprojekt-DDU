@@ -50,6 +50,7 @@ text = "dwqdsawdsqdw"
 autowrap_mode = 2
 
 [node name="BadNEWS" type="Label" parent="Background/TVBackground"]
+layout_mode = 0
 offset_left = 144.0
 offset_top = 379.0
 offset_right = 1035.0
