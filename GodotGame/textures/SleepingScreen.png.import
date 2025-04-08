@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://che6o5rp41r1b"
-path="res://.godot/imported/SleepingScreen.png-313cf22b459c6f01d74af80a64349cc8.ctex"
+path="res://.godot/imported/SleepingScreen.png-896b8d8508db132ded6057d71ada5583.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://SleepingScreen.png"
-dest_files=["res://.godot/imported/SleepingScreen.png-313cf22b459c6f01d74af80a64349cc8.ctex"]
+source_file="res://textures/SleepingScreen.png"
+dest_files=["res://.godot/imported/SleepingScreen.png-896b8d8508db132ded6057d71ada5583.ctex"]
 
 [params]
 

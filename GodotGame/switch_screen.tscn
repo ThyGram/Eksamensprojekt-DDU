@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://q7yovrbru4j5"]
 
 [ext_resource type="Script" path="res://SwitchScreen.gd" id="1_y6g2r"]
-[ext_resource type="Texture2D" uid="uid://che6o5rp41r1b" path="res://SleepingScreen.png" id="2_ws8tv"]
+[ext_resource type="Texture2D" uid="uid://che6o5rp41r1b" path="res://textures/SleepingScreen.png" id="2_ws8tv"]
 
 [node name="SwitchScreen" type="Control"]
 layout_mode = 3

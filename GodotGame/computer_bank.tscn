@@ -1,15 +1,15 @@
 [gd_scene load_steps=2 format=3 uid="uid://b2jja6t1m65hx"]
 
-[ext_resource type="Script" path="res://bank.gd" id="1_7qo0x"]
+[ext_resource type="Script" path="res://computer_bank.gd" id="1_odwwq"]
 
-[node name="Bank" type="Control"]
+[node name="Computer_Bank" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_7qo0x")
+script = ExtResource("1_odwwq")
 
 [node name="Money" type="Label" parent="."]
 layout_mode = 0
@@ -57,13 +57,14 @@ offset_right = 1037.0
 offset_bottom = 888.0
 
 [node name="ReturnButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 40.1644
 offset_top = 30.2546
 offset_right = 219.164
 offset_bottom = 103.255
 text = "Return "
 
-[connection signal="pressed" from="Transfer In" to="." method="_on_transfer_pressed"]
 [connection signal="pressed" from="Transfer In" to="." method="_on_transfer_in_pressed"]
+[connection signal="pressed" from="Transfer In" to="." method="_on_transfer_pressed"]
 [connection signal="pressed" from="Transfer Out" to="." method="_on_transfer_out_pressed"]
 [connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]

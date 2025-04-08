@@ -1,17 +1,18 @@
 [gd_scene load_steps=2 format=3 uid="uid://h5l0aden855"]
 
-[ext_resource type="Script" path="res://calender.gd" id="1_ybaj3"]
+[ext_resource type="Script" path="res://computer_calender.gd" id="1_3ftox"]
 
-[node name="Calender" type="Control"]
+[node name="Computer_Calender" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ybaj3")
+script = ExtResource("1_3ftox")
 
 [node name="ReturnButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 40.1644
 offset_top = 30.2546
 offset_right = 219.164

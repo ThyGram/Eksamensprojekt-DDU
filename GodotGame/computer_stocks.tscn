@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://bilo3wsfxrfhw"]
 
-[ext_resource type="Script" path="res://stocks.gd" id="1_lr46d"]
+[ext_resource type="Script" path="res://computer_stocks.gd" id="1_avcdi"]
 
-[node name="Stocks" type="Control"]
+[node name="Computer_Stocks" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,7 +13,7 @@ offset_right = 20.0
 offset_bottom = 22.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_lr46d")
+script = ExtResource("1_avcdi")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
@@ -62,6 +62,7 @@ offset_right = 1876.0
 offset_bottom = 63.0
 
 [node name="ReturnButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 40.1644
 offset_top = 30.2546
 offset_right = 219.164

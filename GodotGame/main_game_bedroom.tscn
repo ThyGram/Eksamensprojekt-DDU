@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://main_game_bedroom.gd" id="1_cps6x"]
 [ext_resource type="Script" path="res://Player.gd" id="1_un6wh"]
-[ext_resource type="Texture2D" uid="uid://6u7oo0g0h3d" path="res://blackImage.png" id="2_mvc6y"]
-[ext_resource type="Texture2D" uid="uid://c3sw1px41oine" path="res://icon.svg" id="2_v3xi1"]
-[ext_resource type="Texture2D" uid="uid://blgqh0ceud3v6" path="res://mainRoom_v2.png" id="3_64fsg"]
+[ext_resource type="Texture2D" uid="uid://6u7oo0g0h3d" path="res://textures/blackImage.png" id="2_mvc6y"]
+[ext_resource type="Texture2D" uid="uid://c3sw1px41oine" path="res://textures/icon.svg" id="2_v3xi1"]
+[ext_resource type="Texture2D" uid="uid://blgqh0ceud3v6" path="res://textures/mainRoom_v2.png" id="3_64fsg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a1p05"]
 size = Vector2(137.487, 132.82)
@@ -101,10 +101,11 @@ position = Vector2(450, 782)
 shape = SubResource("RectangleShape2D_72d7h")
 
 [node name="GameTimer" type="Label" parent="."]
-offset_left = 954.0
-offset_top = 33.0
-offset_right = 1080.0
-offset_bottom = 85.0
+offset_left = 909.0
+offset_top = 17.0
+offset_right = 1039.0
+offset_bottom = 86.0
+theme_override_font_sizes/font_size = 50
 text = "08:00"
 
 [node name="Bed" type="Node2D" parent="."]

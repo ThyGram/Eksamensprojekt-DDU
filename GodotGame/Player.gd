@@ -33,6 +33,7 @@ func _input(event):
 	elif (event.is_action_pressed("ui_accept") and in_bedRange):
 		storage.PlayerPosition = self.global_position
 		get_parent().NewDay()
+		
 	elif (event.is_action_pressed("ui_accept") and in_doorRange):
 		get_tree().quit()
 

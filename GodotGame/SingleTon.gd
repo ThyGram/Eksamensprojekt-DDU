@@ -14,6 +14,8 @@ var GameWatch : int = 480
 var PlayerPosition
 var GameTimer = Timer.new()
 
+var ComputerTutorial : bool
+
 var Goodnews : String = "No News"
 var Badnews : String = "No News"
 
@@ -42,13 +44,14 @@ func _ready():
 	Day = storage.Day
 	Goodnews = storage.Goodnews
 	Badnews = storage.Badnews
+	ComputerTutorial = storage.ComputerTutorial
 
 	# Stocks
 	Stocks = storage.Stocks
 	
 	add_child(GameTimer)
 	GameTimer.autostart = true
-	GameTimer.start(1)
+	GameTimer.start(1.167)
 	GameTimer.timeout.connect(_on_gametimer_timeout)
 
 
@@ -65,11 +68,9 @@ func _on_gametimer_timeout():
 				else:
 					Increment = rng.randf_range(0.935, 1.065)
 					if Stocks[key][1] == true:
-						Increment += 0.5
-						Stocks[key][1] = null
+						Increment += 0.25
 					elif Stocks[key][1] == false:
-						Increment -= 0.5
-						Stocks[key][1] = null
+						Increment -= 0.25
 					
 				Stocks[key][0] *= Increment
 				Stocks[key][0] = round(Stocks[key][0])
@@ -77,7 +78,7 @@ func _on_gametimer_timeout():
 			print(get_tree().current_scene.name)
 			if get_tree().current_scene.name == "Stocks":
 				stocks_changed.emit()
-		if ((floor(hour) == 12.0 or floor(hour) == 16.0 or floor(hour) == 20.0) and (floor(hour) == hour)):
+		if ((GameWatch == 485 or floor(hour) == 12.0 or floor(hour) == 16.0 or floor(hour) == 20.0) and (floor(hour) == hour or GameWatch == 485)):
 			for key in Stocks:
 				Stocks[key][1] = null
 			var storagestock : int
@@ -93,10 +94,10 @@ func _on_gametimer_timeout():
 				
 				if n == 0:
 					Stocks[randomstock][1] = true
-					Goodnews = storage.Stocks[randomstock][2] + " has just been VERFIED on twitter !!!! CONGRATS"
+					Goodnews = storage.Stocks[randomstock][2] + " has just won the lottery!!!"
 				elif n == 1:
 					Stocks[randomstock][1] = false
-					Badnews = storage.Stocks[randomstock][2] + " has just been CANCELLED on twitter !!!! SHAME ON THEM"
+					Badnews = storage.Stocks[randomstock][2] + " has just lost the lottery..."
 			
 			if get_tree().current_scene.name == "main_game_tv":
 				news_changed.emit()

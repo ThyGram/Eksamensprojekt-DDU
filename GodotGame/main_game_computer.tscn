@@ -17,6 +17,7 @@ scale = Vector2(0.995906, 0.991586)
 script = ExtResource("1_d3cnl")
 
 [node name="Calender" type="Button" parent="."]
+top_level = true
 layout_mode = 0
 offset_left = 516.113
 offset_top = 383.224
@@ -25,6 +26,7 @@ offset_bottom = 602.224
 text = "Calender"
 
 [node name="Stocks" type="Button" parent="."]
+top_level = true
 layout_mode = 0
 offset_left = 861.528
 offset_top = 375.156
@@ -33,6 +35,7 @@ offset_bottom = 598.156
 text = "Stocks"
 
 [node name="Bank" type="Button" parent="."]
+top_level = true
 layout_mode = 0
 offset_left = 1244.09
 offset_top = 383.224
@@ -47,6 +50,25 @@ offset_top = 30.2546
 offset_right = 219.164
 offset_bottom = 103.255
 text = "Return "
+
+[node name="TutorialPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -32.0
+offset_top = -29.0
+offset_right = 1968.0
+offset_bottom = 1119.0
+
+[node name="Label" type="Label" parent="TutorialPanel"]
+visible = false
+layout_mode = 0
+offset_left = 561.166
+offset_top = 109.679
+offset_right = 1507.17
+offset_bottom = 331.679
+theme_override_font_sizes/font_size = 30
+text = "This is the computer
+Here you can open one of your 3 apps. Calender, Stocks and Bank"
 
 [connection signal="pressed" from="Calender" to="." method="_on_calender_pressed"]
 [connection signal="pressed" from="Stocks" to="." method="_on_stocks_pressed"]

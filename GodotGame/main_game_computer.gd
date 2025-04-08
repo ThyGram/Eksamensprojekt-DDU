@@ -1,29 +1,37 @@
 extends Control
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	if (!storage.ComputerTutorial or storage.ComputerTutorial == null):
+		tutorial()
+	else:
+		tutorialclear()
 
+func tutorial():
+	$TutorialPanel.visible = true
+	$TutorialPanel/Label.visible = true
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-	
+func tutorialclear():
+	$TutorialPanel.queue_free()
+	storage.ComputerTutorial = true
 
 func _input(event):
 	if (event.is_action_pressed("Escape")):
 		get_tree().change_scene_to_file("res://main_game_bedroom.tscn")
+	elif (event.is_action_pressed("LeftClick") and $TutorialPanel != null) :
+		tutorialclear()
 
 func _on_calender_pressed():
-	get_tree().change_scene_to_file("res://calender.tscn")
+	if $TutorialPanel == null:
+		get_tree().change_scene_to_file("res://computer_calender.tscn")
 
 func _on_stocks_pressed():
-	get_tree().change_scene_to_file("res://stocks.tscn")
+	if $TutorialPanel == null:
+		get_tree().change_scene_to_file("res://computer_stocks.tscn")
 
 func _on_bank_pressed():
-	get_tree().change_scene_to_file("res://bank.tscn")
-
+	if $TutorialPanel == null:
+		get_tree().change_scene_to_file("res://computer_bank.tscn")
 
 func _on_return_button_pressed():
-	get_tree().change_scene_to_file("res://main_game_bedroom.tscn")
+	if $TutorialPanel == null:
+		get_tree().change_scene_to_file("res://main_game_bedroom.tscn")
