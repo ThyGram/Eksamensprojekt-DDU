@@ -12,21 +12,23 @@ var direction : String = "none"
 
 func _process(delta):
 	if Input.is_action_pressed("Up"):
+		print("up")
 		velocity = Vector2.UP * SPEED
 		is_moving = true
 		direction = "Up"
 	
-	if Input.is_action_pressed("Left"):
+	elif Input.is_action_pressed("Left"):
+		print("down")
 		velocity = Vector2.LEFT * SPEED
 		is_moving = true
 		direction = "Left"
 	
-	if Input.is_action_pressed("Down"):
+	elif Input.is_action_pressed("Down"):
 		velocity = Vector2.DOWN * SPEED
 		is_moving = true
 		direction = "Down"
 	
-	if Input.is_action_pressed("Right"):
+	elif Input.is_action_pressed("Right"):
 		velocity = Vector2.RIGHT * SPEED
 		is_moving = true
 		direction = "Right"
@@ -40,21 +42,21 @@ func _process(delta):
 	if is_moving:
 		if direction == "Up":
 			anim.play("walk_up")
-		if direction == "Left":
+		elif direction == "Left":
 			anim.play("walk_left")
-		if direction == "Down":
+		elif direction == "Down":
 			anim.play("walk_down")
-		if direction == "Right":
+		elif direction == "Right":
 			anim.play("walk_right")
 	
-	if !is_moving:
+	elif !is_moving:
 		if direction == "Up":
 			anim.play("idle_up")
-		if direction == "Left":
+		elif direction == "Left":
 			anim.play("idle_left")
-		if direction == "Down":
+		elif direction == "Down":
 			anim.play("idle_down")
-		if direction == "Right":
+		elif direction == "Right":
 			anim.play("idle_right")
 
 func _ready():
@@ -71,7 +73,6 @@ func _input(event):
 	elif (event.is_action_pressed("ui_accept") and in_bedRange):
 		storage.PlayerPosition = self.global_position
 		get_parent().NewDay()
-		
 	elif (event.is_action_pressed("ui_accept") and in_doorRange and (storage.Day == 1 or storage.Day == 5)):
 		get_tree().change_scene_to_file("res://MainGame/main_game_doorchat.tscn")
 

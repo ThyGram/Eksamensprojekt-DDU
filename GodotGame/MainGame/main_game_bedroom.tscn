@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://MainGame/Player.gd" id="1_un6wh"]
 [ext_resource type="Texture2D" uid="uid://6u7oo0g0h3d" path="res://textures/blackImage.png" id="2_mvc6y"]
 [ext_resource type="Texture2D" uid="uid://blgqh0ceud3v6" path="res://textures/mainRoom_v2.png" id="3_64fsg"]
-[ext_resource type="Texture2D" uid="uid://dyqo5fjk8xujd" path="res://textures/Modern tiles_Free/Characters_free/Alex_idle_anim_16x16.png" id="5_nvso8"]
-[ext_resource type="Texture2D" uid="uid://cdksipld4s6l4" path="res://textures/Modern tiles_Free/Characters_free/Alex_run_16x16.png" id="6_vtj4p"]
+[ext_resource type="Texture2D" uid="uid://cxmtm4rcadipt" path="res://textures/Modern tiles_Free/Characters_free/Alex_idle_anim_16x16.png" id="5_nvso8"]
+[ext_resource type="Texture2D" uid="uid://bu8ykp7c7whl" path="res://textures/Modern tiles_Free/Characters_free/Alex_run_16x16.png" id="6_vtj4p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a1p05"]
 size = Vector2(137.487, 132.82)
@@ -225,7 +225,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_down",
-"speed": 20.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 5.0,
@@ -248,7 +248,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_left",
-"speed": 20.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 5.0,
@@ -271,7 +271,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_right",
-"speed": 20.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 5.0,
@@ -294,7 +294,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_up",
-"speed": 20.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 5.0,
@@ -317,7 +317,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_down",
-"speed": 20.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 5.0,
@@ -340,7 +340,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_left",
-"speed": 20.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 5.0,
@@ -363,7 +363,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_right",
-"speed": 20.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 5.0,
@@ -386,7 +386,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_up",
-"speed": 20.0
+"speed": 30.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o8xtv"]
@@ -465,8 +465,7 @@ texture_filter = 1
 position = Vector2(956, 902)
 scale = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_0j3lu")
-animation = &"idle_down"
-frame_progress = 0.292864
+animation = &"walk_up"
 
 [node name="Computer" type="Node2D" parent="."]
 position = Vector2(28, -48)
