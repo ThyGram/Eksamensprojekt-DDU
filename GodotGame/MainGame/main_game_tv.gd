@@ -9,6 +9,19 @@ func _ready():
 	$Background/TVBackground/GoodNEWS.text = storage.Goodnews
 	storage.connect("news_changed", UpdateNews)
 	
+	if (!storage.TVTutorial or storage.TVTutorial == null):
+		storage.TVTutorial = false
+		tutorial()
+	else:
+		tutorialclear()
+
+func tutorial():
+	$TutorialPanel.visible = true
+
+func tutorialclear():
+	storage.TVTutorial = true
+	$TutorialPanel.queue_free()
+	
 func UpdateNews():
 	$Background/TVBackground/BadNEWS.text = storage.Badnews
 	$Background/TVBackground/GoodNEWS.text = storage.Goodnews
@@ -16,6 +29,8 @@ func UpdateNews():
 func _input(event):
 	if (event.is_action_pressed("Escape")):
 		get_tree().change_scene_to_file("res://MainGame/main_game_bedroom.tscn")
+	elif (event.is_action_pressed("LeftClick") and !storage.TVTutorial):
+		tutorialclear()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

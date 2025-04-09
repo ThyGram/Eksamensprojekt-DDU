@@ -59,9 +59,6 @@ func _process(delta):
 
 func _ready():
 	if (storage.PlayerPosition):
-		print("POSITIONS")
-		print(storage.PlayerPosition)
-		print(self.global_position)
 		self.global_position = storage.PlayerPosition
 	
 func _input(event):
@@ -82,40 +79,30 @@ func _input(event):
 func _on_computer_body_entered(body):
 	if body.name == "Player":
 		in_computerRange = true
-		print("infcomputer")
 
 func _on_computer_body_exited(body):
 	if body.name == "Player":
 		in_computerRange = false
-		print("out comput")
-
 
 func _on_bed_body_entered(body):
 	if body.name == "Player":
 		in_bedRange = true
-		print("in bed")
-
 
 func _on_bed_body_exited(body):
 	if body.name == "Player":
 		in_bedRange = false
-		print("out bed")
-
 
 func _on_tv_body_entered(body):
 	if body.name == "Player":
 		in_tvRange = true
 
-
 func _on_tv_body_exited(body):
 	if body.name == "Player":
 		in_tvRange = false
 
-
 func _on_door_body_entered(body):
 	if body.name == "Player":
 		in_doorRange = true
-
 
 func _on_area_2d_body_exited(body):
 	if body.name == "Player":

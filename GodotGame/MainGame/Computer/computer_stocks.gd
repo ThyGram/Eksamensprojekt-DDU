@@ -46,7 +46,6 @@ func _on_invest_pressed():
 		var NoMoney = NoMoneyNode.instantiate()
 		add_child(NoMoney)
 		var label = NoMoney.get_node("Panel/Label")
-		print(label)
 		label.text = "Select a company"
 
 
@@ -61,13 +60,11 @@ func _on_sell_pressed():
 		var NoMoney = NoMoneyNode.instantiate()
 		add_child(NoMoney)
 		var label = NoMoney.get_node("Panel/Label")
-		print(label)
 		label.text = "Select a company"
 	elif storage.Stocks[index[0]][0] < amount:
 		var NoMoney = NoMoneyNode.instantiate()
 		add_child(NoMoney)
 		var label = NoMoney.get_node("Panel/Label")
-		print(label)
 		label.text = "You dont have that much in that stock"
 
 

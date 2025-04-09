@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cyvk1yvwt3und"]
+[gd_scene load_steps=3 format=3 uid="uid://cyvk1yvwt3und"]
 
 [ext_resource type="Script" path="res://MainGame/main_game_tv.gd" id="1_5gq77"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7rsr1"]
+bg_color = Color(0, 0, 0, 0.705882)
 
 [node name="main_game_tv" type="Control"]
 layout_mode = 3
@@ -56,6 +59,38 @@ offset_top = 379.0
 offset_right = 1035.0
 offset_bottom = 559.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 35
 text = "BAD NEWS"
 autowrap_mode = 2
+
+[node name="TutorialPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -143.0
+offset_top = -35.0
+offset_right = 2227.0
+offset_bottom = 1129.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7rsr1")
+
+[node name="TutorialTEXT" type="Label" parent="TutorialPanel"]
+layout_mode = 0
+offset_left = 1029.0
+offset_top = 396.0
+offset_right = 1714.0
+offset_bottom = 799.0
+theme_override_font_sizes/font_size = 40
+text = "This is the news. Here you can see if a company is doing good or bad.
+
+If a company is doing good its stock should also increase.
+And in contrast if the company is doing bad, its stock will decrase."
+autowrap_mode = 2
+
+[node name="Continue" type="Label" parent="TutorialPanel"]
+layout_mode = 0
+offset_left = 941.0
+offset_top = 961.0
+offset_right = 1260.0
+offset_bottom = 1016.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+text = "Click to continue"

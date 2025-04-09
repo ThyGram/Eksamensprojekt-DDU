@@ -21,8 +21,6 @@ func _ready():
 func _input(event):
 	if (event.is_action_pressed("LeftClick") and !stop):
 		var currIndex = currDialouge.find($Name/Dialouge.text, 0)
-		print(currIndex)
-		print(currDialouge.size())
 		if (currIndex < currDialouge.size() - 1):
 			$Name/Dialouge.text = currDialouge[currIndex+1]
 		else:

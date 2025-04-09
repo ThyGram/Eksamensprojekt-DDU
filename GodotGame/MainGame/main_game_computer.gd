@@ -12,7 +12,7 @@ func tutorial():
 
 func tutorialclear():
 	$TutorialPanel.queue_free()
-	storage.ComputerTutorial = true
+	$TutorialTimer.start()
 
 func _input(event):
 	if (event.is_action_pressed("Escape")):
@@ -35,3 +35,6 @@ func _on_bank_pressed():
 func _on_return_button_pressed():
 	if storage.ComputerTutorial == true:
 		get_tree().change_scene_to_file("res://MainGame/main_game_bedroom.tscn")
+
+func _on_tutorial_timer_timeout():
+	storage.ComputerTutorial = true

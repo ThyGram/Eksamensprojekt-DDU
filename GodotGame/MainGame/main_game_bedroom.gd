@@ -18,7 +18,6 @@ func _ready():
 
 func NewDay():
 	if (storage.Day < 10):
-		print("DAY DONEbed")
 		storage.Day += 1
 		get_tree().change_scene_to_file("res://switch_screen.tscn")
 	elif (storage.Day == 10):

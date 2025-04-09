@@ -14,7 +14,9 @@ var GameWatch : int = 480
 var PlayerPosition
 var GameTimer = Timer.new()
 
+#TUTORIAL CONFIRMATIONS
 var ComputerTutorial : bool
+var TVTutorial : bool
 
 var Goodnews : String = "No News"
 var Badnews : String = "No News"
@@ -44,7 +46,10 @@ func _ready():
 	Day = storage.Day
 	Goodnews = storage.Goodnews
 	Badnews = storage.Badnews
+	
+	#TUTORIALS
 	ComputerTutorial = storage.ComputerTutorial
+	TVTutorial = storage.TVTutorial
 
 	# Stocks
 	Stocks = storage.Stocks
@@ -107,8 +112,6 @@ func _on_gametimer_timeout():
 					
 				Stocks[key][0] *= Increment
 				Stocks[key][0] = round(Stocks[key][0])
-			
-			print(get_tree().current_scene.name)
 			if get_tree().current_scene.name == "Stocks":
 				stocks_changed.emit()
 		if ((GameWatch == 485 or floor(hour) == 12.0 or floor(hour) == 16.0 or floor(hour) == 20.0) and (floor(hour) == hour or GameWatch == 485)):

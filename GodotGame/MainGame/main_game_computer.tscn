@@ -70,7 +70,12 @@ theme_override_font_sizes/font_size = 30
 text = "This is the computer
 Here you can open one of your 3 apps. Calender, Stocks and Bank"
 
+[node name="TutorialTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="pressed" from="Calender" to="." method="_on_calender_pressed"]
 [connection signal="pressed" from="Stocks" to="." method="_on_stocks_pressed"]
 [connection signal="pressed" from="Bank" to="." method="_on_bank_pressed"]
 [connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="timeout" from="TutorialTimer" to="." method="_on_tutorial_timer_timeout"]
