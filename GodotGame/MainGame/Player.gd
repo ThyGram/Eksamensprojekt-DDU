@@ -1,21 +1,62 @@
 extends CharacterBody2D
 
-const SPEED : int = 300
 var in_computerRange : bool = false
 var in_bedRange : bool = false
 var in_tvRange : bool = false
 var in_doorRange : bool = false
+var is_moving : bool = false
+
+@onready var anim = $AnimatedPlayerSprite
+const SPEED : float = 300.0
+var direction : String = "none"
 
 func _process(delta):
-	velocity = Vector2.ZERO
-	var x_axis = Input.get_axis("Left","Right")
-	var y_axis = Input.get_axis("Up","Down")
+	if Input.is_action_pressed("Up"):
+		velocity = Vector2.UP * SPEED
+		is_moving = true
+		direction = "Up"
 	
-	var move_direction = Vector2(x_axis,y_axis).normalized()
-	var movement = move_direction * SPEED
-	velocity = movement
+	if Input.is_action_pressed("Left"):
+		velocity = Vector2.LEFT * SPEED
+		is_moving = true
+		direction = "Left"
+	
+	if Input.is_action_pressed("Down"):
+		velocity = Vector2.DOWN * SPEED
+		is_moving = true
+		direction = "Down"
+	
+	if Input.is_action_pressed("Right"):
+		velocity = Vector2.RIGHT * SPEED
+		is_moving = true
+		direction = "Right"
+	
+	else:
+		velocity = Vector2.ZERO
+		is_moving = false
+	
 	move_and_slide()
 	
+	if is_moving:
+		if direction == "Up":
+			anim.play("walk_up")
+		if direction == "Left":
+			anim.play("walk_left")
+		if direction == "Down":
+			anim.play("walk_down")
+		if direction == "Right":
+			anim.play("walk_right")
+	
+	if !is_moving:
+		if direction == "Up":
+			anim.play("idle_up")
+		if direction == "Left":
+			anim.play("idle_left")
+		if direction == "Down":
+			anim.play("idle_down")
+		if direction == "Right":
+			anim.play("idle_right")
+
 func _ready():
 	if (storage.PlayerPosition):
 		print("POSITIONS")
