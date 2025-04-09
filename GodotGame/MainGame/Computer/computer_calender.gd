@@ -1,5 +1,7 @@
 extends Control
 
+var rng = RandomNumberGenerator.new()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var circle_shader = preload("res://Shaders/circle.gdshader")
@@ -18,13 +20,15 @@ func _ready():
 	
 	# Størrelse indstilles
 	#var size = black_ring.texture.get_size()
-	black_ring.scale = Vector2(200,200)
+	black_ring.scale = Vector2(160,160)
+	
+	await get_tree().process_frame
 	
 	for n in storage.Day:
 		var current_date = "Dates/" + str(n+1)
 		if n == storage.Day-1:
 			# Position indstilles alt efter dato
-			black_ring.position = get_node(current_date).get_global_position()
+			black_ring.position = get_node(current_date).get_global_position() + Vector2((90+rng.randi_range(1,20)),(90+rng.randi_range(1,20)))
 			add_child(black_ring)
 		else:
 			var current_cross = current_date + "/Cross";
