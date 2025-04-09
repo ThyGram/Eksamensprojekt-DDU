@@ -36,8 +36,6 @@ func _input(event):
 		
 	elif (event.is_action_pressed("ui_accept") and in_doorRange and (storage.Day == 1 or storage.Day == 5)):
 		get_tree().change_scene_to_file("res://MainGame/main_game_doorchat.tscn")
-	elif (event.is_action_pressed("Escape")):
-		get_tree().quit()
 
 
 func _on_computer_body_entered(body):

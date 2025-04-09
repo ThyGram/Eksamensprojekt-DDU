@@ -5,9 +5,10 @@ var Dialouge1 : Array = ["Hello. I am Lånehajen Haj and i seee you havent paid 
 
 var Dialouge2 : Array = ["EEEE", "FWECW"]
 
+var stop : bool = false
 var currDialouge : Array = []
+var timer = Timer.new()
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	if storage.Day == 1:
 		$Name/Dialouge.text = Dialouge1[0]
@@ -18,9 +19,15 @@ func _ready():
 		
 
 func _input(event):
-	if (event.is_action_pressed("LeftClick") and storage.Day == 1):
-		var currIndex = Dialouge1.find($Name/Dialouge.text, 0)
-		if (currIndex < currDialouge.size()):
+	if (event.is_action_pressed("LeftClick") and !stop):
+		var currIndex = currDialouge.find($Name/Dialouge.text, 0)
+		print(currIndex)
+		print(currDialouge.size())
+		if (currIndex < currDialouge.size() - 1):
 			$Name/Dialouge.text = currDialouge[currIndex+1]
 		else:
-			pass #Start timer and end chat when it timeouts
+			$ExitTimer.start()
+			stop = true
+
+func _on_exit_timer_timeout():
+	get_tree().change_scene_to_file("res://MainGame/main_game_bedroom.tscn")

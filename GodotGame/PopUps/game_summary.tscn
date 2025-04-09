@@ -1,0 +1,67 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl74ejjrhdaxe"]
+
+[ext_resource type="Script" path="res://PopUps/game_summary.gd" id="1_fqxq6"]
+
+[node name="GameSummary" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fqxq6")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 652.0
+offset_top = 249.0
+offset_right = 1315.0
+offset_bottom = 717.0
+
+[node name="Title" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 69.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "Day X Summary"
+horizontal_alignment = 1
+
+[node name="CurrentMoney" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 112.0
+offset_right = 640.0
+offset_bottom = 154.0
+theme_override_font_sizes/font_size = 30
+text = "Current Money:"
+
+[node name="InvestmentMoney" type="Label" parent="Panel"]
+offset_left = 9.0
+offset_top = 176.0
+offset_right = 640.0
+offset_bottom = 218.0
+theme_override_font_sizes/font_size = 30
+text = "Investment Money:"
+
+[node name="BankMoney" type="Label" parent="Panel"]
+offset_left = 9.0
+offset_top = 238.0
+offset_right = 640.0
+offset_bottom = 280.0
+theme_override_font_sizes/font_size = 30
+text = "Bank Money:"
+
+[node name="Continue" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 152.0
+offset_top = 352.0
+offset_right = 498.0
+offset_bottom = 434.0
+theme_override_font_sizes/font_size = 30
+text = "Continue"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Panel/Continue" to="." method="_on_continue_pressed"]

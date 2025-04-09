@@ -1,20 +1,21 @@
 extends Control
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	storage.GameStarted = false
+	storage.DayStarted = false
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
 
 func _on_play_pressed():
-	storage.GameStarted = true
-	storage.DayStarted = true
-	get_tree().change_scene_to_file("res://MainGame/main_game_bedroom.tscn")
+	storage.GameWatch = 480
+	storage.Money = 500
+	storage.BankMoney = 0
+	for key in storage.Stocks:
+		storage.Stocks[key][0] = 0
+	storage.Day = 1
+	get_tree().change_scene_to_file("res://MainGame/main_game_doorchat.tscn")
 
 
 func _on_leaderboard_pressed():

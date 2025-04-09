@@ -26,3 +26,11 @@ offset_left = -5.0
 offset_top = 52.0
 offset_right = 677.0
 offset_bottom = 465.0
+theme_override_font_sizes/font_size = 25
+text = "dialouge"
+autowrap_mode = 2
+
+[node name="ExitTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="ExitTimer" to="." method="_on_exit_timer_timeout"]

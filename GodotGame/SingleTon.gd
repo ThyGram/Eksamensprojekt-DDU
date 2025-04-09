@@ -5,7 +5,7 @@ signal news_changed
 
 var DisplayUsername : String
 var Money : int = 500
-var Day : int
+var Day : int = 1
 var Highscore : int
 var GameStarted : bool = false
 var rng = RandomNumberGenerator.new()

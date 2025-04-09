@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://conxfkaupalp"]
+
+[ext_resource type="Script" path="res://PopUps/PauseMenu.gd" id="1_st3t0"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_st3t0")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 632.0
+offset_top = 355.0
+offset_right = 1221.0
+offset_bottom = 639.0
+
+[node name="Title" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "Game Paused DAY X"
+
+[node name="Continue" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 193.0
+offset_top = 71.0
+offset_right = 384.0
+offset_bottom = 139.0
+theme_override_font_sizes/font_size = 20
+text = "Continue"
+
+[node name="Quit" type="Button" parent="Panel"]
+offset_left = 191.0
+offset_top = 161.0
+offset_right = 386.0
+offset_bottom = 217.0
+theme_override_font_sizes/font_size = 20
+text = "Quit"
+
+[connection signal="pressed" from="Panel/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Panel/Quit" to="." method="_on_quit_pressed"]

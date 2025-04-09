@@ -46,7 +46,7 @@ offset_right = 1037.0
 offset_bottom = 375.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 35
-text = "dwqdsawdsqdw"
+text = "GOOD NEWS"
 autowrap_mode = 2
 
 [node name="BadNEWS" type="Label" parent="Background/TVBackground"]
@@ -57,5 +57,5 @@ offset_right = 1035.0
 offset_bottom = 559.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 35
-text = "dwqdsawdsqdw"
+text = "BAD NEWS"
 autowrap_mode = 2
