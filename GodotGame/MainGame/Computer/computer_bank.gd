@@ -1,6 +1,6 @@
 extends Control
 
-@onready var NoMoneyNode = preload("res://NoMoney.tscn")
+@onready var NoMoneyNode = preload("res://PopUps/NoMoney.tscn")
 
 func _ready():
 	var bankinterest : float = (storage.BankInterest - 1.0)*100.0
@@ -21,7 +21,7 @@ func _process(delta):
 
 func _input(event):
 	if (event.is_action_pressed("Escape")):
-		get_tree().change_scene_to_file("res://main_game_computer.tscn")
+		get_tree().change_scene_to_file("res://MainGame/main_game_computer.tscn")
 
 
 func _on_transfer_in_pressed():
@@ -45,4 +45,4 @@ func _on_transfer_out_pressed():
 
 
 func _on_return_button_pressed():
-	get_tree().change_scene_to_file("res://main_game_computer.tscn")
+	get_tree().change_scene_to_file("res://MainGame/main_game_computer.tscn")

@@ -12,8 +12,8 @@ func _process(delta):
 
 func _input(event):
 	if (event.is_action_pressed("Escape")):
-		get_tree().change_scene_to_file("res://main_game_computer.tscn")
+		get_tree().change_scene_to_file("res://MainGame/main_game_computer.tscn")
 
 
 func _on_return_button_pressed():
-	get_tree().change_scene_to_file("res://main_game_computer.tscn")
+	get_tree().change_scene_to_file("res://MainGame/main_game_computer.tscn")

@@ -16,22 +16,22 @@ func tutorialclear():
 
 func _input(event):
 	if (event.is_action_pressed("Escape")):
-		get_tree().change_scene_to_file("res://main_game_bedroom.tscn")
+		get_tree().change_scene_to_file("res://MainGame/main_game_bedroom.tscn")
 	elif (event.is_action_pressed("LeftClick") and $TutorialPanel != null) :
 		tutorialclear()
 
 func _on_calender_pressed():
 	if $TutorialPanel == null:
-		get_tree().change_scene_to_file("res://computer_calender.tscn")
+		get_tree().change_scene_to_file("res://MainGame/Computer/computer_calender.tscn")
 
 func _on_stocks_pressed():
 	if $TutorialPanel == null:
-		get_tree().change_scene_to_file("res://computer_stocks.tscn")
+		get_tree().change_scene_to_file("res://MainGame/Computer/computer_stocks.tscn")
 
 func _on_bank_pressed():
 	if $TutorialPanel == null:
-		get_tree().change_scene_to_file("res://computer_bank.tscn")
+		get_tree().change_scene_to_file("res://MainGame/Computer/computer_bank.tscn")
 
 func _on_return_button_pressed():
 	if $TutorialPanel == null:
-		get_tree().change_scene_to_file("res://main_game_bedroom.tscn")
+		get_tree().change_scene_to_file("res://MainGame/main_game_bedroom.tscn")

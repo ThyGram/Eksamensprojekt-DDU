@@ -2,7 +2,7 @@ extends Control
 
 var stocks : Dictionary = storage.Stocks
 @onready var single_ton = storage
-@onready var NoMoneyNode = preload("res://NoMoney.tscn")
+@onready var NoMoneyNode = preload("res://PopUps/NoMoney.tscn")
 
 func _ready():
 	storage.connect("stocks_changed", UpdateList)
@@ -26,7 +26,7 @@ func UpdateList():
 
 func _input(event):
 	if (event.is_action_pressed("Escape")):
-		get_tree().change_scene_to_file("res://main_game_computer.tscn")
+		get_tree().change_scene_to_file("res://MainGame/main_game_computer.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -73,4 +73,4 @@ func _on_sell_pressed():
 
 
 func _on_return_button_pressed():
-	get_tree().change_scene_to_file("res://main_game_computer.tscn")
+	get_tree().change_scene_to_file("res://MainGame/main_game_computer.tscn")

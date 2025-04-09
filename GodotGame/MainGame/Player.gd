@@ -26,10 +26,10 @@ func _ready():
 func _input(event):
 	if (event.is_action_pressed("ui_accept") and in_computerRange):
 		storage.PlayerPosition = self.global_position
-		get_tree().change_scene_to_file("res://main_game_computer.tscn")
+		get_tree().change_scene_to_file("res://MainGame/main_game_computer.tscn")
 	elif (event.is_action_pressed("ui_accept") and in_tvRange):
 		storage.PlayerPosition = self.global_position
-		get_tree().change_scene_to_file("res://main_game_tv.tscn")
+		get_tree().change_scene_to_file("res://MainGame/main_game_tv.tscn")
 	elif (event.is_action_pressed("ui_accept") and in_bedRange):
 		storage.PlayerPosition = self.global_position
 		get_parent().NewDay()
