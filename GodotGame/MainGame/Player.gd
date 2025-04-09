@@ -34,7 +34,9 @@ func _input(event):
 		storage.PlayerPosition = self.global_position
 		get_parent().NewDay()
 		
-	elif (event.is_action_pressed("ui_accept") and in_doorRange):
+	elif (event.is_action_pressed("ui_accept") and in_doorRange and (storage.Day == 1 or storage.Day == 5)):
+		get_tree().change_scene_to_file("res://MainGame/main_game_doorchat.tscn")
+	elif (event.is_action_pressed("Escape")):
 		get_tree().quit()
 
 

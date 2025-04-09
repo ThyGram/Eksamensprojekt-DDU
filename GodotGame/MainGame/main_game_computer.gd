@@ -21,17 +21,17 @@ func _input(event):
 		tutorialclear()
 
 func _on_calender_pressed():
-	if $TutorialPanel == null:
+	if storage.ComputerTutorial == true:
 		get_tree().change_scene_to_file("res://MainGame/Computer/computer_calender.tscn")
 
 func _on_stocks_pressed():
-	if $TutorialPanel == null:
+	if storage.ComputerTutorial == true:
 		get_tree().change_scene_to_file("res://MainGame/Computer/computer_stocks.tscn")
 
 func _on_bank_pressed():
-	if $TutorialPanel == null:
+	if storage.ComputerTutorial == true:
 		get_tree().change_scene_to_file("res://MainGame/Computer/computer_bank.tscn")
 
 func _on_return_button_pressed():
-	if $TutorialPanel == null:
+	if storage.ComputerTutorial == true:
 		get_tree().change_scene_to_file("res://MainGame/main_game_bedroom.tscn")
