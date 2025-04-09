@@ -1,6 +1,39 @@
-[gd_scene load_steps=2 format=3 uid="uid://h5l0aden855"]
+[gd_scene load_steps=10 format=3 uid="uid://h5l0aden855"]
 
 [ext_resource type="Script" path="res://MainGame/Computer/computer_calender.gd" id="1_3ftox"]
+[ext_resource type="Shader" path="res://Shaders/circle.gdshader" id="2_8r15l"]
+[ext_resource type="Texture2D" uid="uid://bs6v31xtdbqdh" path="res://textures/circle.png" id="2_dbua4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nty31"]
+bg_color = Color(0.85098, 0.32549, 0.309804, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3k0tc"]
+bg_color = Color(0.947199, 0.947199, 0.947199, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qrun5"]
+bg_color = Color(0.77, 0.77, 0.77, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5jjmw"]
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.0475577, 0.0475577, 0.0475576, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qwdni"]
+bg_color = Color(0.699653, 0.699654, 0.699653, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.0475577, 0.0475577, 0.0475576, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6vy4d"]
+shader = ExtResource("2_8r15l")
+shader_parameter/inner_color = Color(0, 0, 0.839216, 0)
+shader_parameter/border_color = Color(1, 0, 0, 1)
+shader_parameter/border_width = 0.075
 
 [node name="Computer_Calender" type="Control"]
 layout_mode = 3
@@ -18,5 +51,358 @@ offset_top = 30.2546
 offset_right = 219.164
 offset_bottom = 103.255
 text = "Return "
+
+[node name="TopBar" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -700.0
+offset_top = -285.0
+offset_right = 700.0
+offset_bottom = -225.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nty31")
+
+[node name="WhiteBackground" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -700.0
+offset_top = -165.0
+offset_right = 700.0
+offset_bottom = 235.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3k0tc")
+
+[node name="WeekdayBar" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -700.0
+offset_top = -225.0
+offset_right = 700.0
+offset_bottom = -165.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qrun5")
+
+[node name="Weekdays" type="GridContainer" parent="WeekdayBar"]
+layout_mode = 0
+offset_right = 1400.0
+offset_bottom = 60.0
+columns = 7
+
+[node name="Monday" type="Label" parent="WeekdayBar/Weekdays"]
+clip_contents = true
+custom_minimum_size = Vector2(196.57, 60)
+layout_mode = 2
+size_flags_horizontal = 5
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Monday"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tuesday" type="Label" parent="WeekdayBar/Weekdays"]
+custom_minimum_size = Vector2(196.57, 60)
+layout_mode = 2
+size_flags_horizontal = 5
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Tuesday"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Wednesday" type="Label" parent="WeekdayBar/Weekdays"]
+custom_minimum_size = Vector2(196.57, 60)
+layout_mode = 2
+size_flags_horizontal = 5
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Wednesday"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Thursday" type="Label" parent="WeekdayBar/Weekdays"]
+custom_minimum_size = Vector2(196.57, 60)
+layout_mode = 2
+size_flags_horizontal = 5
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Thursday"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Friday" type="Label" parent="WeekdayBar/Weekdays"]
+custom_minimum_size = Vector2(196.57, 60)
+layout_mode = 2
+size_flags_horizontal = 5
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Friday"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Saturday" type="Label" parent="WeekdayBar/Weekdays"]
+custom_minimum_size = Vector2(196.57, 60)
+layout_mode = 2
+size_flags_horizontal = 5
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Saturday"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sunday" type="Label" parent="WeekdayBar/Weekdays"]
+custom_minimum_size = Vector2(196.57, 60)
+layout_mode = 2
+size_flags_horizontal = 5
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Sunday"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Dates" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -700.0
+offset_top = -165.0
+offset_right = 700.0
+offset_bottom = 235.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 7
+
+[node name="1" type="Panel" parent="Dates"]
+custom_minimum_size = Vector2(197, 198)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_5jjmw")
+
+[node name="DateLabel" type="Label" parent="Dates/1"]
+layout_mode = 0
+offset_right = 50.0
+offset_bottom = 83.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = " 1"
+
+[node name="2" type="Panel" parent="Dates"]
+custom_minimum_size = Vector2(197, 198)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_5jjmw")
+
+[node name="DateLabel" type="Label" parent="Dates/2"]
+layout_mode = 0
+offset_right = 50.0
+offset_bottom = 83.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = " 2"
+
+[node name="3" type="Panel" parent="Dates"]
+custom_minimum_size = Vector2(197, 198)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_5jjmw")
+
+[node name="DateLabel" type="Label" parent="Dates/3"]
+layout_mode = 0
+offset_right = 50.0
+offset_bottom = 83.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = " 3"
+
+[node name="4" type="Panel" parent="Dates"]
+custom_minimum_size = Vector2(197, 198)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_5jjmw")
+
+[node name="DateLabel" type="Label" parent="Dates/4"]
+layout_mode = 0
+offset_right = 50.0
+offset_bottom = 83.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = " 4"
+
+[node name="5" type="Panel" parent="Dates"]
+custom_minimum_size = Vector2(197, 198)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_5jjmw")
+
+[node name="DateLabel" type="Label" parent="Dates/5"]
+layout_mode = 0
+offset_right = 50.0
+offset_bottom = 83.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = " 5"
+
+[node name="6" type="Panel" parent="Dates"]
+custom_minimum_size = Vector2(197, 198)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_qwdni")
+
+[node name="DateLabel" type="Label" parent="Dates/6"]
+layout_mode = 0
+offset_right = 50.0
+offset_bottom = 83.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = " 6"
+
+[node name="7" type="Panel" parent="Dates"]
+custom_minimum_size = Vector2(197, 198)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_qwdni")
+
+[node name="DateLabel" type="Label" parent="Dates/7"]
+layout_mode = 0
+offset_right = 50.0
+offset_bottom = 83.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = " 7"
+
+[node name="8" type="Panel" parent="Dates"]
+custom_minimum_size = Vector2(197, 198)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_5jjmw")
+
+[node name="DateLabel" type="Label" parent="Dates/8"]
+layout_mode = 0
+offset_right = 50.0
+offset_bottom = 83.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = " 8"
+
+[node name="9" type="Panel" parent="Dates"]
+custom_minimum_size = Vector2(197, 198)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_5jjmw")
+
+[node name="DateLabel" type="Label" parent="Dates/9"]
+layout_mode = 0
+offset_right = 50.0
+offset_bottom = 83.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = " 9"
+
+[node name="10" type="Panel" parent="Dates"]
+custom_minimum_size = Vector2(197, 198)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_5jjmw")
+
+[node name="DateLabel" type="Label" parent="Dates/10"]
+layout_mode = 0
+offset_right = 84.0
+offset_bottom = 83.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = " 10"
+
+[node name="11" type="Panel" parent="Dates"]
+custom_minimum_size = Vector2(197, 198)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_5jjmw")
+
+[node name="DateLabel" type="Label" parent="Dates/11"]
+layout_mode = 0
+offset_right = 84.0
+offset_bottom = 83.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = " 11"
+
+[node name="12" type="Panel" parent="Dates"]
+custom_minimum_size = Vector2(197, 198)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_5jjmw")
+
+[node name="DateLabel" type="Label" parent="Dates/12"]
+layout_mode = 0
+offset_right = 84.0
+offset_bottom = 83.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = " 12"
+
+[node name="13" type="Panel" parent="Dates"]
+custom_minimum_size = Vector2(197, 198)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_qwdni")
+
+[node name="DateLabel" type="Label" parent="Dates/13"]
+layout_mode = 0
+offset_right = 84.0
+offset_bottom = 83.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = " 13"
+
+[node name="14" type="Panel" parent="Dates"]
+custom_minimum_size = Vector2(197, 198)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_qwdni")
+
+[node name="DateLabel" type="Label" parent="Dates/14"]
+layout_mode = 0
+offset_right = 84.0
+offset_bottom = 83.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = " 14"
+
+[node name="Ring" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_6vy4d")
+position = Vector2(1149, 661)
+scale = Vector2(200, 200)
+texture = ExtResource("2_dbua4")
 
 [connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]

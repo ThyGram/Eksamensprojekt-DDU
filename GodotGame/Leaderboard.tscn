@@ -1,0 +1,179 @@
+[gd_scene load_steps=3 format=3 uid="uid://csebb3ucwi3vw"]
+
+[ext_resource type="Script" path="res://Leaderboard.gd" id="1_5n4ew"]
+[ext_resource type="Texture2D" uid="uid://31ioku7yp413" path="res://textures/cash champions.png" id="2_ad281"]
+
+[node name="Leaderboard" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_5n4ew")
+
+[node name="Return" type="Button" parent="."]
+layout_mode = 1
+offset_left = 268.0
+offset_top = 32.0
+offset_right = 336.0
+offset_bottom = 63.0
+text = "Return "
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+offset_left = 356.0
+offset_top = 32.0
+offset_right = 796.0
+offset_bottom = 592.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CashChampions" type="Sprite2D" parent="Panel"]
+position = Vector2(220, 85)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_ad281")
+
+[node name="TitleBG" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -105.0
+offset_right = 65.0
+offset_bottom = -73.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="Label" parent="Panel/TitleBG"]
+light_mask = 2
+visibility_layer = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -14.5
+offset_right = 50.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Leaderboard"
+
+[node name="Position" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -68.0
+offset_right = -150.0
+offset_bottom = 252.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Placing" type="Label" parent="Panel/Position"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -31.5
+offset_right = 31.5
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "#"
+horizontal_alignment = 1
+
+[node name="PositionList" type="Label" parent="Panel/Position"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.0
+offset_top = -134.0
+offset_right = 21.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+
+[node name="Player" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -145.0
+offset_top = -68.0
+offset_right = 65.0
+offset_bottom = 252.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Players" type="Label" parent="Panel/Player"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -24.5
+offset_right = 24.5
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Player
+"
+
+[node name="PlayerList" type="Label" parent="Panel/Player"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -131.0
+offset_right = 28.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+
+[node name="Score" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 70.0
+offset_top = -68.0
+offset_right = 200.0
+offset_bottom = 252.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Scores" type="Label" parent="Panel/Score"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -21.5
+offset_right = 21.5
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Cash Earned"
+
+[node name="ScoreList" type="Label" parent="Panel/Score"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 23.0
+offset_right = 89.0
+offset_bottom = 280.0
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Return" to="." method="_on_return_pressed"]
