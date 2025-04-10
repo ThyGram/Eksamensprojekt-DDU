@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2tu0pbxosspk"]
+[gd_scene load_steps=4 format=3 uid="uid://b2tu0pbxosspk"]
 
 [ext_resource type="Script" path="res://MainGame/main_game_doorchat.gd" id="1_38fs2"]
+[ext_resource type="Texture2D" uid="uid://bkdeh8v5rjlhy" path="res://textures/doorway.jpg" id="2_vkpti"]
+[ext_resource type="Texture2D" uid="uid://bn80dy6ju3fag" path="res://textures/Shark.png" id="3_5ceak"]
 
 [node name="MainGame_DoorChat" type="Control"]
 layout_mode = 3
@@ -11,26 +13,77 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_38fs2")
 
-[node name="Name" type="Label" parent="."]
-layout_mode = 0
-offset_left = 616.0
-offset_top = 547.0
-offset_right = 1218.0
-offset_bottom = 602.0
-theme_override_font_sizes/font_size = 40
-text = "Lånehajen Haj"
+[node name="Doorway" type="Sprite2D" parent="."]
+scale = Vector2(1.875, 1.40625)
+texture = ExtResource("2_vkpti")
+centered = false
 
-[node name="Dialouge" type="Label" parent="Name"]
-layout_mode = 0
-offset_left = -5.0
-offset_top = 52.0
-offset_right = 677.0
-offset_bottom = 465.0
-theme_override_font_sizes/font_size = 25
-text = "dialouge"
+[node name="Shark" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(960, 450)
+scale = Vector2(5, 5)
+texture = ExtResource("3_5ceak")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -300.0
+offset_right = 240.0
+offset_bottom = -240.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Name" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -27.5
+offset_right = 274.0
+offset_bottom = 27.5
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 42
+text = "Lånehajen Haj"
+vertical_alignment = 1
+
+[node name="Dialogue" type="Label" parent="Panel/Name"]
+layout_mode = 1
+offset_top = 60.0
+offset_right = 618.0
+offset_bottom = 220.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 28
 autowrap_mode = 2
 
+[node name="Press" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -298.0
+offset_top = -75.0
+offset_right = 298.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
+text = "*Press any button to continue*"
+vertical_alignment = 1
+
 [node name="ExitTimer" type="Timer" parent="."]
+wait_time = 3.0
 one_shot = true
 
 [connection signal="timeout" from="ExitTimer" to="." method="_on_exit_timer_timeout"]
