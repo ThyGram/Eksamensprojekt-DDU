@@ -41,12 +41,11 @@ func _process(delta):
 			$GameTimer.text = str(int(GameWatch/60)) + ":0" + str(GameWatch % 60)
 		else:
 			$GameTimer.text = "0" + str(int(GameWatch/60)) + ":0" + str(GameWatch % 60)
-	if int(GameWatch/60) == 8:
-		self.modulate = Color(1, 0.918, 0.663)
-	elif int(GameWatch/60) == 10:
-		self.modulate = Color(1, 1, 1)
-	elif int(GameWatch/60) == 18:
-		self.modulate = Color(1, 0.773, 0.663)
-	elif int(GameWatch/60) == 20:
+	if int(GameWatch/60) >= 20:
 		self.modulate = Color(0.639, 0.659, 0.784)
-
+	elif int(GameWatch/60) >= 18:
+		self.modulate = Color(1, 0.773, 0.663)
+	elif int(GameWatch/60) >= 10:
+		self.modulate = Color(1, 1, 1)
+	elif int(GameWatch/60) >= 8:
+		self.modulate = Color(1, 0.918, 0.663)
