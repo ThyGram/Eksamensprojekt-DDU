@@ -445,6 +445,7 @@ offset_bottom = 1094.0
 texture = ExtResource("2_mvc6y")
 
 [node name="RoomImage" type="TextureRect" parent="."]
+texture_filter = 1
 offset_left = 271.0
 offset_top = -58.0
 offset_right = 1711.0
@@ -465,7 +466,7 @@ texture_filter = 1
 position = Vector2(956, 902)
 scale = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_0j3lu")
-animation = &"walk_up"
+animation = &"idle_down"
 
 [node name="Computer" type="Node2D" parent="."]
 position = Vector2(28, -48)
