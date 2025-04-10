@@ -439,6 +439,7 @@ size = Vector2(515.25, 116)
 size = Vector2(244, 90)
 
 [node name="MainGame_Bedroom" type="Node2D"]
+modulate = Color(1, 0.917647, 0.662745, 1)
 y_sort_enabled = true
 script = ExtResource("1_cps6x")
 
@@ -619,6 +620,7 @@ position = Vector2(983, 1071)
 shape = SubResource("RectangleShape2D_fyy5i")
 
 [node name="GameTimer" type="Label" parent="."]
+top_level = true
 offset_left = 909.0
 offset_top = 17.0
 offset_right = 1039.0
