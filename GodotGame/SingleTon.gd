@@ -113,8 +113,9 @@ func _on_gametimer_timeout():
 					
 				Stocks[key][0] *= Increment
 				Stocks[key][0] = round(Stocks[key][0])
-			if get_tree().current_scene.name == "computer_stocks":
-				stocks_changed.emit()
+			if get_tree().current_scene != null:
+				if get_tree().current_scene.name == "computer_stocks":
+					stocks_changed.emit()
 		if ((GameWatch == 485 or floor(hour) == 12.0 or floor(hour) == 16.0 or floor(hour) == 20.0) and (floor(hour) == hour or GameWatch == 485)):
 			for key in Stocks:
 				Stocks[key][1] = null
@@ -135,9 +136,9 @@ func _on_gametimer_timeout():
 				elif n == 1:
 					Stocks[randomstock][1] = false
 					Badnews = storage.Stocks[randomstock][2] + " has just lost the lottery..."
-			
-			if get_tree().current_scene.name == "main_game_tv":
-				news_changed.emit()
-			
-		if get_tree().current_scene.name == "main_game_bedroom":
-			gamewatch_changed.emit()
+			if get_tree().current_scene != null:
+				if get_tree().current_scene.name == "main_game_tv":
+					news_changed.emit()
+		if get_tree().current_scene != null:
+			if get_tree().current_scene.name == "main_game_bedroom":
+				gamewatch_changed.emit()
