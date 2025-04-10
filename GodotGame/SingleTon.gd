@@ -95,7 +95,6 @@ func StockChange(hoursremaining : int):
 					Stocks[randomstock][1] = false
 
 func _on_gametimer_timeout():
-	print(get_tree().current_scene.name)
 	if GameWatch < 1440 and GameStarted:
 		GameWatch += 5
 		var hour : float = float(GameWatch) / 60.0
@@ -141,5 +140,4 @@ func _on_gametimer_timeout():
 				news_changed.emit()
 			
 		if get_tree().current_scene.name == "main_game_bedroom":
-			print("YTOOOO")
 			gamewatch_changed.emit()
