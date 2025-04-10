@@ -474,7 +474,7 @@ texture_filter = 1
 position = Vector2(958, 911)
 scale = Vector2(6.875, 6.82609)
 sprite_frames = SubResource("SpriteFrames_0j3lu")
-animation = &"walk_up"
+animation = &"idle_down"
 
 [node name="Computer" type="Node2D" parent="."]
 z_index = 1
