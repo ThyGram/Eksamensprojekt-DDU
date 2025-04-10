@@ -2,6 +2,7 @@ extends Node2D
 
 signal stocks_changed
 signal news_changed
+signal gamewatch_changed
 
 var DisplayUsername : String
 var Money : int = 500
@@ -94,6 +95,7 @@ func StockChange(hoursremaining : int):
 					Stocks[randomstock][1] = false
 
 func _on_gametimer_timeout():
+	print(get_tree().current_scene.name)
 	if GameWatch < 1440 and GameStarted:
 		GameWatch += 5
 		var hour : float = float(GameWatch) / 60.0
@@ -112,7 +114,7 @@ func _on_gametimer_timeout():
 					
 				Stocks[key][0] *= Increment
 				Stocks[key][0] = round(Stocks[key][0])
-			if get_tree().current_scene.name == "Stocks":
+			if get_tree().current_scene.name == "computer_stocks":
 				stocks_changed.emit()
 		if ((GameWatch == 485 or floor(hour) == 12.0 or floor(hour) == 16.0 or floor(hour) == 20.0) and (floor(hour) == hour or GameWatch == 485)):
 			for key in Stocks:
@@ -138,3 +140,6 @@ func _on_gametimer_timeout():
 			if get_tree().current_scene.name == "main_game_tv":
 				news_changed.emit()
 			
+		if get_tree().current_scene.name == "main_game_bedroom":
+			print("YTOOOO")
+			gamewatch_changed.emit()

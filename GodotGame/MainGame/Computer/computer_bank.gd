@@ -26,7 +26,7 @@ func _input(event):
 
 func _on_transfer_in_pressed():
 	var transfermoney : int = int($MoneyToTransfer.text)
-	if transfermoney != null and transfermoney <= storage.Money:
+	if transfermoney != null and transfermoney <= storage.Mone and transfermoney > 0:
 		storage.BankMoney += transfermoney
 		storage.Money -= transfermoney
 	elif transfermoney > storage.Money:
@@ -36,7 +36,7 @@ func _on_transfer_in_pressed():
 
 func _on_transfer_out_pressed():
 	var transfermoney : int = int($MoneyToTransfer.text)
-	if transfermoney != null and transfermoney <= storage.BankMoney:
+	if transfermoney != null and transfermoney <= storage.BankMoney and transfermoney > 0:
 		storage.BankMoney -= transfermoney
 		storage.Money += transfermoney
 	elif transfermoney > storage.Money:

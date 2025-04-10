@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://MainGame/Computer/computer_bank.gd" id="1_odwwq"]
 
-[node name="Computer_Bank" type="Control"]
+[node name="computer_bank" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -141,7 +141,7 @@ offset_right = 219.164
 offset_bottom = 103.255
 text = "Return "
 
-[connection signal="pressed" from="Transfer In" to="." method="_on_transfer_in_pressed"]
 [connection signal="pressed" from="Transfer In" to="." method="_on_transfer_pressed"]
+[connection signal="pressed" from="Transfer In" to="." method="_on_transfer_in_pressed"]
 [connection signal="pressed" from="Transfer Out" to="." method="_on_transfer_out_pressed"]
 [connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]

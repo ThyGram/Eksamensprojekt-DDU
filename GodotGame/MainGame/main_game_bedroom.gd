@@ -3,10 +3,13 @@ extends Node2D
 @onready var SummaryPopup = preload("res://PopUps/game_summary.tscn")
 @onready var PauseMenu = preload("res://PopUps/PauseMenu.tscn")
 
-# Called when the node enters the scene tree for the first time.
+@onready var single_ton = storage
+
 func _ready():
+	Gamewatch_Increase()
 	storage.GameStarted = true
 	storage.DayStarted = true
+	storage.connect("gamewatch_changed", Gamewatch_Increase)
 	
 	if (storage.GameWatch == 480 and storage.Day != 1):
 		if (storage.Day == 11):
@@ -29,7 +32,7 @@ func _input(event):
 		var PauseMenuNode = PauseMenu.instantiate()
 		add_child(PauseMenuNode)
 
-func _process(delta):
+func Gamewatch_Increase():
 	var GameWatch = storage.GameWatch
 	if GameWatch % 60 > 9:
 			if int(GameWatch/60) > 9:

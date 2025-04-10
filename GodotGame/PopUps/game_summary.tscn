@@ -39,6 +39,7 @@ theme_override_font_sizes/font_size = 30
 text = "Current Money:"
 
 [node name="InvestmentMoney" type="Label" parent="Panel"]
+layout_mode = 0
 offset_left = 9.0
 offset_top = 176.0
 offset_right = 640.0
@@ -47,6 +48,7 @@ theme_override_font_sizes/font_size = 30
 text = "Investment Money:"
 
 [node name="BankMoney" type="Label" parent="Panel"]
+layout_mode = 0
 offset_left = 9.0
 offset_top = 238.0
 offset_right = 640.0

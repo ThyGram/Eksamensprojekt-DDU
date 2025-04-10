@@ -12,13 +12,11 @@ var direction : String = "none"
 
 func _process(delta):
 	if Input.is_action_pressed("Up"):
-		print("up")
 		velocity = Vector2.UP * SPEED
 		is_moving = true
 		direction = "Up"
 	
 	elif Input.is_action_pressed("Left"):
-		print("down")
 		velocity = Vector2.LEFT * SPEED
 		is_moving = true
 		direction = "Left"

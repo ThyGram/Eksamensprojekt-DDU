@@ -9,14 +9,6 @@ func _ready():
 	
 	for key in stocks:
 		$Label/CurrentInvestments.add_item(stocks[key][2] + ": " + str(stocks[key][0]) + "$", null, true)
-		
-	
-	#"InvestedInRotschKid": [0, null],
-	#"InvestedInWhiteRock" : [0, null],
-	#"InvestedInZombieChampions" : [0, null],
-	#"InvestedInNewScandinavian" : [0, null],
-	#"InvestedInKarlsBjerg" : [0, null],
-	#"InvestedInHCØ" : [0, null]
 
 func UpdateList():
 	var list = $Label/CurrentInvestments.get_item_count()
@@ -35,7 +27,7 @@ func _process(delta):
 func _on_invest_pressed():
 	var index = $Label/CurrentInvestments.get_selected_items()
 	var amount : int = int($Label/InvestingAmount.text)
-	if !index.is_empty() and storage.Money >= amount:
+	if !index.is_empty() and storage.Money >= amount and amount > 0:
 		storage.Stocks[index[0]][0] += amount
 		$Label/CurrentInvestments.set_item_text(index[0], stocks[index[0]][2] + ": " + str(stocks[index[0]][0]) + "$")
 		storage.Money -= amount
@@ -52,7 +44,7 @@ func _on_invest_pressed():
 func _on_sell_pressed():
 	var index = $Label/CurrentInvestments.get_selected_items()
 	var amount : int = int($Label/InvestingAmount.text)
-	if !index.is_empty() and storage.Stocks[index[0]][0] >= amount:
+	if !index.is_empty() and storage.Stocks[index[0]][0] >= amount and amount > 0:
 		storage.Stocks[index[0]][0] -= amount
 		$Label/CurrentInvestments.set_item_text(index[0], stocks[index[0]][2] + ": " + str(stocks[index[0]][0]) + "$")
 		storage.Money += amount
