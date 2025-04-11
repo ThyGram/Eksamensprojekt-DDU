@@ -1,18 +1,20 @@
 extends Control
 
 var http_request : HTTPRequest = HTTPRequest.new()
-const SERVER_URL = "http://localhost/databasecontrol.php"
+
+const SERVER_URL = "http://localhost:80/GodotSecure/db_action_secure.php"
 const SERVER_HEADERS = ["Content-Type: application/x-www-form-urlencoded", "Cache-Control: max-age=0"]
-const SECRET_KEY = "1234567890"
+
+const SECRET_KEY = 1234567890
 var nonce = null
+
 var request_queue : Array = []
 var is_requesting : bool = false
 
 func _ready():
 	randomize()
-	# Connect request handler
 	add_child(http_request)
-	http_request.request_completed.connect(_http_request_completed)
+	http_request.connect("request_completed", Callable(self, "_http_request_completed"))
 
 func _process(delta):
 	if is_requesting:
@@ -28,55 +30,13 @@ func _process(delta):
 	else:
 		_send_request(request_queue.pop_front())
 
-func _http_request_completed(_result, _response_code, _headers, _body):
-	print("yocompleted")
-	is_requesting = false
-	if _result != HTTPRequest.RESULT_SUCCESS:
-		printerr("Error w/ connection: " + str(_result))
-		return
-	
-	var response_body = _body.get_string_from_utf8()
-	print(response_body)
-	
-	# Parse JSON response
-	var response = JSON.parse_string(response_body)
-	if response["Error"] != "none":
-		printerr("JSON parse error: " + str(response["Error"]))
-		return
-	
-	# Check if nonce is being requested
-	if response['command'] == 'get_nonce':
-		nonce = response['response']['nonce']
-		print("Got nonce: " + response['response']['nonce'])
-		return
-		
-	# If not requesting a nonce, handle other requests
-	print("Response Body:\n" + response_body)
-
-func request_nonce():
-	print("yononce")
-	var client = HTTPClient.new()
-	var data = client.query_string_from_dict({"data": JSON.stringify({})})
-	var body = "command=get_nonce&" + data
-	
-	# Make request to the server
-	var err = http_request.request(SERVER_URL, SERVER_HEADERS, HTTPClient.METHOD_POST, body)
-	
-	if err != OK:
-		printerr("HTTPRequest error: " + str(err))
-	else:
-		print("Requesting nonce")
-
 func _send_request(request : Dictionary):
-	print("yosend")
 	var client = HTTPClient.new()
-	var data = client.query_string_from_dict({"data": JSON.stringify(request["data"])})
-	
-	var body = "command=" + request["command"] + "&" + data
-	
+	var data = client.query_string_from_dict({"data": JSON.stringify(request['data'])})
 	var cnonce = str(Crypto.new().generate_random_bytes(32)).sha256_text()
+	var body = "command=" + request['command'] + "&" + data + "&cnonce=" + cnonce
 	# Generate security hash
-	var client_hash = (nonce + cnonce + body + SECRET_KEY).sha256_text()
+	var client_hash = (nonce + cnonce + body + str(SECRET_KEY)).sha256_text()
 	nonce = null
 	
 	# Create custom headers for request
@@ -90,21 +50,75 @@ func _send_request(request : Dictionary):
 	if err != OK:
 		printerr("HTTPRequest error: " + str(err))
 		return
-	
+	else:
+		pass
 	# Debug print
 	print("Requesting...\n\tCommand: " + request["command"] + "\n\tBody: " + body)
 
-func _on_add_score_pressed():
-	print("yoadd")
-	var score = 12
+
+func _http_request_completed(_result, _response_code, _headers, _body):
+	is_requesting = false
+	if _result != HTTPRequest.RESULT_SUCCESS:
+		printerr("Error w/ connection: " + str(_result))
+		return
+	
+	var response_body = _body.get_string_from_utf8()
+	# Parse JSON response
+	var json_conv = JSON.new()
+	json_conv.parse(response_body)
+	var response = json_conv.get_data()
+	
+	print("Raw response: " + response_body)
+	
+	if response['error'] != "none":
+		printerr("JSON parse error: " + str(response['error']))
+		return
+	
+	# Check if nonce is being requested
+	if response['command'] == "get_nonce":
+		nonce = response['response']['nonce']
+		print("Got nonce: " + response['response']['nonce'])
+		return
+	
+	if response['response']['size'] > 0:
+		for n in (response['response']['size']):
+			$Text
+	else:
+		print("No Data")
+	# If not requesting a nonce, handle other requests
+	print("Response Body:\n" + response_body)
+
+func request_nonce():
+	var client = HTTPClient.new()
+	var data = client.query_string_from_dict({"data": JSON.stringify({})})
+	var body = "command=get_nonce&" + data
+	
+	# Make request to the server
+	var err = http_request.request(SERVER_URL, SERVER_HEADERS, HTTPClient.METHOD_POST, body)
+	
+	if err != OK:
+		printerr("HTTPRequest error: " + str(err))
+	else:
+		print("Requesting nonce")
+
+func _on_new_score():
 	var username = "test"
+	var password = "CCe"
+	var displayname
+	var highscore
 	
 	var command = "add_score"
-	var data = {"username": "scoreman", "score": 1000}
+	var data = {"username": "scoreman", "passkey": "eeedd", "displayname": "test", "highscore": 1000}
 	request_queue.push_back({"command": command, "data": data})
 
-func _on_get_scores_pressed():
-	print("yoget")
+func get_scores():
 	var command = "get_scores"
 	var data = {"score_offset": 0, "score_number": 10}
+	request_queue.push_back({"command": command, "data": data})
+	print("get scores")
+
+func _get_player():
+	var user_id = 2
+	var command = "get_player"
+	var data = {"user_id" : user_id}
 	request_queue.push_back({"command": command, "data": data})

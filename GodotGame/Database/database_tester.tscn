@@ -27,5 +27,12 @@ offset_right = 484.0
 offset_bottom = 225.0
 text = "get"
 
-[connection signal="pressed" from="AddScore" to="." method="_on_add_score_pressed"]
-[connection signal="pressed" from="GetScores" to="." method="_on_get_scores_pressed"]
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 536.0
+offset_top = 105.0
+offset_right = 1225.0
+offset_bottom = 543.0
+
+[connection signal="pressed" from="AddScore" to="." method="_on_new_score"]
+[connection signal="pressed" from="GetScores" to="." method="get_scores"]
