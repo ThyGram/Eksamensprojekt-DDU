@@ -8,12 +8,12 @@ func _ready():
 	storage.connect("stocks_changed", UpdateList)
 	
 	for key in stocks:
-		$Label/CurrentInvestments.add_item(stocks[key][2] + ": " + str(stocks[key][0]) + "$", null, true)
+		$Panel/CurrentInvestments.add_item(stocks[key][2] + ": " + str(stocks[key][0]) + "$", null, true)
 
 func UpdateList():
-	var list = $Label/CurrentInvestments.get_item_count()
+	var list = $Panel/CurrentInvestments.get_item_count()
 	for i in list:
-		$Label/CurrentInvestments.set_item_text(i, stocks[i][2] + ": " + str(stocks[i][0]) + "$")
+		$Panel/CurrentInvestments.set_item_text(i, stocks[i][2] + ": " + str(stocks[i][0]) + "$")
 
 
 func _input(event):
@@ -25,11 +25,11 @@ func _process(delta):
 	$MoneyAmount.text = "Wallet: $" + str(storage.Money)
 
 func _on_invest_pressed():
-	var index = $Label/CurrentInvestments.get_selected_items()
-	var amount : int = int($Label/InvestingAmount.text)
+	var index = $Panel/CurrentInvestments.get_selected_items()
+	var amount : int = int($Panel/InvestingAmount.text)
 	if !index.is_empty() and storage.Money >= amount and amount > 0:
 		storage.Stocks[index[0]][0] += amount
-		$Label/CurrentInvestments.set_item_text(index[0], stocks[index[0]][2] + ": " + str(stocks[index[0]][0]) + "$")
+		$Panel/CurrentInvestments.set_item_text(index[0], stocks[index[0]][2] + ": " + str(stocks[index[0]][0]) + "$")
 		storage.Money -= amount
 	elif storage.Money < amount:
 		var NoMoney = NoMoneyNode.instantiate()
@@ -42,11 +42,11 @@ func _on_invest_pressed():
 
 
 func _on_sell_pressed():
-	var index = $Label/CurrentInvestments.get_selected_items()
-	var amount : int = int($Label/InvestingAmount.text)
+	var index = $Panel/CurrentInvestments.get_selected_items()
+	var amount : int = int($Panel/InvestingAmount.text)
 	if !index.is_empty() and storage.Stocks[index[0]][0] >= amount and amount > 0:
 		storage.Stocks[index[0]][0] -= amount
-		$Label/CurrentInvestments.set_item_text(index[0], stocks[index[0]][2] + ": " + str(stocks[index[0]][0]) + "$")
+		$Panel/CurrentInvestments.set_item_text(index[0], stocks[index[0]][2] + ": " + str(stocks[index[0]][0]) + "$")
 		storage.Money += amount
 	elif index.is_empty():
 		var NoMoney = NoMoneyNode.instantiate()

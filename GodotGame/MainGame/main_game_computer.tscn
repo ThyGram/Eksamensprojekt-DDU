@@ -19,6 +19,7 @@ scale = Vector2(0.995906, 0.991586)
 script = ExtResource("1_d3cnl")
 
 [node name="Stocks" type="Button" parent="."]
+texture_filter = 1
 custom_minimum_size = Vector2(280, 280)
 layout_mode = 1
 anchors_preset = 8
@@ -36,6 +37,7 @@ theme_override_font_sizes/font_size = 180
 text = "📈"
 
 [node name="Bank" type="Button" parent="."]
+texture_filter = 1
 custom_minimum_size = Vector2(280, 280)
 layout_mode = 1
 anchors_preset = 8
@@ -53,6 +55,7 @@ theme_override_font_sizes/font_size = 180
 text = "🐖"
 
 [node name="Calender" type="Button" parent="."]
+texture_filter = 1
 custom_minimum_size = Vector2(280, 280)
 layout_mode = 1
 anchors_preset = 8
@@ -84,22 +87,50 @@ expand_icon = true
 
 [node name="TutorialPanel" type="Panel" parent="."]
 visible = false
-layout_mode = 0
-offset_left = -32.0
-offset_top = -29.0
-offset_right = 1968.0
-offset_bottom = 1119.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Label" type="Label" parent="TutorialPanel"]
-visible = false
-layout_mode = 0
-offset_left = 561.166
-offset_top = 109.679
-offset_right = 1507.17
-offset_bottom = 331.679
-theme_override_font_sizes/font_size = 30
-text = "This is the computer
-Here you can open one of your 3 apps. Calender, Stocks and Bank"
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -568.5
+offset_top = 270.0
+offset_right = 568.5
+offset_bottom = 373.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 36
+text = "This is your desktop computer.
+From here you can access one of your Stocks, Bank and Calendar."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Click" type="Label" parent="TutorialPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -298.0
+offset_top = -75.0
+offset_right = 298.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
+text = "*Left Click to Continue*"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TutorialTimer" type="Timer" parent="."]
 wait_time = 0.1

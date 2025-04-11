@@ -8,7 +8,6 @@ func _ready():
 
 func tutorial():
 	$TutorialPanel.visible = true
-	$TutorialPanel/Label.visible = true
 
 func tutorialclear():
 	$TutorialPanel.queue_free()

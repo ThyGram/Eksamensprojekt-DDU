@@ -26,12 +26,12 @@ var BankMoney: int
 var BankInterest: float = rng.randf_range(0.800, 1.200)
 # First variable is money invested, second is news boost or not and third is the name of the stock.
 var Stocks : Dictionary = {
-	0 : [0, null, "Rothskid"],
+	0 : [0, null, "HCOE"],
 	1 : [0, null, "WhiteRock"],
 	2 : [0, null, "ZombieChampions"],
 	3 : [0, null, "NewScandinavian"],
-	4 : [0, null, "KarlsBjerg"],
-	5 : [0, null, "HCØ"]
+	4 : [0, null, "Karlsbjerg"],
+	5 : [0, null, "guardVan"]
 	}
 
 func _ready():

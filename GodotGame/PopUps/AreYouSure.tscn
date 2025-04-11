@@ -14,6 +14,7 @@ grow_vertical = 2
 script = ExtResource("1_kpaaj")
 
 [node name="Panel" type="Panel" parent="."]
+layout_mode = 0
 offset_left = 600.0
 offset_top = 420.0
 offset_right = 1320.0

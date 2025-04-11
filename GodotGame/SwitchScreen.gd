@@ -3,12 +3,19 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Timer.start(3)
+	$Timer.start(4)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if $Timer.time_left > 3:
+		$Panel/ZZZ.text = "ZZZ"
+	elif $Timer.time_left > 2:
+		$Panel/ZZZ.text = "ZZZ."
+	elif $Timer.time_left > 1:
+		$Panel/ZZZ.text = "ZZZ.."
+	elif $Timer.time_left > 0:
+		$Panel/ZZZ.text = "ZZZ..."
 
 
 func _on_timer_timeout():

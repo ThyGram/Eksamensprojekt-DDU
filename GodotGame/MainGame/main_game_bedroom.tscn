@@ -621,11 +621,16 @@ shape = SubResource("RectangleShape2D_fyy5i")
 
 [node name="GameTimer" type="Label" parent="."]
 top_level = true
-offset_left = 909.0
-offset_top = 17.0
-offset_right = 1039.0
-offset_bottom = 86.0
-theme_override_font_sizes/font_size = 50
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -65.0
+offset_right = 65.0
+offset_bottom = 69.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 64
 text = "08:00"
 
 [connection signal="body_entered" from="Computer/Area2D" to="Player" method="_on_computer_body_entered"]

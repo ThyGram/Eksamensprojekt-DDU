@@ -11,43 +11,95 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_avcdi")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 338.0
-offset_top = 88.0
-offset_right = 339.0
-offset_bottom = 111.0
-text = "Current Investments"
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -360.0
+offset_right = 240.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="CurrentInvestments" type="ItemList" parent="Label"]
-layout_mode = 0
-offset_left = -3.0
-offset_top = 25.0
-offset_right = 307.0
-offset_bottom = 302.0
+[node name="Title" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 55.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
+text = "Stock Exchange"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Invest" type="Button" parent="Label"]
-layout_mode = 0
-offset_left = 208.0
-offset_top = 331.0
-offset_right = 263.0
-offset_bottom = 362.0
+[node name="CurrentInvestments" type="ItemList" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -285.0
+offset_right = 220.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 28
+
+[node name="Invest" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = 95.0
+offset_right = -20.0
+offset_bottom = 155.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 28
 text = "Invest"
 
-[node name="InvestingAmount" type="TextEdit" parent="Label"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 324.0
-offset_right = 189.0
-offset_bottom = 364.0
+[node name="InvestingAmount" type="TextEdit" parent="Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = 95.0
+offset_right = 340.0
+offset_bottom = 155.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 28
 placeholder_text = "Amount to invest . . ."
 
-[node name="Sell" type="Button" parent="Label"]
-layout_mode = 0
-offset_left = 210.0
-offset_top = 374.0
-offset_right = 265.0
-offset_bottom = 405.0
+[node name="Sell" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = 175.0
+offset_right = -20.0
+offset_bottom = 235.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 28
 text = "Sell"
 
 [node name="MoneyAmount" type="Label" parent="."]
@@ -76,6 +128,6 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 24
 text = "Return "
 
-[connection signal="pressed" from="Label/Invest" to="." method="_on_invest_pressed"]
-[connection signal="pressed" from="Label/Sell" to="." method="_on_sell_pressed"]
+[connection signal="pressed" from="Panel/Invest" to="." method="_on_invest_pressed"]
+[connection signal="pressed" from="Panel/Sell" to="." method="_on_sell_pressed"]
 [connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]
