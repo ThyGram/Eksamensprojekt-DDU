@@ -81,8 +81,9 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 		return
 	
 	if response['response']['size'] > 0:
+		$PlayerList.text("")
 		for n in (response['response']['size']):
-			$Text
+			$PlayerList.set_text($PlayerList.get_text() + str(response['response'][str(n)]['play']))
 	else:
 		print("No Data")
 	# If not requesting a nonce, handle other requests
@@ -101,14 +102,10 @@ func request_nonce():
 	else:
 		print("Requesting nonce")
 
-func _on_new_score():
-	var username = "test"
-	var password = "CCe"
-	var displayname
-	var highscore
+func new_player(username, password, displayname, highscore):
 	
 	var command = "add_score"
-	var data = {"username": "scoreman", "passkey": "eeedd", "displayname": "test", "highscore": 1000}
+	var data = {"username": username, "passkey": password, "displayname": password, "highscore": highscore}
 	request_queue.push_back({"command": command, "data": data})
 
 func get_scores():
@@ -117,7 +114,7 @@ func get_scores():
 	request_queue.push_back({"command": command, "data": data})
 	print("get scores")
 
-func _get_player():
+func get_player():
 	var user_id = 2
 	var command = "get_player"
 	var data = {"user_id" : user_id}
