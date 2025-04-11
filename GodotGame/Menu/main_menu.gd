@@ -18,11 +18,11 @@ func _on_play_pressed():
 	get_tree().change_scene_to_file("res://MainGame/main_game_doorchat.tscn")
 
 func _on_leaderboard_pressed():
-	get_tree().change_scene_to_file("res://leaderboard.tscn")
+	get_tree().change_scene_to_file("res://Menu/Leaderboard.tscn")
 
 func _on_logout_pressed():
-	#Reset current display name???
-	get_tree().change_scene_to_file("res://login.tscn")
+	storage.displayname = ""
+	get_tree().change_scene_to_file("res://Menu/Login.tscn")
 
 func _on_quit_pressed():
 	get_tree().quit()

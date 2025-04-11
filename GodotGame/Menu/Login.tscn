@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3pk7uot5pari"]
+
+[ext_resource type="Script" path="res://Menu/Login.gd" id="1_rh1do"]
+
+[node name="Login" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rh1do")
+
+[node name="Username" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 286.0
+offset_right = 1028.0
+offset_bottom = 364.0
+placeholder_text = "username"
+
+[node name="Password" type="TextEdit" parent="."]
+offset_left = 800.0
+offset_top = 388.0
+offset_right = 1028.0
+offset_bottom = 466.0
+placeholder_text = "password"
+
+[node name="Login" type="Button" parent="."]
+layout_mode = 0
+offset_left = 834.0
+offset_top = 510.0
+offset_right = 994.0
+offset_bottom = 566.0
+text = "Login"
+
+[node name="Register" type="Button" parent="."]
+offset_left = 838.0
+offset_top = 614.0
+offset_right = 998.0
+offset_bottom = 670.0
+text = "Register"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 764.0
+offset_top = 576.0
+offset_right = 1097.0
+offset_bottom = 605.0
+text = "If you dont have an accout you can register"
+
+[node name="HVISINGENDATABASE" type="Button" parent="."]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 396.0
+offset_right = 276.0
+offset_bottom = 458.0
+text = "JEG HAR IKKE DATABASE"
+
+[connection signal="pressed" from="Login" to="." method="_on_login_pressed"]
+[connection signal="pressed" from="Register" to="." method="_on_register_pressed"]
+[connection signal="pressed" from="HVISINGENDATABASE" to="." method="_on_hvisingendatabase_pressed"]

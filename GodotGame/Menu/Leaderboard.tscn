@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://csebb3ucwi3vw"]
 
-[ext_resource type="Script" path="res://Leaderboard.gd" id="1_5n4ew"]
-[ext_resource type="Texture2D" uid="uid://31ioku7yp413" path="res://textures/cash champions.png" id="2_ad281"]
+[ext_resource type="Script" path="res://Menu/Leaderboard.gd" id="1_wpwcg"]
+[ext_resource type="Texture2D" uid="uid://31ioku7yp413" path="res://textures/cash champions.png" id="2_rf5u7"]
 
 [node name="Leaderboard" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_5n4ew")
+script = ExtResource("1_wpwcg")
 
 [node name="Return" type="Button" parent="."]
 layout_mode = 1
@@ -27,7 +27,7 @@ metadata/_edit_use_anchors_ = true
 [node name="CashChampions" type="Sprite2D" parent="Panel"]
 position = Vector2(220, 85)
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_ad281")
+texture = ExtResource("2_rf5u7")
 
 [node name="TitleBG" type="Panel" parent="Panel"]
 layout_mode = 1

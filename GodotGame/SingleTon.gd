@@ -4,7 +4,7 @@ signal stocks_changed
 signal news_changed
 signal gamewatch_changed
 
-var DisplayUsername : String
+var displayname : String
 var Money : int = 500
 var Day : int = 1
 var Highscore : int
@@ -35,7 +35,7 @@ var Stocks : Dictionary = {
 	}
 
 func _ready():
-	DisplayUsername = storage.DisplayUsername
+	displayname = storage.displayname
 	Money = storage.Money
 	Highscore = storage.Highscore
 	GameStarted = storage.GameStarted

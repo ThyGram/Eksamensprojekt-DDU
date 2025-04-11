@@ -11,10 +11,12 @@ var nonce = null
 var request_queue : Array = []
 var is_requesting : bool = false
 
+
 func _ready():
 	randomize()
 	add_child(http_request)
 	http_request.connect("request_completed", Callable(self, "_http_request_completed"))
+	get_scores()
 
 func _process(delta):
 	if is_requesting:
@@ -81,9 +83,13 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 		return
 	
 	if response['response']['size'] > 0:
-		$PlayerList.text("")
+		$Panel/Position/PositionList.text = ""
+		$Panel/Player/PlayerList.text = ""
+		$Panel/Score/ScoreList.text = ""
 		for n in (response['response']['size']):
-			$PlayerList.set_text($PlayerList.get_text() + str(response['response'][str(n)]['play']))
+			$Panel/Position/PositionList.text = $Panel/Position/PositionList.text + str(n + 1) + "\n"
+			$Panel/Player/PlayerList.text = $Panel/Player/PlayerList.text + str(response['response'][str(n)]['displayname'] + "\n")
+			$Panel/Score/ScoreList.text = $Panel/Score/ScoreList.text + str(response['response'][str(n)]['highscore'] + "$\n")
 	else:
 		print("No Data")
 	# If not requesting a nonce, handle other requests
@@ -102,20 +108,11 @@ func request_nonce():
 	else:
 		print("Requesting nonce")
 
-func new_player(username, password, displayname, highscore):
-	
-	var command = "add_score"
-	var data = {"username": username, "passkey": password, "displayname": password, "highscore": highscore}
-	request_queue.push_back({"command": command, "data": data})
-
 func get_scores():
 	var command = "get_scores"
 	var data = {"score_offset": 0, "score_number": 10}
 	request_queue.push_back({"command": command, "data": data})
 	print("get scores")
 
-func get_player():
-	var user_id = 2
-	var command = "get_player"
-	var data = {"user_id" : user_id}
-	request_queue.push_back({"command": command, "data": data})
+func _on_return_pressed():
+	get_tree().change_scene_to_file("res://Menu/main_menu.tscn")

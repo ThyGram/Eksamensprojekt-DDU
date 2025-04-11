@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://bd4kw46cta5u6"]
+
+[ext_resource type="Script" path="res://Menu/Register.gd" id="1_2ip0w"]
+
+[node name="Register" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2ip0w")
+
+[node name="Username" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 741.0
+offset_top = 252.0
+offset_right = 1077.0
+offset_bottom = 323.0
+placeholder_text = "Username"
+
+[node name="Password" type="TextEdit" parent="."]
+offset_left = 746.0
+offset_top = 333.0
+offset_right = 1082.0
+offset_bottom = 404.0
+placeholder_text = "Password"
+
+[node name="Displayname" type="TextEdit" parent="."]
+offset_left = 744.0
+offset_top = 433.0
+offset_right = 1080.0
+offset_bottom = 504.0
+placeholder_text = "Displayname"
+
+[node name="Register" type="Button" parent="."]
+layout_mode = 0
+offset_left = 869.0
+offset_top = 551.0
+offset_right = 1004.0
+offset_bottom = 616.0
+text = "Register"
+
+[node name="Return" type="Button" parent="."]
+offset_left = 268.0
+offset_top = 32.0
+offset_right = 336.0
+offset_bottom = 63.0
+text = "Return "
+
+[connection signal="pressed" from="Register" to="." method="_on_register_pressed"]
+[connection signal="pressed" from="Return" to="." method="_on_return_pressed"]

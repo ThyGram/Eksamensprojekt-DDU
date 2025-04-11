@@ -18,4 +18,4 @@ func _on_continue_pressed():
 func _on_quit_pressed():
 	get_tree().paused = false
 	queue_free()
-	get_tree().change_scene_to_file("res://MainGame/main_menu.tscn")
+	get_tree().change_scene_to_file("res://Menu/main_menu.tscn")
