@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkdeh8v5rjlhy"
-path="res://.godot/imported/doorway.jpg-b2fa9fc0383cde0295a1e87b21b9d127.ctex"
+uid="uid://bmeb0fydo211v"
+path="res://.godot/imported/power_off_white.svg-5b50db1c78dc61cb22ff7bfbb8132389.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/doorway.jpg"
-dest_files=["res://.godot/imported/doorway.jpg-b2fa9fc0383cde0295a1e87b21b9d127.ctex"]
+source_file="res://textures/power_off_white.svg"
+dest_files=["res://.godot/imported/power_off_white.svg-5b50db1c78dc61cb22ff7bfbb8132389.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

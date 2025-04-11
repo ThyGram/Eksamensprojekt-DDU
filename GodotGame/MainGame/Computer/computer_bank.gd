@@ -16,7 +16,7 @@ func _ready():
 		
 
 func _process(delta):
-	$Money.text = str(storage.Money) + "$"
+	$Money.text = "Wallet: $" + str(storage.Money)
 	$BankMoney.text = str(storage.BankMoney) + "$"
 
 func _input(event):

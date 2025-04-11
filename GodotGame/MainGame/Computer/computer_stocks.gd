@@ -22,7 +22,7 @@ func _input(event):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$MoneyAmount.text = "Amount: " + str(storage.Money) + "$"
+	$MoneyAmount.text = "Wallet: $" + str(storage.Money)
 
 func _on_invest_pressed():
 	var index = $Label/CurrentInvestments.get_selected_items()

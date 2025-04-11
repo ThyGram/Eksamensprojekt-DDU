@@ -4,7 +4,7 @@ var investmentMoney : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Panel/Title.text = "Day " + str(storage.Day-1) + " Summary"
+	$Panel/Title.text = "Summary:\nDay " + str(storage.Day-1)
 	
 	$Panel/CurrentMoney.text = "Current money: " + str(storage.Money)
 	

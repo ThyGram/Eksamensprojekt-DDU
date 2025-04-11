@@ -17,7 +17,6 @@ func _on_play_pressed():
 	storage.Day = 1
 	get_tree().change_scene_to_file("res://MainGame/main_game_doorchat.tscn")
 
-
 func _on_leaderboard_pressed():
 	get_tree().change_scene_to_file("res://leaderboard.tscn")
 
@@ -28,5 +27,5 @@ func _on_logout_pressed():
 func _on_quit_pressed():
 	get_tree().quit()
 
-
-
+func _on_tutorial_pressed():
+	pass # Replace with function body.

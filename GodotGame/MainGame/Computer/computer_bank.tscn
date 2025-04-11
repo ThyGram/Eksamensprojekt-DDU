@@ -28,6 +28,26 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 750
 text = "🐖"
 
+[node name="Press" type="Label" parent="Piggy"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -298.0
+offset_top = -315.0
+offset_right = 298.0
+offset_bottom = -260.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
+text = "Bank"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Dollar" type="Label" parent="."]
 texture_filter = 1
 layout_mode = 1
@@ -46,11 +66,15 @@ theme_override_font_sizes/font_size = 350
 text = "💲"
 
 [node name="Money" type="Label" parent="."]
-layout_mode = 0
-offset_left = 1734.0
-offset_top = 14.0
-offset_right = 1863.0
-offset_bottom = 115.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -229.0
+offset_top = 50.0
+offset_right = -100.0
+offset_bottom = 151.0
+grow_horizontal = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
@@ -76,13 +100,35 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -490.0
+offset_left = -460.0
 offset_top = -20.0
 offset_right = -250.0
 offset_bottom = 20.0
 grow_horizontal = 0
 grow_vertical = 2
 placeholder_text = "Amount"
+
+[node name="MoneyToTransfer2" type="TextEdit" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -490.0
+offset_top = -20.0
+offset_right = -470.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+placeholder_text = "$"
+editable = false
+context_menu_enabled = false
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
 
 [node name="Transfer In" type="Button" parent="."]
 layout_mode = 1
@@ -134,14 +180,17 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ReturnButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 40.1644
-offset_top = 30.2546
-offset_right = 219.164
-offset_bottom = 103.255
+layout_mode = 1
+offset_left = 100.0
+offset_top = 50.0
+offset_right = 280.0
+offset_bottom = 130.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 24
 text = "Return "
 
-[connection signal="pressed" from="Transfer In" to="." method="_on_transfer_pressed"]
 [connection signal="pressed" from="Transfer In" to="." method="_on_transfer_in_pressed"]
+[connection signal="pressed" from="Transfer In" to="." method="_on_transfer_pressed"]
 [connection signal="pressed" from="Transfer Out" to="." method="_on_transfer_out_pressed"]
 [connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]

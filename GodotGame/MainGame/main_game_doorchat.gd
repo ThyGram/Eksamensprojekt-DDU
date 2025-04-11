@@ -13,21 +13,21 @@ var timer = Timer.new()
 
 func _ready():
 	if storage.Day == 1:
-		$Panel/Name/Dialogue.text = Dialogue1[0]
+		$Panel/Dialogue.text = Dialogue1[0]
 		currDialogue = Dialogue1
 	elif storage.Day == 5:
-		$Panel/Name/Dialogue.text = Dialogue2[0]
+		$Panel/Dialogue.text = Dialogue2[0]
 		currDialogue = Dialogue2
 	elif storage.Day == 10:
-		$Panel/Name/Dialogue.text = Dialogue3[0]
+		$Panel/Dialogue.text = Dialogue3[0]
 		currDialogue = Dialogue3
 		
 
 func _input(event):
 	if (event.is_action_pressed("LeftClick") and !stop):
-		var currIndex = currDialogue.find($Panel/Name/Dialogue.text, 0)
+		var currIndex = currDialogue.find($Panel/Dialogue.text, 0)
 		if (currIndex < currDialogue.size() - 1):
-			$Panel/Name/Dialogue.text = currDialogue[currIndex+1]
+			$Panel/Dialogue.text = currDialogue[currIndex+1]
 		else:
 			$ExitTimer.start()
 			stop = true
