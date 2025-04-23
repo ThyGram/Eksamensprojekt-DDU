@@ -85,11 +85,11 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 	if response['response']['size'] > 0:
 		$Panel/Position/PositionList.text = ""
 		$Panel/Player/PlayerList.text = ""
-		$Panel/Score/CashList.text = ""
+		$Panel/Cash/CashList.text = ""
 		for n in (response['response']['size']):
 			$Panel/Position/PositionList.text = $Panel/Position/PositionList.text + str(n + 1) + "\n"
 			$Panel/Player/PlayerList.text = $Panel/Player/PlayerList.text + str(response['response'][str(n)]['displayname'] + "\n")
-			$Panel/Score/CashList.text = $Panel/Score/CashList.text + str(response['response'][str(n)]['highscore'] + "$\n")
+			$Panel/Cash/CashList.text = $Panel/Cash/CashList.text + str(response['response'][str(n)]['highscore'] + "$\n")
 	else:
 		print("No Data")
 	# If not requesting a nonce, handle other requests
