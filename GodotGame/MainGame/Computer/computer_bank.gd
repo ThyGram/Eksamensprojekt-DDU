@@ -13,7 +13,11 @@ func _ready():
 		#https://www.reddit.com/r/godot/comments/x6l82x/how_to_change_color_of_label_text_via_code/ 
 		var red = Color(1.0,0.0,0.0,1.0)
 		$Interest.set("theme_override_colors/font_color",red)
-		
+	if !storage.BankTutorial or storage.BankTutorial == null:
+		storage.BankTutorial = false
+		$TutorialPanel.visible = true
+	else:
+		$TutorialPanel.queue_free()
 
 func _process(delta):
 	$Money.text = "Wallet: $" + str(storage.Money)
@@ -22,7 +26,9 @@ func _process(delta):
 func _input(event):
 	if (event.is_action_pressed("Escape")):
 		get_tree().change_scene_to_file("res://MainGame/main_game_computer.tscn")
-
+	if (event.is_action_pressed("LeftClick") and !storage.BankTutorial):
+		$TutorialPanel.queue_free()
+		storage.BankTutorial = true
 
 func _on_transfer_in_pressed():
 	var transfermoney : int = int($MoneyToTransfer.text)
