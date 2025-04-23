@@ -493,7 +493,7 @@ position = Vector2(1149, 661)
 scale = Vector2(200, 200)
 texture = ExtResource("2_dbua4")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="TutorialPanel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -501,7 +501,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Panel"]
+[node name="TutorialText" type="Label" parent="TutorialPanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

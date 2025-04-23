@@ -34,6 +34,11 @@ func _ready():
 			var current_cross = current_date + "/Cross";
 			get_node(current_cross).visible = true;
 	
+	if (!storage.CalenderTutorial or storage.CalenderTutorial == null):
+		storage.CalenderTutorial = false
+		$TutorialPanel.visible = true
+	else:
+		$TutorialPanel.queue_free()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -43,7 +48,9 @@ func _process(delta):
 func _input(event):
 	if (event.is_action_pressed("Escape")):
 		get_tree().change_scene_to_file("res://MainGame/main_game_computer.tscn")
-
+	if (event.is_action_pressed("LeftClick") and !storage.CalenderTutorial):
+		$TutorialPanel.queue_free()
+		storage.CalenderTutorial = true
 
 func _on_return_button_pressed():
 	get_tree().change_scene_to_file("res://MainGame/main_game_computer.tscn")
