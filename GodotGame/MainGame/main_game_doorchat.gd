@@ -19,6 +19,7 @@ func _ready():
 	elif storage.Day == 5:
 		$Panel/Dialogue.text = Dialogue2[0]
 		currDialogue = Dialogue2
+		storage.SharkTalk5 = true
 	elif storage.Day == 10:
 		if storage.Money > 10000:
 			$Panel/Dialogue.text = Dialogue3Win[0]

@@ -18,6 +18,14 @@ func _ready():
 			get_tree().paused = true
 			var SummaryNode = SummaryPopup.instantiate()
 			add_child(SummaryNode)
+	if !storage.BedroomTutorial or storage.BedroomTutorial == null:
+		storage.BedroomTutorial = false
+		$TutorialPanel.visible = true
+	else:
+		$TutorialPanel.queue_free()
+	
+	if storage.Day == 5 and (!storage.SharkTalk5 or storage.SharkTalk5 == null):
+		$"SHARK IS HERE".visible = true
 
 func NewDay():
 	if (storage.Day < 10):
@@ -31,6 +39,9 @@ func _input(event):
 		get_tree().paused = true
 		var PauseMenuNode = PauseMenu.instantiate()
 		add_child(PauseMenuNode)
+	if event.is_action_pressed("LeftClick") and !storage.BedroomTutorial:
+		$TutorialPanel.queue_free()
+		storage.BedroomTutorial = true
 
 func Gamewatch_Increase():
 	var GameWatch = storage.GameWatch

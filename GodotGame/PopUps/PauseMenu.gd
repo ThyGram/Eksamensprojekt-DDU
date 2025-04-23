@@ -5,7 +5,6 @@ extends Control
 func _ready():
 	$Panel/Title.text = "Game Paused - Day " + str(storage.Day)
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

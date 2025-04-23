@@ -621,6 +621,7 @@ shape = SubResource("RectangleShape2D_fyy5i")
 
 [node name="GameTimer" type="Label" parent="."]
 top_level = true
+z_index = 2
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -632,6 +633,72 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 64
 text = "08:00"
+
+[node name="TutorialPanel" type="Panel" parent="."]
+z_index = 1
+offset_left = -11.0
+offset_top = -16.0
+offset_right = 1961.0
+offset_bottom = 1077.0
+
+[node name="TutorialText" type="Label" parent="TutorialPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -351.0
+offset_top = -264.5
+offset_right = 351.0
+offset_bottom = 264.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "Welcome to Cash Champions
+In this game there are 3 important furniture in your room
+
+The bed is where you can sleep and go to the next day
+A day goes onto 24:00
+
+The TV shows the news at that time
+
+And finally the computer, where you control your funds
+Invest your money to earn even more!
+
+Maybe LåneHajen Haj will return....
+
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Click" type="Label" parent="TutorialPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -298.0
+offset_top = -55.0
+offset_right = 298.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
+text = "*Left Click to Continue*"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SHARK IS HERE" type="Label" parent="."]
+offset_left = 906.0
+offset_top = 817.0
+offset_right = 1071.0
+offset_bottom = 982.0
+theme_override_font_sizes/font_size = 120
+text = "❗"
 
 [connection signal="body_entered" from="Computer/Area2D" to="Player" method="_on_computer_body_entered"]
 [connection signal="body_exited" from="Computer/Area2D" to="Player" method="_on_computer_body_exited"]

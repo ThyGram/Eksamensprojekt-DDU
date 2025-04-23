@@ -21,6 +21,9 @@ var TVTutorial : bool
 var BankTutorial : bool
 var StockTutorial : bool
 var CalenderTutorial : bool
+var BedroomTutorial : bool
+
+var SharkTalk5 : bool
 
 var Goodnews : String = "No News"
 var Badnews : String = "No News"
@@ -52,11 +55,14 @@ func _ready():
 	Badnews = storage.Badnews
 	
 	#TUTORIALS
+	BedroomTutorial = storage.BedroomTutorial
 	ComputerTutorial = storage.ComputerTutorial
 	TVTutorial = storage.TVTutorial
 	StockTutorial = storage.StockTutorial
 	BankTutorial = storage.BankTutorial
 	CalenderTutorial = storage.CalenderTutorial
+	
+	SharkTalk5 = storage.SharkTalk5
 	
 	# Stocks
 	Stocks = storage.Stocks
@@ -101,7 +107,7 @@ func StockChange(hoursremaining : int):
 					Stocks[randomstock][1] = false
 
 func _on_gametimer_timeout():
-	if GameWatch < 1440 and GameStarted:
+	if GameWatch < 1440 and GameStarted and BedroomTutorial:
 		GameWatch += 5
 		var hour : float = float(GameWatch) / 60.0
 		if floor(hour) == hour and int(floor(hour)) % 2 == int(hour) % 2:
