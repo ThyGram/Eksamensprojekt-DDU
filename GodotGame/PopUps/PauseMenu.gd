@@ -3,7 +3,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Panel/Title.text = "Game Paused\nDay " + str(storage.Day)
+	$Panel/Title.text = "Game Paused - Day " + str(storage.Day)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
