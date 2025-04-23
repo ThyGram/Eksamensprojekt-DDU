@@ -8,21 +8,12 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_wpwcg")
 
-[node name="Return" type="Button" parent="."]
-layout_mode = 1
-offset_left = 268.0
-offset_top = 32.0
-offset_right = 336.0
-offset_bottom = 63.0
-text = "Return "
-
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
-offset_left = 356.0
-offset_top = 32.0
-offset_right = 796.0
-offset_bottom = 592.0
-metadata/_edit_use_anchors_ = true
+offset_left = 720.0
+offset_top = 180.0
+offset_right = 1200.0
+offset_bottom = 900.0
 
 [node name="CashChampions" type="Sprite2D" parent="Panel"]
 position = Vector2(220, 85)
@@ -36,13 +27,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -65.0
-offset_top = -105.0
-offset_right = 65.0
-offset_bottom = -73.0
+offset_left = -80.0
+offset_top = -185.0
+offset_right = 80.0
+offset_bottom = -153.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="Title" type="Label" parent="Panel/TitleBG"]
 light_mask = 2
@@ -59,6 +49,9 @@ offset_right = 50.0
 offset_bottom = 14.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 24
 text = "Leaderboard"
 
 [node name="Position" type="Panel" parent="Panel"]
@@ -75,15 +68,15 @@ offset_bottom = 252.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Placing" type="Label" parent="Panel/Position"]
+[node name="PositionTitle" type="Label" parent="Panel/Position"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -31.5
-offset_right = 31.5
+anchors_preset = 10
+anchor_right = 1.0
 offset_bottom = 23.0
 grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 24
 text = "#"
 horizontal_alignment = 1
 
@@ -111,22 +104,23 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -145.0
 offset_top = -68.0
-offset_right = 65.0
+offset_right = 45.0
 offset_bottom = 252.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Players" type="Label" parent="Panel/Player"]
+[node name="PlayerTitle" type="Label" parent="Panel/Player"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -24.5
-offset_right = 24.5
-offset_bottom = 23.0
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 34.0
 grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 24
 text = "Player
 "
+horizontal_alignment = 1
 
 [node name="PlayerList" type="Label" parent="Panel/Player"]
 layout_mode = 1
@@ -143,32 +137,33 @@ grow_horizontal = 2
 grow_vertical = 2
 horizontal_alignment = 1
 
-[node name="Score" type="Panel" parent="Panel"]
+[node name="Cash" type="Panel" parent="Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 70.0
+offset_left = 50.0
 offset_top = -68.0
 offset_right = 200.0
 offset_bottom = 252.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Scores" type="Label" parent="Panel/Score"]
+[node name="CashTitle" type="Label" parent="Panel/Cash"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -21.5
-offset_right = 21.5
+anchors_preset = 10
+anchor_right = 1.0
 offset_bottom = 23.0
 grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 24
 text = "Cash Earned"
+horizontal_alignment = 1
 
-[node name="ScoreList" type="Label" parent="Panel/Score"]
+[node name="CashList" type="Label" parent="Panel/Cash"]
 layout_mode = 0
 offset_left = 46.0
 offset_top = 23.0
@@ -176,4 +171,14 @@ offset_right = 89.0
 offset_bottom = 280.0
 horizontal_alignment = 1
 
-[connection signal="pressed" from="Return" to="." method="_on_return_pressed"]
+[node name="ReturnButton" type="Button" parent="."]
+offset_left = 100.0
+offset_top = 50.0
+offset_right = 280.0
+offset_bottom = 130.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 24
+text = "Return "
+
+[connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]

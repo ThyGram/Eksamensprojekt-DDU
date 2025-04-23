@@ -85,11 +85,11 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 	if response['response']['size'] > 0:
 		$Panel/Position/PositionList.text = ""
 		$Panel/Player/PlayerList.text = ""
-		$Panel/Score/ScoreList.text = ""
+		$Panel/Score/CashList.text = ""
 		for n in (response['response']['size']):
 			$Panel/Position/PositionList.text = $Panel/Position/PositionList.text + str(n + 1) + "\n"
 			$Panel/Player/PlayerList.text = $Panel/Player/PlayerList.text + str(response['response'][str(n)]['displayname'] + "\n")
-			$Panel/Score/ScoreList.text = $Panel/Score/ScoreList.text + str(response['response'][str(n)]['highscore'] + "$\n")
+			$Panel/Score/CashList.text = $Panel/Score/CashList.text + str(response['response'][str(n)]['highscore'] + "$\n")
 	else:
 		print("No Data")
 	# If not requesting a nonce, handle other requests
@@ -114,5 +114,5 @@ func get_scores():
 	request_queue.push_back({"command": command, "data": data})
 	print("get scores")
 
-func _on_return_pressed():
+func _on_return_button_pressed():
 	get_tree().change_scene_to_file("res://Menu/main_menu.tscn")
