@@ -54,6 +54,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 28
 
 [node name="Invest" type="Button" parent="Panel"]
+z_index = 6
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -72,6 +73,7 @@ theme_override_font_sizes/font_size = 28
 text = "Invest"
 
 [node name="InvestingAmount" type="TextEdit" parent="Panel"]
+z_index = 6
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -85,6 +87,7 @@ theme_override_font_sizes/font_size = 28
 placeholder_text = "Amount to invest . . ."
 
 [node name="Sell" type="Button" parent="Panel"]
+z_index = 6
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -127,6 +130,32 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 24
 text = "Return "
+
+[node name="TutorialPanel" type="Panel" parent="."]
+z_index = 5
+layout_mode = 0
+offset_left = -33.0
+offset_top = -27.0
+offset_right = 1964.0
+offset_bottom = 1116.0
+
+[node name="Tutorial Text" type="Label" parent="TutorialPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -286.0
+offset_top = -147.5
+offset_right = 286.0
+offset_bottom = 147.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "TUTORIAL TEXT"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Panel/Invest" to="." method="_on_invest_pressed"]
 [connection signal="pressed" from="Panel/Sell" to="." method="_on_sell_pressed"]

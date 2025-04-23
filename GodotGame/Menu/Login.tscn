@@ -20,6 +20,7 @@ offset_bottom = 364.0
 placeholder_text = "username"
 
 [node name="Password" type="TextEdit" parent="."]
+layout_mode = 0
 offset_left = 800.0
 offset_top = 388.0
 offset_right = 1028.0
@@ -35,6 +36,7 @@ offset_bottom = 566.0
 text = "Login"
 
 [node name="Register" type="Button" parent="."]
+layout_mode = 0
 offset_left = 838.0
 offset_top = 614.0
 offset_right = 998.0

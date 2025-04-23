@@ -105,7 +105,6 @@ func request_nonce():
 		print("Requesting nonce")
 
 func new_player(username, password, displayname, highscore):
-	
 	var command = "add_score"
 	var data = {"username": username, "passkey": password, "displayname": displayname, "highscore": highscore}
 	request_queue.push_back({"command": command, "data": data})

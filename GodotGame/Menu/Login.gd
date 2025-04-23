@@ -24,6 +24,7 @@ func _on_login_pressed():
 	get_player($Username.text, $Password.text)
 
 func _ready():
+	print("READT")
 	randomize()
 	add_child(http_request)
 	http_request.connect("request_completed", Callable(self, "_http_request_completed"))

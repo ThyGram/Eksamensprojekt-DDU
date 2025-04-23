@@ -7,6 +7,12 @@ var stocks : Dictionary = storage.Stocks
 func _ready():
 	storage.connect("stocks_changed", UpdateList)
 	
+	if !storage.StockTutorial or storage.StockTutorial == null:
+		storage.StockTutorial = false
+		$TutorialPanel.visible = true
+	else:
+		$TutorialPanel.queue_free()
+	
 	for key in stocks:
 		$Panel/CurrentInvestments.add_item(stocks[key][2] + ": " + str(stocks[key][0]) + "$", null, true)
 
@@ -19,6 +25,11 @@ func UpdateList():
 func _input(event):
 	if (event.is_action_pressed("Escape")):
 		get_tree().change_scene_to_file("res://MainGame/main_game_computer.tscn")
+	if (event.is_action_pressed("LeftClick") and !storage.StockTutorial):
+		$TutorialPanel.queue_free()
+		storage.StockTutorial = true
+
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

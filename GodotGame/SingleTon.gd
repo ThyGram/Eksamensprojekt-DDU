@@ -18,6 +18,9 @@ var GameTimer = Timer.new()
 #TUTORIAL CONFIRMATIONS
 var ComputerTutorial : bool
 var TVTutorial : bool
+var BankTutorial : bool
+var StockTutorial : bool
+var CalenderTutorial : bool
 
 var Goodnews : String = "No News"
 var Badnews : String = "No News"
@@ -51,7 +54,10 @@ func _ready():
 	#TUTORIALS
 	ComputerTutorial = storage.ComputerTutorial
 	TVTutorial = storage.TVTutorial
-
+	StockTutorial = storage.StockTutorial
+	BankTutorial = storage.BankTutorial
+	CalenderTutorial = storage.CalenderTutorial
+	
 	# Stocks
 	Stocks = storage.Stocks
 	
