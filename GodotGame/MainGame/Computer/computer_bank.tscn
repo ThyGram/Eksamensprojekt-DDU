@@ -243,26 +243,6 @@ text = "*Left Click to Continue*"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-<<<<<<< Updated upstream
-=======
-[node name="GameTimer" type="Label" parent="."]
-top_level = true
-z_index = 2
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -65.0
-offset_right = 65.0
-offset_bottom = 69.0
-grow_horizontal = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 64
-text = "08:00"
-
-[connection signal="pressed" from="Transfer In" to="." method="_on_transfer_in_pressed"]
->>>>>>> Stashed changes
 [connection signal="pressed" from="Transfer In" to="." method="_on_transfer_pressed"]
 [connection signal="pressed" from="Transfer In" to="." method="_on_transfer_in_pressed"]
 [connection signal="pressed" from="Transfer Out" to="." method="_on_transfer_out_pressed"]
