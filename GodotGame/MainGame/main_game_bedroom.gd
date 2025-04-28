@@ -6,18 +6,21 @@ extends Node2D
 @onready var single_ton = storage
 
 func _ready():
+	
 	Gamewatch_Increase()
-	storage.GameStarted = true
+	if (storage.Day == 11):
+		storage.GameStarted = false
+	else:
+		storage.GameStarted = true
 	storage.DayStarted = true
 	storage.connect("gamewatch_changed", Gamewatch_Increase)
 	
 	if (storage.GameWatch == 480 and storage.Day != 1):
-		if (storage.Day == 11):
-			pass
-		else:
+		if (storage.Day < 11):
 			get_tree().paused = true
 			var SummaryNode = SummaryPopup.instantiate()
 			add_child(SummaryNode)
+		
 	if !storage.BedroomTutorial or storage.BedroomTutorial == null:
 		storage.BedroomTutorial = false
 		$TutorialPanel.visible = true
@@ -28,11 +31,9 @@ func _ready():
 		$"SHARK IS HERE".visible = true
 
 func NewDay():
-	if (storage.Day < 10):
+	if (storage.Day < 11):
 		storage.Day += 1
 		get_tree().change_scene_to_file("res://switch_screen.tscn")
-	elif (storage.Day == 10):
-		storage.Gamestarted = false
 
 func _input(event):
 	if event.is_action_pressed("Escape"):

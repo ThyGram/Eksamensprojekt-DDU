@@ -73,7 +73,7 @@ func _input(event):
 	elif (event.is_action_pressed("ui_accept") and in_bedRange):
 		get_tree().paused = true
 		get_parent().add_child(ConfirmationNode.instantiate())
-	elif (event.is_action_pressed("ui_accept") and in_doorRange and (storage.Day == 1 or storage.Day == 5 or storage.Day == 10)):
+	elif (event.is_action_pressed("ui_accept") and in_doorRange and (storage.Day == 5 or storage.Day == 11)):
 		storage.PlayerPosition = self.global_position
 		get_tree().change_scene_to_file("res://MainGame/main_game_doorchat.tscn")
 

@@ -1,5 +1,7 @@
 extends Control
 
+@onready var SummaryPopup = preload("res://PopUps/game_summary.tscn")
+
 var Dialogue1 : Array = ["*KNOCK KNOCK KNOCK*", "Hello, I am Lånehajen Haj and I see you haven't paid back your debt.."
 , "I DEMAND THAT YOU WORK FOR 14 DAYS, weekends off of course, AND GIVE ME ALL THE MONEY YOUR EARN TO CLEAR YOUR DEBT!!!", "*Leaves*"]
 
@@ -20,7 +22,7 @@ func _ready():
 		$Panel/Dialogue.text = Dialogue2[0]
 		currDialogue = Dialogue2
 		storage.SharkTalk5 = true
-	elif storage.Day == 10:
+	elif storage.Day == 11:
 		if storage.Money > 10000:
 			$Panel/Dialogue.text = Dialogue3Win[0]
 			currDialogue = Dialogue3Win
@@ -34,9 +36,15 @@ func _input(event):
 		var currIndex = currDialogue.find($Panel/Dialogue.text, 0)
 		if (currIndex < currDialogue.size() - 1):
 			$Panel/Dialogue.text = currDialogue[currIndex+1]
-		else:
+		elif storage.Day < 11:
 			$ExitTimer.start()
 			stop = true
+		else:
+			GameEnd()
+
+func GameEnd():
+	var SummaryNode = SummaryPopup.instantiate()
+	add_child(SummaryNode)
 
 func _on_exit_timer_timeout():
 	get_tree().change_scene_to_file("res://MainGame/main_game_bedroom.tscn")

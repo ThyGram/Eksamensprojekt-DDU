@@ -19,8 +19,8 @@ func _ready():
 		$Panel/CurrentInvestments.add_item(stocks[key][2] + ": " + str(stocks[key][0]) + "$", null, true)
 
 func UpdateList():
-	var list = $Panel/CurrentInvestments.get_item_count()
-	for i in list:
+	var listcount = $Panel/CurrentInvestments.get_item_count()
+	for i in listcount:
 		$Panel/CurrentInvestments.set_item_text(i, stocks[i][2] + ": " + str(stocks[i][0]) + "$")
 
 func _input(event):

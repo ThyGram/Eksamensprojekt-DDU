@@ -1,8 +1,12 @@
 extends Control
 
 @onready var NoMoneyNode = preload("res://PopUps/NoMoney.tscn")
+@onready var single_ton = storage
 
 func _ready():
+	Gamewatch_Increase()
+	storage.connect("gamewatch_changed", Gamewatch_Increase)
+	
 	var bankinterest : float = (storage.BankInterest - 1.0)*100.0
 	if bankinterest > 0:
 		$Interest.text = str(round(bankinterest)) + "%"
@@ -18,6 +22,7 @@ func _ready():
 		$TutorialPanel.visible = true
 	else:
 		$TutorialPanel.queue_free()
+	
 
 func _process(delta):
 	$Money.text = "Wallet: $" + str(storage.Money)
@@ -49,6 +54,18 @@ func _on_transfer_out_pressed():
 		var NoMoney = NoMoneyNode.instantiate()
 		add_child(NoMoney)
 
+func Gamewatch_Increase():
+	var GameWatch = storage.GameWatch
+	if GameWatch % 60 > 9:
+			if int(GameWatch/60) > 9:
+				$GameTimer.text = str(int(GameWatch/60)) + ":" + str(GameWatch % 60)
+			else:
+				$GameTimer.text = "0" + str(int(GameWatch/60)) + ":" + str(GameWatch % 60)
+	else:
+		if int(GameWatch/60) > 9:
+			$GameTimer.text = str(int(GameWatch/60)) + ":0" + str(GameWatch % 60)
+		else:
+			$GameTimer.text = "0" + str(int(GameWatch/60)) + ":0" + str(GameWatch % 60)
 
 func _on_return_button_pressed():
 	get_tree().change_scene_to_file("res://MainGame/main_game_computer.tscn")
