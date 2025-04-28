@@ -1,0 +1,147 @@
+[gd_scene load_steps=8 format=3 uid="uid://b745qrbfspm3v"]
+
+[ext_resource type="Texture2D" uid="uid://bxi4wc7xhilv8" path="res://textures/MainRoomScene.PNG" id="1_anw28"]
+[ext_resource type="Script" path="res://Menu/Tutorial.gd" id="1_hcq25"]
+[ext_resource type="Texture2D" uid="uid://cxc2uxn7ereja" path="res://textures/TVScene.png" id="2_vywxl"]
+[ext_resource type="Texture2D" uid="uid://beqkqq5cfti0e" path="res://textures/ComputerScene.PNG" id="3_i1wdy"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qp8eg"]
+blend_mode = 2
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ar1h7"]
+blend_mode = 2
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_f8abs"]
+blend_mode = 2
+
+[node name="Tutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_hcq25")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainRoomScene2" type="Sprite2D" parent="Panel"]
+material = SubResource("CanvasItemMaterial_qp8eg")
+position = Vector2(1172.5, 635.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_anw28")
+
+[node name="MainRoomScene" type="Sprite2D" parent="Panel/MainRoomScene2"]
+position = Vector2(-50, -50)
+texture = ExtResource("1_anw28")
+
+[node name="TvScene2" type="Sprite2D" parent="Panel"]
+material = SubResource("CanvasItemMaterial_ar1h7")
+position = Vector2(1566.5, 552.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_vywxl")
+
+[node name="TvScene" type="Sprite2D" parent="Panel/TvScene2"]
+position = Vector2(-50, -50)
+texture = ExtResource("2_vywxl")
+
+[node name="ComputerScene2" type="Sprite2D" parent="Panel"]
+material = SubResource("CanvasItemMaterial_f8abs")
+position = Vector2(1305.5, 423.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_i1wdy")
+
+[node name="ComputerScene" type="Sprite2D" parent="Panel/ComputerScene2"]
+position = Vector2(-50, -50)
+texture = ExtResource("3_i1wdy")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 248.0
+offset_top = -337.0
+offset_right = 388.0
+offset_bottom = -287.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 36
+text = "PC Apps"
+
+[node name="Label3" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -803.0
+offset_top = -151.5
+offset_right = -197.0
+offset_bottom = 151.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 72
+text = "W, A, S, D 
++ 
+Space (Interact)"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 125.0
+offset_top = 232.0
+offset_right = 286.0
+offset_bottom = 282.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 36
+text = "Bedroom"
+
+[node name="Label2" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 573.0
+offset_top = 149.0
+offset_right = 615.0
+offset_bottom = 199.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 36
+text = "TV"
+
+[node name="ReturnButton" type="Button" parent="."]
+offset_left = 100.0
+offset_top = 50.0
+offset_right = 280.0
+offset_bottom = 130.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 24
+text = "Return "
+
+[connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]

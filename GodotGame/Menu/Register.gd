@@ -111,3 +111,7 @@ func new_player(username, password, displayname, highscore):
 
 func _on_return_pressed():
 	get_tree().change_scene_to_file("res://Menu/Login.tscn")
+
+
+func _on_return_button_pressed():
+	get_tree().change_scene_to_file("res://Menu/Login.tscn")
