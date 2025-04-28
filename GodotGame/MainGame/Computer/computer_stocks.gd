@@ -5,7 +5,9 @@ var stocks : Dictionary = storage.Stocks
 @onready var NoMoneyNode = preload("res://PopUps/NoMoney.tscn")
 
 func _ready():
+	Gamewatch_Increase()
 	storage.connect("stocks_changed", UpdateList)
+	storage.connect("gamewatch_changed", Gamewatch_Increase)
 	
 	if !storage.StockTutorial or storage.StockTutorial == null:
 		storage.StockTutorial = false
@@ -21,7 +23,6 @@ func UpdateList():
 	for i in list:
 		$Panel/CurrentInvestments.set_item_text(i, stocks[i][2] + ": " + str(stocks[i][0]) + "$")
 
-
 func _input(event):
 	if (event.is_action_pressed("Escape")):
 		get_tree().change_scene_to_file("res://MainGame/main_game_computer.tscn")
@@ -29,9 +30,6 @@ func _input(event):
 		$TutorialPanel.queue_free()
 		storage.StockTutorial = true
 
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$MoneyAmount.text = "Wallet: $" + str(storage.Money)
 
@@ -51,7 +49,6 @@ func _on_invest_pressed():
 		var label = NoMoney.get_node("Panel/Label")
 		label.text = "Select a company"
 
-
 func _on_sell_pressed():
 	var index = $Panel/CurrentInvestments.get_selected_items()
 	var amount : int = int($Panel/InvestingAmount.text)
@@ -70,7 +67,18 @@ func _on_sell_pressed():
 		var label = NoMoney.get_node("Panel/Label")
 		label.text = "You dont have that much in that stock"
 
-
-
 func _on_return_button_pressed():
 	get_tree().change_scene_to_file("res://MainGame/main_game_computer.tscn")
+
+func Gamewatch_Increase():
+	var GameWatch = storage.GameWatch
+	if GameWatch % 60 > 9:
+			if int(GameWatch/60) > 9:
+				$GameTimer.text = str(int(GameWatch/60)) + ":" + str(GameWatch % 60)
+			else:
+				$GameTimer.text = "0" + str(int(GameWatch/60)) + ":" + str(GameWatch % 60)
+	else:
+		if int(GameWatch/60) > 9:
+			$GameTimer.text = str(int(GameWatch/60)) + ":0" + str(GameWatch % 60)
+		else:
+			$GameTimer.text = "0" + str(int(GameWatch/60)) + ":0" + str(GameWatch % 60)

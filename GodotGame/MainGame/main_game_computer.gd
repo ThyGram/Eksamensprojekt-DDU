@@ -1,12 +1,16 @@
 extends Control
 
+@onready var single_ton = storage
+
 func _ready():
 	Gamewatch_Increase()
+	storage.connect("gamewatch_changed", Gamewatch_Increase)
+	
 	if (!storage.ComputerTutorial or storage.ComputerTutorial == null):
 		tutorial()
 	else:
 		tutorialclear()
-	storage.connect("gamewatch_changed", Gamewatch_Increase)
+	
 
 func tutorial():
 	$TutorialPanel.visible = true
