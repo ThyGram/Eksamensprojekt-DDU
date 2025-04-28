@@ -13,51 +13,52 @@ const SPEED : float = 300.0
 var direction : String = "none"
 
 func _process(delta):
-	if Input.is_action_pressed("Up"):
-		velocity = Vector2.UP * SPEED
-		is_moving = true
-		direction = "Up"
-	
-	elif Input.is_action_pressed("Left"):
-		velocity = Vector2.LEFT * SPEED
-		is_moving = true
-		direction = "Left"
-	
-	elif Input.is_action_pressed("Down"):
-		velocity = Vector2.DOWN * SPEED
-		is_moving = true
-		direction = "Down"
-	
-	elif Input.is_action_pressed("Right"):
-		velocity = Vector2.RIGHT * SPEED
-		is_moving = true
-		direction = "Right"
-	
-	else:
-		velocity = Vector2.ZERO
-		is_moving = false
-	
-	move_and_slide()
-	
-	if is_moving:
-		if direction == "Up":
-			anim.play("walk_up")
-		elif direction == "Left":
-			anim.play("walk_left")
-		elif direction == "Down":
-			anim.play("walk_down")
-		elif direction == "Right":
-			anim.play("walk_right")
-	
-	elif !is_moving:
-		if direction == "Up":
-			anim.play("idle_up")
-		elif direction == "Left":
-			anim.play("idle_left")
-		elif direction == "Down":
-			anim.play("idle_down")
-		elif direction == "Right":
-			anim.play("idle_right")
+	if storage.MovingAllowed:
+		if Input.is_action_pressed("Up"):
+			velocity = Vector2.UP * SPEED
+			is_moving = true
+			direction = "Up"
+		
+		elif Input.is_action_pressed("Left"):
+			velocity = Vector2.LEFT * SPEED
+			is_moving = true
+			direction = "Left"
+		
+		elif Input.is_action_pressed("Down"):
+			velocity = Vector2.DOWN * SPEED
+			is_moving = true
+			direction = "Down"
+		
+		elif Input.is_action_pressed("Right"):
+			velocity = Vector2.RIGHT * SPEED
+			is_moving = true
+			direction = "Right"
+		
+		else:
+			velocity = Vector2.ZERO
+			is_moving = false
+		
+		move_and_slide()
+		
+		if is_moving:
+			if direction == "Up":
+				anim.play("walk_up")
+			elif direction == "Left":
+				anim.play("walk_left")
+			elif direction == "Down":
+				anim.play("walk_down")
+			elif direction == "Right":
+				anim.play("walk_right")
+		
+		elif !is_moving:
+			if direction == "Up":
+				anim.play("idle_up")
+			elif direction == "Left":
+				anim.play("idle_left")
+			elif direction == "Down":
+				anim.play("idle_down")
+			elif direction == "Right":
+				anim.play("idle_right")
 
 func _ready():
 	if (storage.PlayerPosition):

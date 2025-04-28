@@ -14,6 +14,7 @@ var DayStarted : bool = false
 var GameWatch : int = 480
 var PlayerPosition
 var GameTimer = Timer.new()
+var MovingAllowed : bool = true
 
 #TUTORIAL CONFIRMATIONS
 var ComputerTutorial : bool
@@ -53,6 +54,7 @@ func _ready():
 	Day = storage.Day
 	Goodnews = storage.Goodnews
 	Badnews = storage.Badnews
+	MovingAllowed = storage.MovingAllowed
 	
 	#TUTORIALS
 	BedroomTutorial = storage.BedroomTutorial

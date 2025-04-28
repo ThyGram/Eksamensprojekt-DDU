@@ -23,6 +23,7 @@ func _ready():
 		
 	if !storage.BedroomTutorial or storage.BedroomTutorial == null:
 		storage.BedroomTutorial = false
+		storage.MovingAllowed = false
 		$TutorialPanel.visible = true
 	else:
 		$TutorialPanel.queue_free()
@@ -43,6 +44,7 @@ func _input(event):
 	if event.is_action_pressed("LeftClick") and !storage.BedroomTutorial:
 		$TutorialPanel.queue_free()
 		storage.BedroomTutorial = true
+		storage.MovingAllowed = true
 		
 
 func Gamewatch_Increase():
