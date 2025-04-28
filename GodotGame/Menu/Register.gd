@@ -2,7 +2,7 @@ extends Control
 
 var http_request : HTTPRequest = HTTPRequest.new()
 
-const SERVER_URL = "http://localhost:80/GodotSecure/db_action_secure.php"
+const SERVER_URL = "http://localhost:8080/GodotSecure/db_action_secure.php"
 const SERVER_HEADERS = ["Content-Type: application/x-www-form-urlencoded", "Cache-Control: max-age=0"]
 
 const SECRET_KEY = 1234567890
@@ -12,7 +12,7 @@ var request_queue : Array = []
 var is_requesting : bool = false
 
 func _on_register_pressed():
-	new_player($Username.text, $Password.text, $Displayname.text, 0)
+	add_player($Panel/Username.text, $Panel/Password.text, $Panel/Displayname.text, 0)
 
 
 func _ready():
@@ -54,8 +54,6 @@ func _send_request(request : Dictionary):
 	if err != OK:
 		printerr("HTTPRequest error: " + str(err))
 		return
-	else:
-		pass
 	# Debug print
 	print("Requesting...\n\tCommand: " + request["command"] + "\n\tBody: " + body)
 
@@ -84,7 +82,8 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 		print("Got nonce: " + response['response']['nonce'])
 		return
 	
-	if response['error'] == "none":
+	print("Response Body:\n" + response_body)
+	if response['error'] == "none" and response['command'] == "add_player":
 		get_tree().change_scene_to_file("res://Menu/Login.tscn")
 	else:
 		print("No Data")
@@ -104,14 +103,10 @@ func request_nonce():
 	else:
 		print("Requesting nonce")
 
-func new_player(username, password, displayname, highscore):
-	var command = "add_score"
+func add_player(username, password, displayname, highscore):
+	var command = "add_player"
 	var data = {"username": username, "passkey": password, "displayname": displayname, "highscore": highscore}
 	request_queue.push_back({"command": command, "data": data})
-
-func _on_return_pressed():
-	get_tree().change_scene_to_file("res://Menu/Login.tscn")
-
 
 func _on_return_button_pressed():
 	get_tree().change_scene_to_file("res://Menu/Login.tscn")

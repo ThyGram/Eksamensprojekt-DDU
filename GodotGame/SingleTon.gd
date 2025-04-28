@@ -5,9 +5,9 @@ signal news_changed
 signal gamewatch_changed
 
 var displayname : String
+var Highscore : int
 var Money : int = 500
 var Day : int = 1
-var Highscore : int
 var GameStarted : bool = false
 var rng = RandomNumberGenerator.new()
 var DayStarted : bool = false
@@ -42,8 +42,8 @@ var Stocks : Dictionary = {
 
 func _ready():
 	displayname = storage.displayname
-	Money = storage.Money
 	Highscore = storage.Highscore
+	Money = storage.Money
 	GameStarted = storage.GameStarted
 	DayStarted = storage.DayStarted
 	GameWatch = storage.GameWatch

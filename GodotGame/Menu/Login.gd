@@ -2,7 +2,7 @@ extends Control
 
 var http_request : HTTPRequest = HTTPRequest.new()
 
-const SERVER_URL = "http://localhost:80/GodotSecure/db_action_secure.php"
+const SERVER_URL = "http://localhost:8080/GodotSecure/db_action_secure.php"
 const SERVER_HEADERS = ["Content-Type: application/x-www-form-urlencoded", "Cache-Control: max-age=0"]
 
 const SECRET_KEY = 1234567890
@@ -11,20 +11,14 @@ var nonce = null
 var request_queue : Array = []
 var is_requesting : bool = false
 
-func _on_hvisingendatabase_pressed():
-	get_tree().change_scene_to_file("res://Menu/main_menu.tscn")
-	
-
-
 func _on_register_pressed():
 	get_tree().change_scene_to_file("res://Menu/Register.tscn")
 
 
 func _on_login_pressed():
-	get_player($Username.text, $Password.text)
+	get_player($Panel/Username.text, $Panel/Password.text)
 
 func _ready():
-	print("READT")
 	randomize()
 	add_child(http_request)
 	http_request.connect("request_completed", Callable(self, "_http_request_completed"))
@@ -95,6 +89,7 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 	
 	if response['response']['size'] == 1:
 		storage.displayname = str(response['response']['0']['displayname'])
+		storage.Highscore = int(str(response['response']['0']['highscore']))
 		get_tree().change_scene_to_file("res://Menu/main_menu.tscn")
 	else:
 		print("No Data")

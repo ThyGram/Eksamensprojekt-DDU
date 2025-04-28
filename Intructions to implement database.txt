@@ -1,0 +1,3 @@
+In the www directory for the wamp server, there is a folder called GodotSecure which houses all php files.
+The file path for the folder holding the php files is: ~\wamp64\www\GodotSecure
+Porten anvendt er 8080

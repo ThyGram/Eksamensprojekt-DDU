@@ -243,7 +243,7 @@ text = "*Left Click to Continue*"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="Transfer In" to="." method="_on_transfer_pressed"]
 [connection signal="pressed" from="Transfer In" to="." method="_on_transfer_in_pressed"]
+[connection signal="pressed" from="Transfer In" to="." method="_on_transfer_pressed"]
 [connection signal="pressed" from="Transfer Out" to="." method="_on_transfer_out_pressed"]
 [connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]

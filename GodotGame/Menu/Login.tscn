@@ -91,14 +91,5 @@ theme_override_constants/outline_size = 10
 text = "If you dont have an accout you can register"
 horizontal_alignment = 1
 
-[node name="HVISINGENDATABASE" type="Button" parent="."]
-layout_mode = 0
-offset_left = 144.0
-offset_top = 396.0
-offset_right = 276.0
-offset_bottom = 458.0
-text = "JEG HAR IKKE DATABASE"
-
 [connection signal="pressed" from="Panel/Login" to="." method="_on_login_pressed"]
 [connection signal="pressed" from="Panel/Register" to="." method="_on_register_pressed"]
-[connection signal="pressed" from="HVISINGENDATABASE" to="." method="_on_hvisingendatabase_pressed"]

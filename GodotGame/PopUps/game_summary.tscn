@@ -122,5 +122,23 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 30
 text = "Continue"
 
+[node name="Highscore" type="Label" parent="Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -247.0
+offset_top = -258.0
+offset_right = 247.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "New Highscore!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="Panel/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="Panel/Quit" to="." method="_on_quit_pressed"]

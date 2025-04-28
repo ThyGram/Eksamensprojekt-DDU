@@ -2,7 +2,7 @@ extends Control
 
 var http_request : HTTPRequest = HTTPRequest.new()
 
-const SERVER_URL = "http://localhost:80/GodotSecure/db_action_secure.php"
+const SERVER_URL = "http://localhost:8080/GodotSecure/db_action_secure.php"
 const SERVER_HEADERS = ["Content-Type: application/x-www-form-urlencoded", "Cache-Control: max-age=0"]
 
 const SECRET_KEY = 1234567890

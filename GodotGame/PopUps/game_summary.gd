@@ -30,8 +30,11 @@ func _ready():
 		
 		$Panel/Title.text = "Game End"
 		$Panel/GameEnd.text = "Money earned: " + str(totalMoney)
-		new_player(storage)
-
+		if totalMoney > storage.Highscore:
+			$Panel/Highscore.visible = true
+			update_player(totalMoney)
+		
+		
 func _on_continue_pressed():
 	get_tree().paused = false
 	queue_free()
@@ -43,7 +46,7 @@ func _on_quit_pressed():
 
 var http_request : HTTPRequest = HTTPRequest.new()
 
-const SERVER_URL = "http://localhost:80/GodotSecure/db_action_secure.php"
+const SERVER_URL = "http://localhost:8080/GodotSecure/db_action_secure.php"
 const SERVER_HEADERS = ["Content-Type: application/x-www-form-urlencoded", "Cache-Control: max-age=0"]
 
 const SECRET_KEY = 1234567890
@@ -136,8 +139,7 @@ func request_nonce():
 	else:
 		print("Requesting nonce")
 
-func new_player(username, password, displayname, highscore):
-	
-	var command = "add_score"
-	var data = {"username": username, "passkey": password, "displayname": password, "highscore": highscore}
+func update_player(highscore):
+	var command = "update_player"
+	var data = {"displayname": storage.displayname, "highscore": highscore}
 	request_queue.push_back({"command": command, "data": data})
