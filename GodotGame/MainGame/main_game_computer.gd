@@ -1,10 +1,12 @@
 extends Control
 
 func _ready():
+	Gamewatch_Increase()
 	if (!storage.ComputerTutorial or storage.ComputerTutorial == null):
 		tutorial()
 	else:
 		tutorialclear()
+	storage.connect("gamewatch_changed", Gamewatch_Increase)
 
 func tutorial():
 	$TutorialPanel.visible = true
@@ -37,3 +39,16 @@ func _on_return_button_pressed():
 
 func _on_tutorial_timer_timeout():
 	storage.ComputerTutorial = true
+
+func Gamewatch_Increase():
+	var GameWatch = storage.GameWatch
+	if GameWatch % 60 > 9:
+			if int(GameWatch/60) > 9:
+				$GameTimer.text = str(int(GameWatch/60)) + ":" + str(GameWatch % 60)
+			else:
+				$GameTimer.text = "0" + str(int(GameWatch/60)) + ":" + str(GameWatch % 60)
+	else:
+		if int(GameWatch/60) > 9:
+			$GameTimer.text = str(int(GameWatch/60)) + ":0" + str(GameWatch % 60)
+		else:
+			$GameTimer.text = "0" + str(int(GameWatch/60)) + ":0" + str(GameWatch % 60)

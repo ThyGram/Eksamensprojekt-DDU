@@ -42,6 +42,7 @@ func _input(event):
 	if event.is_action_pressed("LeftClick") and !storage.BedroomTutorial:
 		$TutorialPanel.queue_free()
 		storage.BedroomTutorial = true
+		
 
 func Gamewatch_Increase():
 	var GameWatch = storage.GameWatch
