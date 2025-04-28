@@ -152,5 +152,4 @@ func _on_gametimer_timeout():
 				if get_tree().current_scene.name == "main_game_tv":
 					news_changed.emit()
 		if get_tree().current_scene != null:
-			if get_tree().current_scene.name == "main_game_bedroom":
-				gamewatch_changed.emit()
+			gamewatch_changed.emit()
