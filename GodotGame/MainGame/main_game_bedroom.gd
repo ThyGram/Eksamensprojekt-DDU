@@ -32,7 +32,10 @@ func _ready():
 		$"SHARK IS HERE".visible = true
 
 func NewDay():
-	if (storage.Day < 11):
+	if (storage.Day == 5):
+		storage.Day += 3
+		get_tree().change_scene_to_file("res://switch_screen.tscn")
+	elif (storage.Day < 11):
 		storage.Day += 1
 		get_tree().change_scene_to_file("res://switch_screen.tscn")
 
