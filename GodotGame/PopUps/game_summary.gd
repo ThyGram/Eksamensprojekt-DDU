@@ -119,11 +119,7 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 		nonce = response['response']['nonce']
 		print("Got nonce: " + response['response']['nonce'])
 		return
-	
-	if response['response']['size'] > 0:
-		pass
-	else:
-		print("No Data")
+
 	# If not requesting a nonce, handle other requests
 	print("Response Body:\n" + response_body)
 
