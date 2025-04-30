@@ -92,6 +92,7 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 		storage.Highscore = int(str(response['response']['0']['highscore']))
 		get_tree().change_scene_to_file("res://Menu/main_menu.tscn")
 	else:
+		$Panel/Username.text = "Username or password is incorrect"
 		print("No Data")
 	# If not requesting a nonce, handle other requests
 	print("Response Body:\n" + response_body)

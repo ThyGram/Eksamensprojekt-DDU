@@ -83,9 +83,10 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 		return
 	
 	print("Response Body:\n" + response_body)
-	if response['error'] == "none" and response['command'] == "add_player":
+	if response['error'] == "none" and response['command'] == "add_player" and response['response']['size'] == 1:
 		get_tree().change_scene_to_file("res://Menu/Login.tscn")
 	else:
+		$Panel/Displayname.text = "Display name in use"
 		print("No Data")
 	# If not requesting a nonce, handle other requests
 	print("Response Body:\n" + response_body)

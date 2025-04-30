@@ -160,10 +160,17 @@
 				$sth -> bindValue(":highscore", $highscore, PDO::PARAM_INT);
                 $sth -> execute();
 				
+				$affected_rows = $sth->rowCount();
+
 				CloseConnPDO($pdo);
 				
-				#Response to Godot, all is fine				
-				print_response("no_return", array("size" => 0));
+				if ($affected_rows > 0) {
+					print_response("no_return", array("size" => 1));
+				}
+				else {
+					print_response("display_name in use", array("size" => 0));
+				}
+				
 				die;
 				
 				
