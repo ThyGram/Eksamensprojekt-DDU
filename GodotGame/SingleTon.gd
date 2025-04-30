@@ -102,7 +102,6 @@ func StockChange(hoursremaining : int):
 							break
 				else:
 					storagestock = randomstock
-				
 				if j == 0:
 					Stocks[randomstock][1] = true
 				elif j == 1:
@@ -124,7 +123,6 @@ func _on_gametimer_timeout():
 						Increment += 0.25
 					elif Stocks[key][1] == false:
 						Increment -= 0.25
-					
 				Stocks[key][0] *= Increment
 				Stocks[key][0] = round(Stocks[key][0])
 			if get_tree().current_scene != null:
@@ -143,7 +141,6 @@ func _on_gametimer_timeout():
 							break
 				else:
 					storagestock = randomstock
-				
 				if n == 0:
 					Stocks[randomstock][1] = true
 					Goodnews = storage.Stocks[randomstock][2] + " has just won the lottery!!!"
@@ -151,7 +148,6 @@ func _on_gametimer_timeout():
 					Stocks[randomstock][1] = false
 					Badnews = storage.Stocks[randomstock][2] + " has just lost the lottery..."
 			if get_tree().current_scene != null:
+				gamewatch_changed.emit()
 				if get_tree().current_scene.name == "main_game_tv":
 					news_changed.emit()
-		if get_tree().current_scene != null:
-			gamewatch_changed.emit()
