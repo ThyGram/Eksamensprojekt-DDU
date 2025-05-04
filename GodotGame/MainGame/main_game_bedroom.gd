@@ -26,7 +26,7 @@ func _ready():
 		$TutorialPanel.queue_free()
 	
 	if storage.Day == 5 and (!storage.SharkTalk5 or storage.SharkTalk5 == null):
-		$"SHARK IS HERE".visible = true
+		$DoorNotification.visible = true
 
 func NewDay():
 	if (storage.Day == 5):

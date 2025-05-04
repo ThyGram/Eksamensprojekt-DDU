@@ -698,7 +698,7 @@ text = "*Left Click to Continue*"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SHARK IS HERE" type="Label" parent="."]
+[node name="DoorNotification" type="Label" parent="."]
 visible = false
 offset_left = 906.0
 offset_top = 817.0
