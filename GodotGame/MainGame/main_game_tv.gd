@@ -1,8 +1,6 @@
 extends Control
 
-@onready var single_ton = storage
-
-var rng = RandomNumberGenerator.new()
+var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Background/TVBackground/BadNEWS.text = storage.Badnews

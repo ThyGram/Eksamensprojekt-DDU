@@ -6,11 +6,15 @@ var in_tvRange : bool = false
 var in_doorRange : bool = false
 var is_moving : bool = false
 
-@onready var ConfirmationNode = preload("res://PopUps/AreYouSure.tscn")
+@onready var ConfirmationNode : PackedScene= preload("res://PopUps/AreYouSure.tscn")
 
-@onready var anim = $AnimatedPlayerSprite
+@onready var anim : Node = $AnimatedPlayerSprite
 const SPEED : float = 300.0
 var direction : String = "none"
+
+func _ready():
+	if (storage.PlayerPosition):
+		self.global_position = storage.PlayerPosition
 
 func _process(delta):
 	if storage.MovingAllowed:
@@ -60,10 +64,6 @@ func _process(delta):
 			elif direction == "Right":
 				anim.play("idle_right")
 
-func _ready():
-	if (storage.PlayerPosition):
-		self.global_position = storage.PlayerPosition
-	
 func _input(event):
 	if (event.is_action_pressed("ui_accept") and in_computerRange):
 		storage.PlayerPosition = self.global_position
@@ -107,6 +107,6 @@ func _on_door_body_entered(body):
 	if body.name == "Player":
 		in_doorRange = true
 
-func _on_area_2d_body_exited(body):
+func _on_door_body_exited(body):
 	if body.name == "Player":
 		in_doorRange = false

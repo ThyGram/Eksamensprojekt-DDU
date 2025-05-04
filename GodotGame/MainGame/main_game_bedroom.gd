@@ -3,10 +3,7 @@ extends Node2D
 @onready var SummaryPopup : PackedScene = preload("res://PopUps/game_summary.tscn")
 @onready var PauseMenu : PackedScene = preload("res://PopUps/PauseMenu.tscn")
 
-@onready var single_ton = storage
-
 func _ready():
-	
 	Gamewatch_Increase()
 	if (storage.Day == 15):
 		storage.GameStarted = false

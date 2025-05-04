@@ -1,7 +1,6 @@
 extends Control
 
 var stocks : Dictionary = storage.Stocks
-@onready var single_ton = storage
 @onready var NoMoneyNode = preload("res://PopUps/NoMoney.tscn")
 
 func _ready():
