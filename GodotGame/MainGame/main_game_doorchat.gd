@@ -24,7 +24,7 @@ func _ready():
 		$Panel/Dialogue.text = Dialogue2[0]
 		currDialogue = Dialogue2
 		storage.SharkTalk5 = true
-	elif storage.Day == 11:
+	elif storage.Day == 15:
 		for key in storage.Stocks:
 			investmentMoney += storage.Stocks[key][0]
 		if (storage.Money + storage.BankMoney + investmentMoney) > 1000000:

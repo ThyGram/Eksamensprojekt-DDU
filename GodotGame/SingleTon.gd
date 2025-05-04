@@ -147,7 +147,7 @@ func _on_gametimer_timeout():
 				elif n == 1:
 					Stocks[randomstock][1] = false
 					Badnews = storage.Stocks[randomstock][2] + " has just lost the lottery..."
-			if get_tree().current_scene != null:
-				gamewatch_changed.emit()
-				if get_tree().current_scene.name == "main_game_tv":
-					news_changed.emit()
+		if get_tree().current_scene != null:
+			gamewatch_changed.emit()
+			if get_tree().current_scene.name == "main_game_tv":
+				news_changed.emit()

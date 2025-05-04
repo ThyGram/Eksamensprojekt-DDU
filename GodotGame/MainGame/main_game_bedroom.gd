@@ -1,14 +1,14 @@
 extends Node2D
 
-@onready var SummaryPopup = preload("res://PopUps/game_summary.tscn")
-@onready var PauseMenu = preload("res://PopUps/PauseMenu.tscn")
+@onready var SummaryPopup : PackedScene = preload("res://PopUps/game_summary.tscn")
+@onready var PauseMenu : PackedScene = preload("res://PopUps/PauseMenu.tscn")
 
 @onready var single_ton = storage
 
 func _ready():
 	
 	Gamewatch_Increase()
-	if (storage.Day == 11):
+	if (storage.Day == 15):
 		storage.GameStarted = false
 	else:
 		storage.GameStarted = true
@@ -35,7 +35,7 @@ func NewDay():
 	if (storage.Day == 5):
 		storage.Day += 3
 		get_tree().change_scene_to_file("res://switch_screen.tscn")
-	elif (storage.Day < 11):
+	elif (storage.Day < 15):
 		storage.Day += 1
 		get_tree().change_scene_to_file("res://switch_screen.tscn")
 

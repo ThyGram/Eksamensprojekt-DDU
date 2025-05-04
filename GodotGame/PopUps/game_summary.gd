@@ -4,16 +4,19 @@ var investmentMoney : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if storage.Day < 11:
-		$Panel/Title.text = "Summary:\nDay " + str(storage.Day-1)
-		$Panel/CurrentMoney.text = "Current money: " + str(storage.Money)
-		
+	if storage.Day < 15:
+		if storage.Day == 8:
+			$Panel/Title.text = "Summary:\nDay " + str(storage.Day-3)
+			$Panel/CurrentMoney.text = "Current money: " + str(storage.Money)
+		else:
+			$Panel/Title.text = "Summary:\nDay " + str(storage.Day-1)
+			$Panel/CurrentMoney.text = "Current money: " + str(storage.Money)
 		for key in storage.Stocks:
 			investmentMoney += storage.Stocks[key][0]
 		$Panel/InvestmentMoney.text = "Investment Money: " + str(investmentMoney)
 		
 		$Panel/BankMoney.text = "Bank Money: " + str(storage.BankMoney)
-	elif storage.Day == 11:
+	elif storage.Day == 15:
 		randomize()
 		add_child(http_request)
 		http_request.connect("request_completed", Callable(self, "_http_request_completed"))
