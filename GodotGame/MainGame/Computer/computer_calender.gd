@@ -26,7 +26,7 @@ func _ready():
 	
 	for n in storage.Day:
 		var current_date = "Dates/" + str(n+1)
-		if n == storage.Day-1:
+		if n == storage.Day - 1:
 			# Position indstilles alt efter dato
 			black_ring.position = get_node(current_date).get_global_position() + Vector2((90+rng.randi_range(1,20)),(90+rng.randi_range(1,20)))
 			add_child(black_ring)
