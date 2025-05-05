@@ -178,17 +178,9 @@
 			
 			case "get_scores":
 			
-				$score_number_of = 10;
-				$score_offset = 0;
-				
-				#Check for new values
-				if (isset($dict_from_json['score_offset']))
-					$score_offset = max(0, (int)$dict_from_json['score_offset']);
-								
-				if (isset($dict_from_json['score_number']))
-					$score_number_of = max(1, (int)$dict_from_json['score_number']);
-				
-				$template = "SELECT * FROM `players` ORDER BY highscore DESC LIMIT :number OFFSET :offset";
+				$number_of_scores = 20;
+
+				$template = "SELECT * FROM `players` ORDER BY highscore DESC LIMIT :number";
 				
 				#Make a connection to the DB
 				$pdo = OpenConnPDO();
@@ -198,8 +190,7 @@
 					die;
 				
 				$sth = $pdo -> prepare($template);
-				$sth -> bindValue("number", $score_number_of, PDO::PARAM_INT);
-				$sth -> bindValue("offset", $score_offset, PDO::PARAM_INT);
+				$sth -> bindValue("number", $number_of_scores, PDO::PARAM_INT);
 				$sth -> execute();
 				
 				//Get data containing all players
