@@ -115,8 +115,8 @@ func _on_gametimer_timeout():
 			for key in Stocks:
 				var Increment : float = 0;
 				var randomNumber = rng.randi_range(1,200)
-				if randomNumber == 100 and Stocks[key][1] == null:
-					Increment = rng.randf_range(0, 2)
+				if randomNumber == 100:
+					Increment = rng.randf_range(0.05, 2)
 				else:
 					Increment = rng.randf_range(0.935, 1.065)
 					if Stocks[key][1] == true:
