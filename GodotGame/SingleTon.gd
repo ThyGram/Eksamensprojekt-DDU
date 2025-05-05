@@ -111,12 +111,12 @@ func _on_gametimer_timeout():
 	if GameWatch < 1440 and GameStarted and BedroomTutorial:
 		GameWatch += 5
 		var hour : float = float(GameWatch) / 60.0
-		if floor(hour) == hour and int(floor(hour)) % 2 == int(hour) % 2:
+		if floor(hour) == hour:
 			for key in Stocks:
 				var Increment : float = 0;
 				var randomNumber = rng.randi_range(1,200)
 				if randomNumber == 100:
-					Increment = rng.randf_range(0.05, 2)
+					Increment = rng.randf_range(0.50, 2)
 				else:
 					Increment = rng.randf_range(0.935, 1.065)
 					if Stocks[key][1] == true:
