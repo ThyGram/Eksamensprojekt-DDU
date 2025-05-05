@@ -132,6 +132,7 @@ theme_override_font_sizes/font_size = 24
 text = "Return "
 
 [node name="TutorialPanel" type="Panel" parent="."]
+visible = false
 z_index = 5
 layout_mode = 1
 anchors_preset = 15
@@ -153,8 +154,12 @@ offset_right = 286.0
 offset_bottom = 147.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 30
-text = "TUTORIAL TEXT"
+text = "This is your Stocks App. Here you can see the current prices of stocks. 
+Remember the risks of investing in stocks and watch the news,
+to get the most of this tool."
 horizontal_alignment = 1
 vertical_alignment = 1
 

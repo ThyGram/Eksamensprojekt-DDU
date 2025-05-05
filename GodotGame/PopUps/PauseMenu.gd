@@ -5,11 +5,6 @@ extends Control
 func _ready():
 	$Panel/Title.text = "Game Paused - Day " + str(storage.Day)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
 func _on_continue_pressed():
 	get_tree().paused = false
 	queue_free()

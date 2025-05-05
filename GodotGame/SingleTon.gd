@@ -120,9 +120,9 @@ func _on_gametimer_timeout():
 				else:
 					Increment = rng.randf_range(0.935, 1.065)
 					if Stocks[key][1] == true:
-						Increment += 0.25
+						Increment += 0.10
 					elif Stocks[key][1] == false:
-						Increment -= 0.25
+						Increment -= 0.10
 				Stocks[key][0] *= Increment
 				Stocks[key][0] = round(Stocks[key][0])
 			if get_tree().current_scene != null:
@@ -147,7 +147,7 @@ func _on_gametimer_timeout():
 				elif n == 1:
 					Stocks[randomstock][1] = false
 					Badnews = storage.Stocks[randomstock][2] + " has just lost the lottery..."
-			if get_tree().current_scene != null:
-				gamewatch_changed.emit()
-				if get_tree().current_scene.name == "main_game_tv":
-					news_changed.emit()
+		if get_tree().current_scene != null:
+			gamewatch_changed.emit()
+			if get_tree().current_scene.name == "main_game_tv":
+				news_changed.emit()

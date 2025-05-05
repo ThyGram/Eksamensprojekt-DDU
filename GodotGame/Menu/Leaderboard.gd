@@ -2,10 +2,10 @@ extends Control
 
 var http_request : HTTPRequest = HTTPRequest.new()
 
-const SERVER_URL = "http://localhost:8080/GodotSecure/db_action_secure.php"
-const SERVER_HEADERS = ["Content-Type: application/x-www-form-urlencoded", "Cache-Control: max-age=0"]
+const SERVER_URL : String = "http://localhost:8080/GodotSecure/db_action_secure.php"
+const SERVER_HEADERS : Array = ["Content-Type: application/x-www-form-urlencoded", "Cache-Control: max-age=0"]
 
-const SECRET_KEY = 1234567890
+const SECRET_KEY : int = 1234567890
 var nonce = null
 
 var request_queue : Array = []

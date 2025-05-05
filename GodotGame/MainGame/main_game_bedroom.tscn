@@ -654,19 +654,25 @@ offset_right = 351.0
 offset_bottom = 264.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 25
-text = "Welcome to Cash Champions
-In this game there are 3 important furniture in your room
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 24
+text = "
 
-The bed is where you can sleep and go to the next day
-A day goes onto 24:00
+Welcome to Cash Champions!
+In your bedroom you will find 3 important pieces of furniture.
 
-The TV shows the news at that time
+The bed is where you can sleep and 
+progress to the next day. A day ends at 24:00.
 
-And finally the computer, where you control your funds
+The TV shows the breaking news, updating every 
+4 hours from the moment you wake up.
+
+Finally the computer, where you control your funds.
 Invest your money to earn even more!
 
-Maybe LåneHajen Haj will return....
+Watch out for the bedroom door.
+LåneHajen Haj is sure to return....
 
 
 "
@@ -692,7 +698,7 @@ text = "*Left Click to Continue*"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SHARK IS HERE" type="Label" parent="."]
+[node name="DoorNotification" type="Label" parent="."]
 visible = false
 offset_left = 906.0
 offset_top = 817.0

@@ -4,16 +4,19 @@ var investmentMoney : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if storage.Day < 11:
-		$Panel/Title.text = "Summary:\nDay " + str(storage.Day-1)
-		$Panel/CurrentMoney.text = "Current money: " + str(storage.Money)
-		
+	if storage.Day < 13:
+		if storage.Day == 8:
+			$Panel/Title.text = "Summary:\nDay " + str(storage.Day-3)
+			$Panel/CurrentMoney.text = "Current money: " + str(storage.Money)
+		else:
+			$Panel/Title.text = "Summary:\nDay " + str(storage.Day-1)
+			$Panel/CurrentMoney.text = "Current money: " + str(storage.Money)
 		for key in storage.Stocks:
 			investmentMoney += storage.Stocks[key][0]
 		$Panel/InvestmentMoney.text = "Investment Money: " + str(investmentMoney)
 		
 		$Panel/BankMoney.text = "Bank Money: " + str(storage.BankMoney)
-	elif storage.Day == 11:
+	elif storage.Day == 13:
 		randomize()
 		add_child(http_request)
 		http_request.connect("request_completed", Callable(self, "_http_request_completed"))
@@ -47,10 +50,10 @@ func _on_quit_pressed():
 
 var http_request : HTTPRequest = HTTPRequest.new()
 
-const SERVER_URL = "http://localhost:8080/GodotSecure/db_action_secure.php"
-const SERVER_HEADERS = ["Content-Type: application/x-www-form-urlencoded", "Cache-Control: max-age=0"]
+const SERVER_URL : String = "http://localhost:8080/GodotSecure/db_action_secure.php"
+const SERVER_HEADERS : Array = ["Content-Type: application/x-www-form-urlencoded", "Cache-Control: max-age=0"]
 
-const SECRET_KEY = 1234567890
+const SECRET_KEY : int = 1234567890
 var nonce = null
 
 var request_queue : Array = []

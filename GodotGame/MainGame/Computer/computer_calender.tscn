@@ -489,11 +489,12 @@ text = " 14"
 
 [node name="Ring" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_6vy4d")
-position = Vector2(1149, 661)
+position = Vector2(1339, 661)
 scale = Vector2(200, 200)
 texture = ExtResource("2_dbua4")
 
 [node name="TutorialPanel" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -514,8 +515,13 @@ offset_right = 111.0
 offset_bottom = 21.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 30
-text = "TUTORIAL TEXT"
+text = "This is your Calendar App. Here you can see which Day you've reached.
+Circled is the Day where Lånehajen Haj will pay you a visit. 
+Remember he expects a lot of money.."
+horizontal_alignment = 1
 
 [node name="Click" type="Label" parent="TutorialPanel"]
 layout_mode = 1
