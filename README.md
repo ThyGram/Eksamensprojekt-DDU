@@ -1,3 +1,4 @@
+Databasen i dette projekt, skal opstættes lokalt med en WAMP server. 
 Vejledning til opsætning af Database:
 
 In the www directory for the wamp server, there is a folder called GodotSecure which houses all php files.
