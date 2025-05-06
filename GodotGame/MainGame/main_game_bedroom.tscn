@@ -714,4 +714,4 @@ text = "❗"
 [connection signal="body_entered" from="TV/Area2D" to="Player" method="_on_tv_body_entered"]
 [connection signal="body_exited" from="TV/Area2D" to="Player" method="_on_tv_body_exited"]
 [connection signal="body_entered" from="Door/Area2D" to="Player" method="_on_door_body_entered"]
-[connection signal="body_exited" from="Door/Area2D" to="Player" method="_on_area_2d_body_exited"]
+[connection signal="body_exited" from="Door/Area2D" to="Player" method="_on_door_body_exited"]

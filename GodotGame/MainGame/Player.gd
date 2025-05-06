@@ -72,8 +72,12 @@ func _input(event):
 		storage.PlayerPosition = self.global_position
 		get_tree().change_scene_to_file("res://MainGame/main_game_tv.tscn")
 	elif (event.is_action_pressed("ui_accept") and in_bedRange):
-		get_tree().paused = true
-		get_parent().add_child(ConfirmationNode.instantiate())
+		if storage.GameWatch < 1440:
+			get_tree().paused = true
+			get_parent().add_child(ConfirmationNode.instantiate())
+		else:
+			storage.PlayerPosition = self.global_position
+			get_tree().change_scene_to_file("res://switch_screen.tscn")
 	elif (event.is_action_pressed("ui_accept") and in_doorRange and (storage.Day == 5 or storage.Day == 11)):
 		storage.PlayerPosition = self.global_position
 		get_tree().change_scene_to_file("res://MainGame/main_game_doorchat.tscn")
