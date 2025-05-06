@@ -218,12 +218,17 @@
 					print_response([], "missing_passkey");
 					die;
 				}
+				if (!isset($dict_from_json['displayname'])){
+					print_response([], "missing_displayname");
+					die;
+				}
 				
 				# Username max length 40, -> should be handled in Godot (if longer usernames is required simply change the length in the database)
 				$username = $dict_from_json['username'];
                 $passkey = $dict_from_json['passkey'];
+				$displayname = $dict_from_json['displayname'];
 				
-				$template = "SELECT * FROM `players` WHERE username = :username AND passkey = :passkey";
+				$template = "SELECT * FROM `players` WHERE username = :username AND passkey = :passkey AND displayname = :displayname";
                 
 				#Make a connection to the DB
 				$pdo = OpenConnPDO();
@@ -235,6 +240,7 @@
 				$sth = $pdo -> prepare($template);
                 $sth -> bindValue("username", $username);
                 $sth -> bindValue("passkey", $passkey);
+				$sth -> bindValue("displayname", $displayname);
 				$sth -> execute();
 
 				//Get data containing all players (hopefully only one)

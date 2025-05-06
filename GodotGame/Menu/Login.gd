@@ -16,7 +16,7 @@ func _on_register_pressed():
 
 
 func _on_login_pressed():
-	get_player($Panel/Username.text, $Panel/Password.text)
+	get_player($Panel/Username.text, $Panel/Password.text, $Panel/Displayname.text)
 
 func _ready():
 	randomize()
@@ -110,7 +110,7 @@ func request_nonce():
 	else:
 		print("Requesting nonce")
 
-func get_player(username, password):
+func get_player(username, password, displayname):
 	var command = "get_player"
-	var data = {"username" : username, "passkey": password}
+	var data = {"username" : username, "passkey": password, "displayname" : displayname}
 	request_queue.push_back({"command": command, "data": data})
